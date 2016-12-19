@@ -6,9 +6,23 @@
 
     <%= stylesheet_link_tag('application', {media: 'all', 'data-turbolinks-track': 'reload'}) %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
-    <%= yield %>
-  </body>
-</html>
+    <!--[if lt IE 9]>
+          <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
+          </script>
+        <![endif]-->
+      </head>
+      <body>
+        <header class="navbar navbar-fixed-top navbar-inverse">
+          <div class="container">
+            <%= link_to "FI Calc App", '#', id: "logo" %>
+            <nav>
+              <ul class="nav navbar-nav navbar-right">
+              </ul>
+            </nav>
+          </div>
+        </header>
+        <div class="container">
+          <%= yield %>
+        </div>
+      </body>
+    </html>
