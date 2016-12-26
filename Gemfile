@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby                '2.3.3'
+
 gem 'rails',        '5.0.0.1'
 gem 'puma',         '3.4.0'
 gem 'sass-rails',   '5.0.6'
