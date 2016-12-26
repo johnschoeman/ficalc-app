@@ -67,7 +67,7 @@ function calculateFI()
 
     var percentFI = (netWorth / (300 * monthlySpending));
 
-    while (percentFI < 1.0 ) {
+    /*while (percentFI < 1.0 ) {
       monthlySpending *= (inflation**(1/12));
       if (monthCount % 12 == 0) {
         monthlyIncome *= raises;
@@ -76,7 +76,7 @@ function calculateFI()
       if (monthCount > 10000) { break; }
       netWorth = (netWorth * (averageReturn ** (1/12)) ) + monthlyIncome - monthlySpending;
       percentFI = (netWorth / (300 * monthlySpending));
-    };
+    };*/
     //display the result
     var divobj = document.getElementById('timetofioutput');
     divobj.style.display='block';
