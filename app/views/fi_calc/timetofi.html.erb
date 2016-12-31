@@ -1,4 +1,6 @@
 <% provide(:title, "TimeToFi") %>
+
+<body>
 <h1>Time To FI</h1>
   <p>
     A simple calculator to help you find your time to financial independence.
@@ -7,6 +9,27 @@
      <fieldset>
 
       <legend>Find Your Time To FI!</legend>
+
+      <p>
+        <legend>Assumptions</legend>
+
+        <label >Average Return</label>
+        <input type="number" id="average-return"
+        name="average-return" step="0.1" value="7.0"/>
+        <br>
+        <label >Inflation</label>
+        <input type="number" id="inflation"
+        name="inflation" step="0.1" value="2.0"/>
+        <br>
+        <label >Raises</label>
+        <input type="number" id="raises"
+        name="raises" step="0.1" value="5.0">
+        <br>
+        <label>Safe Withdrawl Rate</label>
+        <input type="number" id="safe-withdrawl-rate"
+        name="safe-withdrawl-rate" step="0.1" min="0" value="4.0"/>
+      </p>
+
       <p>
         <legend>Input</legend>
 
@@ -27,26 +50,6 @@
         <button type="button" onclick="displayTimeToFI()">CalculateFI</button>
         <div id="time-to-fi-output">Your Time to FI is: </div>
         </div>
-      </p>
-
-      <p>
-        <legend>Assumptions</legend>
-
-        <label >Average Return</label>
-        <input type="number" id="average-return"
-        name="average-return" value="7"/>
-        <br>
-        <label >Inflation</label>
-        <input type="number" id="inflation"
-        name="inflation" value="2"/>
-        <br>
-        <label >Raises</label>
-        <input type="number" id="raises"
-        name="raises" value="5">
-        <br>
-        <label>Safe Withdrawl Rate</label>
-        <input type="number" id="safe-withdrawl-rate"
-        name="safe-withdrawl-rate" value="4"/>
       </p>
 
       <p>
@@ -75,6 +78,7 @@
   <p>
     <button type="button" onclick="test()">Click Me!</button>
   </p>
-  <div id="demo"> </div>
+  <div id="demo">test</div>
 
 <script></script>
+</body>

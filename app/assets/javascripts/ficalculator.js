@@ -1,5 +1,5 @@
 function getUserInput(input) {
-  return parseInt(document.forms["timetofiform"].elements[input].value);
+  return parseFloat(document.forms["timetofiform"].elements[input].value);
 };
 
 function calculateFI(monthlyExpenses, monthlyIncome, netWorth, averageReturn,
@@ -74,7 +74,7 @@ function displayChangeInFI() {
 
 function test()
 {
-  var result = getUserInput("monthspending");
+  var result = getUserInput("safe-withdrawl-rate");
   //display the result
   var divobj = document.getElementById('demo');
   divobj.style.display='block';
