@@ -40,7 +40,7 @@ body {
 .timetofi_form li{
     padding:12px;
     border-bottom:1px solid #eee;
-    position:relative;
+    position: relative;
 }
 .timetofi_form li:first-child, .timetofi_form li:last-child {
   border-bottom:1px solid #777;
@@ -95,15 +95,15 @@ body {
   color: #28921f; /* change form hint color when valid */
 }
 .timetofi_form button {
-  margin-left:156px;
+  margin-left:20px;
 }
 
 .timetofi_form input, {
   height:20px;
-  width:220px;
+  width:80px;
   padding:5px 8px;
   text-align: center;
-  padding-right: 30px;
+  padding-right: 3px;
   border:1px solid #aaa;
   box-shadow: 0px 0px 3px #ccc, 0 10px 15px #eee inset;
   border-radius:2px;
@@ -117,7 +117,7 @@ body {
     background: #fff;
     border:1px solid #555;
     box-shadow: 0 0 3px #aaa;
-    padding-right: 70px;
+    padding-right: 10px;
 }
 
 .timetofi_form input:focus:invalid {
@@ -179,8 +179,17 @@ button.submit:active {
 
 }
 
-#time-to-fi-output {
+.timetofi_form .has_bottom_border {
+  border-bottom: 1px solid #999;
 }
+
+#time-to-fi-output, #change-in-time-to-fi-output {
+  display: inline-block;
+  float: none;
+  padding-left: 25px;
+  position: relative;
+}
+
 
 fieldset {
     display: block;

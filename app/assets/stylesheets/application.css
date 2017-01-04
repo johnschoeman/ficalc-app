@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+
+header {
+  font-family: "Verdana", "Geneva", sans-serif;
+  font-size: 2em;
+}

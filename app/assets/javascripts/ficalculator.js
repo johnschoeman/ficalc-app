@@ -40,8 +40,8 @@ function displayTimeToFI() {
                                               averageReturn, inflation, raises, safeWithdrawlRate);
 
   var divobj = document.getElementById('time-to-fi-output');
-  divobj.style.display='block';
-  divobj.innerHTML = "Your Time to FI is: "+ timeToFI +" months!";
+  divobj.style.display='inline';
+  divobj.innerHTML = "Your Time to FI is: "+ monthsToYears(timeToFI);
 }
 
 function displayChangeInFI() {
@@ -67,14 +67,45 @@ function displayChangeInFI() {
   var changeInTimeToFI = timeToFIFinal - timeToFIInitial;
 
   var divobj = document.getElementById('change-in-time-to-fi-output');
-  divobj.style.display='block';
-  divobj.innerHTML = "Time Added to FI: " + changeInTimeToFI + " months";
+  divobj.style.display='inline';
+  divobj.innerHTML = "Time Added to FI: " + monthsToYears(changeInTimeToFI);
+}
+
+function monthsToYears(inputMonths) {
+  var years = parseInt(inputMonths / 12);
+  var months = inputMonths % 12;
+
+  if(years == 0){
+    if (months == 0) {
+      return "You've reached FI!"
+    } else if (months == 1) {
+      return "1 month"
+    } else {
+      return months + " months"
+    }
+  } else if (years == 1) {
+    if (months == 0) {
+      return "1 year"
+    } else if (months == 1){
+      return "1 year - 1 month"
+    } else {
+      return "1 year - " + months + " months"
+    }
+  } else {
+    if (months == 0) {
+      return years + " years"
+    } else if (months == 1){
+      return years + " years - 1 month"
+    } else {
+      return years + " years - " + months + " months"
+    }
+  };
 }
 
 
 function test()
 {
-  var result = getUserInput("safe-withdrawl-rate");
+  var result = monthsToYears(0);
   //display the result
   var divobj = document.getElementById('demo');
   divobj.style.display='block';
