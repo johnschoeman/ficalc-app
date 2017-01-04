@@ -5,73 +5,74 @@
   <p>
     A simple calculator to help you find your time to financial independence.
   </p>
-  <form action="" id="timetofiform" onsubmit="return false;">
-     <fieldset>
 
-      <legend>Find Your Time To FI!</legend>
+  <form class="timetofi_form" action="" method="post" id="timetofi_form" name="timetofi_form" onsubmit="return false;">
+    <fieldset>
 
-      <p>
-        <legend>Assumptions</legend>
-
-        <label>Average Return</label>
-        <input style="text-align:center" type="number" id="average-return"
-        name="average-return" step="0.1" value="7.0"/>
-        <br>
-        <label >Inflation</label>
-        <input style="text-align:center" type="number" id="inflation"
-        name="inflation" step="0.1" value="2.0"/>
-        <br>
-        <label >Raises</label>
-        <input style="text-align:center" type="number" id="raises"
-        name="raises" step="0.1" value="5.0">
-        <br>
-        <label>Safe Withdrawl Rate</label>
-        <input style="text-align:center" type="number" id="safe-withdrawl-rate"
-        name="safe-withdrawl-rate" step="0.1" min="0" value="4.0"/>
-      </p>
-
-      <p>
-        <legend>Input</legend>
-
-        <label >Monthly Expenses</label>
-        <input style="text-align:center" type="number"  id="month-expenses"
-        name="month-expenses" value="2000"/>
-        <br>
-        <label >Monthly Income</label>
-        <input style="text-align:center" type="number"  id="month-income"
-        name="month-income" value="4000"/>
-        <br>
-        <label >Net Worth</label>
-        <input style="text-align:center" type="number"  id="net-worth"
-        name="net-worth" value="50000"/>
-        <br>
-
-        <div>
-        <button type="button" onclick="displayTimeToFI()">CalculateFI</button>
-        <div id="time-to-fi-output">Your Time to FI is: </div>
-        </div>
-      </p>
-
-      <p>
-        <legend>Added Time To FI</legend>
-
-        <label>Added Monthly Expense</label>
-        <input style="text-align:center" type="number" id="added-monthly-expense"
-        name="added-monthly-expense" value="100"/>
-        <br>
-        <label>Added Monthly Income</label>
-        <input style="text-align:center" type="number" id="added-monthly-income"
-        name="added-monthly-income" value="0"/>
-        <br>
-        <label>Added Single Expense</label>
-        <input style="text-align:center" type="number" id="added-single-expense"
-        name="added-single-expense" value="0"/>
-
-        <div>
-        <button type="button" onclick="displayChangeInFI()">Calculate Time Added to FI</button>
-        <div id="change-in-time-to-fi-output">Time Added to FI: </div>
-        </div>
-      </p>
+      <ul>
+        <li>
+          <h2>Find Your Time To FI!</h2>
+          <span class="required_notificaiton">* Denotes Required Field</span>
+        </li>
+        <li>
+          <legend>Assumptions</legend>
+        </li>
+        <li>
+          <label>Average Return</label>
+          <input type="number" id="average-return" name="average-return" step="0.1" value="7.0" required/>
+          <span class="form_hint">This is yearly return</span>
+        </li>
+        <li>
+          <label >Inflation</label>
+          <input type="number" id="inflation" name="inflation" step="0.1" value="2.0" required/>
+        </li>
+        <li>
+          <label >Raises</label>
+          <input type="number" id="raises" name="raises" step="0.1" value="5.0">
+        <li>
+          <label>Safe Withdrawl Rate</label>
+          <input type="number" id="safe-withdrawl-rate"
+                    name="safe-withdrawl-rate" step="0.1" min="0" value="4.0" required/>
+        </li>
+        <li>
+          <legend>Input</legend>
+        </li>
+        <li>
+          <label>Monthly Expenses</label>
+          <input type="number"  id="month-expenses" name="month-expenses" value="2000" required/>
+        </li>
+        <li>
+          <label>Monthly Income</label>
+          <input type="number"  id="month-income" name="month-income" value="4000" required/>
+        </li>
+        <li>
+          <label>Net Worth</label>
+          <input type="number"  id="net-worth" name="net-worth" value="50000" required/>
+        </li>
+        <li>
+          <button class="submit" type="submit" onclick="displayTimeToFI()">CalculateFI</button>
+          <div id="time-to-fi-output">Your Time to FI is: </div>
+        </li>
+        <li>
+          <legend>Added Time To FI</legend>
+        </li>
+        <li>
+          <label>Added Monthly Expense</label>
+          <input type="number" id="added-monthly-expense" name="added-monthly-expense" value="100"/>
+        </li>
+        <li>
+          <label>Added Monthly Income</label>
+          <input type="number" id="added-monthly-income" name="added-monthly-income" value="0"/>
+        </li>
+        <li>
+          <label>Added Single Expense</label>
+          <input type="number" id="added-single-expense" name="added-single-expense" value="0" />
+        </li>
+        <li>
+          <button class="submit" type="submit" onclick="displayChangeInFI()">Calculate Time Added to FI</button>
+          <div id="change-in-time-to-fi-output">Time Added to FI: </div>
+        </li>
+      </ul>
       </fieldset>
   </form>
 

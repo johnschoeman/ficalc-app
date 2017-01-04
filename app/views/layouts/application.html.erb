@@ -3,7 +3,6 @@
   <head>
     <title><%= full_title(yield(:title)) %></title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag('application', {media: 'all', 'data-turbolinks-track': 'reload'}) %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <!--[if lt IE 9]>
@@ -17,6 +16,8 @@
             <%= link_to "FI Calc App", '#', id: "logo" %>
             <nav>
               <ul class="nav navbar-nav navbar-right">
+                <li><%= link_to "Time To FI", '#' %></li>
+                <li><%= link_to "About", '#' %></li>
               </ul>
             </nav>
           </div>

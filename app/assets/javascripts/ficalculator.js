@@ -1,5 +1,5 @@
 function getUserInput(input) {
-  return parseFloat(document.forms["timetofiform"].elements[input].value);
+  return parseFloat(document.forms["timetofi_form"].elements[input].value);
 };
 
 function calculateFI(monthlyExpenses, monthlyIncome, netWorth, averageReturn,
