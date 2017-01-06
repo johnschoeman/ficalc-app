@@ -20,23 +20,23 @@
         <li>
           <label>Average Return</label>
           <input type="number" id="average-return" name="average-return" step="0.1"
-                  onchange="displayTimeToFI()" value="7.0" required/>
+                  onchange="updateDisplay()" value="7.0" required/>
           <span class="form_hint">This is yearly return</span>
         </li>
         <li>
           <label>Inflation</label>
           <input type="number" id="inflation" name="inflation" step="0.1" value="2.0"
-                  onchange="displayTimeToFI()" required/>
+                  onchange="updateDisplay()" required/>
         </li>
         <li>
           <label >Raises</label>
           <input type="number" id="raises" name="raises" step="0.1"
-                  onchange="displayTimeToFI()" value="5.0">
+                  onchange="updateDisplay()" value="5.0">
         <li>
           <label>Safe Withdrawl Rate</label>
           <input type="number" id="safe-withdrawl-rate"
                     name="safe-withdrawl-rate" step="0.1" min="0" value="4.0"
-                    onchange="displayTimeToFI()" required/>
+                    onchange="updateDisplay()" required/>
         </li>
         <li class="has_bottom_border">
           <legend>Input</legend>
@@ -44,22 +44,25 @@
         <li>
           <label>Monthly Expenses</label>
           <input type="number"  id="month-expenses" name="month-expenses" value="2000"
-                  onchange="displayTimeToFI()" required/>
+                  onchange="updateDisplay()" required/>
         </li>
         <li>
           <label>Monthly Income</label>
           <input type="number"  id="month-income" name="month-income" value="4000"
-                onchange="displayTimeToFI()" required/>
+                onchange="updateDisplay()" required/>
         </li>
         <li>
           <label>Net Worth</label>
           <input type="number"  id="net-worth" name="net-worth" value="50000"
-                onchange="displayTimeToFI()" required/>
+                onchange="updateDisplay()" required/>
         </li>
         <li>
           <!--<button class="submit" type="submit"
-                  onclick="displayTimeToFI()">CalculateFI</button>-->
+                  onclick="updateDisplay()">CalculateFI</button>-->
           <div id="time-to-fi-output">Your Time to FI is: </div>
+        </li>
+        <li>
+          <div id="time-to-depletion-output">Your Time To Depletion is: </div>
         </li>
         <li class="has_bottom_border">
           <legend>Added Time To FI</legend>
@@ -67,21 +70,21 @@
         <li>
           <label>Added Monthly Expense</label>
           <input type="number" id="added-monthly-expense"
-                name="added-monthly-expense" value="100" onchange="displayChangeInFI()"/>
+                name="added-monthly-expense" value="100" onchange="updateDisplay()"/>
         </li>
         <li>
           <label>Added Monthly Income</label>
           <input type="number" id="added-monthly-income"
-                name="added-monthly-income" value="0" onchange="displayChangeInFI()"/>
+                name="added-monthly-income" value="0" onchange="updateDisplay()"/>
         </li>
         <li>
           <label>Added Single Expense</label>
           <input type="number" id="added-single-expense"
-                name="added-single-expense" value="0" onchange="displayChangeInFI()"/>
+                name="added-single-expense" value="0" onchange="updateDisplay()"/>
         </li>
         <!--<li>
           <button class="submit" type="submit"
-                onclick="displayChangeInFI()">Calculate Time Added to FI</button>-->
+                onclick="updateDisplay()">Calculate Time Added to FI</button>-->
           <div id="change-in-time-to-fi-output">Time Added to FI: </div>
         </li>
       </ul>

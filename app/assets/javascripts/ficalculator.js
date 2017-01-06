@@ -2,6 +2,7 @@ function getUserInput(input) {
   return parseFloat(document.forms["timetofi_form"].elements[input].value);
 };
 
+//Calculation Functions
 function calculateFI(monthlyExpenses, monthlyIncome, netWorth, averageReturn,
                                                             inflation, raises, safeWithdrawlRate) {
   var monthCount = 0;
@@ -16,15 +17,38 @@ function calculateFI(monthlyExpenses, monthlyIncome, netWorth, averageReturn,
   while (percentFI < 1.0 ) {
     monthlyExpenses = monthlyExpenses * (Math.pow(inflation,(1/12)));
     if (monthCount % 12 == 0) { monthlyIncome *= raises; }
-    monthCount += 1
+    monthCount += 1;
     if (monthCount > 10000) { break; }
-    netWorth = (netWorth * (Math.pow(averageReturn,(1/12))) )
+    netWorth = (netWorth * (Math.pow(averageReturn,(1/12))))
                                               + monthlyIncome - monthlyExpenses;
     percentFI = (netWorth / ((12.0 / safeWithdrawlRate) * monthlyExpenses));
   };
-  return monthCount
+  return monthCount;
 };
 
+function calculateTimeToDepletion(monthlyExpenses, netWorth, averageReturn, inflation) {
+  var monthCount = 0;
+
+  averageReturn = averageReturn/100 + 1;
+  inflation = inflation/100 + 1;
+
+  while (netWorth > 0) {
+    monthlyExpenses = monthlyExpenses * (Math.pow(inflation,(1/12)));
+    netWorth = (netWorth * (Math.pow(averageReturn,(1/12)))) - monthlyExpenses;
+    monthCount += 1;
+    if (monthCount > 100000) {
+      monthCount = NaN;
+      break;
+    }
+  };
+  return monthCount;
+}
+//Display Functions to update html page.
+function updateDisplay() {
+  displayTimeToFI();
+  displayTimeToDepletion();
+  displayChangeInFI();
+}
 function displayTimeToFI() {
   var monthlyExpenses = getUserInput("month-expenses");
   var monthlyIncome = getUserInput("month-income");
@@ -41,7 +65,21 @@ function displayTimeToFI() {
 
   var divobj = document.getElementById('time-to-fi-output');
   divobj.style.display='inline';
-  divobj.innerHTML = "Your Time to FI is: "+ monthsToYears(timeToFI);
+  divobj.innerHTML = "Your Time to FI is: " + monthsToYears(timeToFI);
+}
+
+function displayTimeToDepletion() {
+  var monthlyExpenses = getUserInput("month-expenses");
+  var netWorth = getUserInput("net-worth");
+
+  var averageReturn = getUserInput("average-return");
+  var inflation = getUserInput("inflation");
+
+  var timeToDepletion = calculateTimeToDepletion(monthlyExpenses, netWorth, averageReturn, inflation);
+
+  var divobj = document.getElementById('time-to-depletion-output');
+  divobj.style.display='inline';
+  divobj.innerHTML = "Your Time to Depletion is: " + monthsToYears(timeToDepletion);
 }
 
 function displayChangeInFI() {
