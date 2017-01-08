@@ -16,5 +16,16 @@
 
 header {
   font-family: "Verdana", "Geneva", sans-serif;
-  font-size: 1Sem;
+  font-size: 1em;
+  background-color: #ABABAB;
+  border-radius: 5px;
+  position: fixed;
+  z-index: 1;
+  width: 95%;
+}
+
+header div nav ul li {
+  display: inline-block;
+  text-decoration: none;
+  color: red;
 }

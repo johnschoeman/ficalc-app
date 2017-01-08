@@ -113,6 +113,8 @@ function monthsToYears(inputMonths) {
   var years = parseInt(inputMonths / 12);
   var months = inputMonths % 12;
 
+  if type()
+
   if(years == 0){
     if (months == 0) {
       return "You've reached FI!"
