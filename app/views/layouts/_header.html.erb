@@ -1,8 +1,21 @@
-<div class="header">
+<!--<div class="header">
   <h1>FI Calc App</h1>
   <ul>
     <li>home</li>
     <li>about</li>
     <li>glossary</li>
   </ul>
-</div>
+</div>-->
+
+<header class="header">
+  <div class="container">
+    <%= link_to "FI Calc App", '#', id: "logo" %>
+    <nav>
+      <ul class="navbar">
+        <li><%= link_to "Home",   '#' %></li>
+        <li><%= link_to "About",   '#' %></li>
+        <li><%= link_to "Glossary", '#' %></li>
+      </ul>
+    </nav>
+  </div>
+</header>
