@@ -11,7 +11,7 @@
         <![endif]-->
   </head>
   <body>
-        <header class="header">
+        <!--<header class="header">
           <div class="container">
             <%= link_to "FI Calc App", '#', id: "logo" %>
             <nav>
@@ -22,8 +22,10 @@
             </nav>
           </div>
         </header>
-        <div class="container">
-          <%= yield %>
-        </div>
+        <div class="container">-->
+  <%= render "layouts/header" %>
+  <%= yield %>
+  <%= render "layouts/footer" %>
+        <!--</div>-->
   </body>
 </html>
