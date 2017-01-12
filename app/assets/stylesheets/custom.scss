@@ -50,6 +50,9 @@ textarea {
   outline: none;
 }
 
+.page_header {
+  color: $color-primary-4;
+}
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
@@ -190,6 +193,11 @@ footer ul li {
   /*display: block;*/
 }
 
+.form_header h1 {
+  color: $color-primary-0;
+  border-radius: 5px;
+}
+
 .timetofi_form h2,{
   text-align: left;
   padding: 10px;
@@ -219,7 +227,7 @@ footer ul li {
 }
 .timetofi_form li:first-child {
   border-bottom:1px solid #777;
-  background-color: $color-primary-0;
+  background-color: $color-primary-4;
   color: $white;
 }
 
