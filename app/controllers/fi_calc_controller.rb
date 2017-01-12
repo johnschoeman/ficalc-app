@@ -1,10 +1,9 @@
 class FiCalcController < ApplicationController
+  
   def timetofi
   end
 
-  def new
-    @result = Calculator.send(params[:operation], *[param[:a], params[:b]])
-    render :timetofi
+  def glossary
   end
-  
+
 end

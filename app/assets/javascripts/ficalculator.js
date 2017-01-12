@@ -141,11 +141,11 @@ function monthsToYears(inputMonths) {
 }
 
 
-function test()
+/*function test()
 {
   var result = monthsToYears(0);
   //display the result
   var divobj = document.getElementById('demo');
   divobj.style.display='block';
   divobj.innerHTML = "Time to FI = "+result;
-}
+}*/
