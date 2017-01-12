@@ -2,6 +2,14 @@
 /* mixins, variables, etc. */
 
 $gray-medium-light: #eaeaea;
+$white:             #FAFAFA;
+
+$color-primary-0: #829B4E;	/* Main Primary color */
+$color-primary-1: #E7EDDD;
+$color-primary-2: #A4BB75;
+$color-primary-3: #647E30;
+$color-primary-4: #496117;
+
 
 :-moz-placeholder {
   color: blue;
@@ -71,7 +79,6 @@ p {
 
 /* header */
 header {
-  font-family: "Verdana", "Geneva", sans-serif;
   font-size: 1em;
   border-radius: 5px;
   position: fixed;
@@ -80,20 +87,20 @@ header {
   height: 80px;
   border-top: 1px solid #eaeaea;
   border-bottom: 1px solid #ABABAB;
-  color: #777;
+  color: #000000;
   float: left;
-  background-color: #FFFFFF;
+  background-color: $color-primary-1;
   margin-top: -20px;
   padding-top: 20px;
   padding-bottom: 5px;
 }
 
 header a {
-  color: #555;
+  color: $color-primary-4;
 }
 
 header a:hover {
-  color: #222;
+  color: $color-primary-3;
 }
 
 header small {
@@ -175,7 +182,7 @@ footer ul li {
 }
 
 .timetofi_form h2, .timetofi_form label {
-  font-family: Georgia, Times, "Times New Roman", serif;
+
 }
 
 .form_hint, .required_notificaiton {
@@ -183,24 +190,33 @@ footer ul li {
 }
 
 .timetofi_form ul {
-    width:750px;
+    width:350px;
+    height: 350px;
     list-style-type:none;
     list-style-position:outside;
-    margin:0px;
+    margin:5px;
     padding:0px;
+    border: 1px solid #777;
+    border-radius: 5px;
+    display: inline-block;
+    float: left;
 }
+
 .timetofi_form li{
     padding:12px;
     border-bottom:1px solid #eee;
     position: relative;
 }
-.timetofi_form li:first-child, .timetofi_form li:last-child {
+.timetofi_form li:first-child {
   border-bottom:1px solid #777;
+  background-color: $color-primary-0;
+  color: $white;
 }
 
 .timetofi_form h2 {
     margin:0;
-    display: inline;
+    width: 100%;
+    display: block;
 }
 
 .required_notificaiton {
@@ -211,11 +227,11 @@ footer ul li {
 }
 
 .timetofi_form label {
-    width:150px;
+    width:200px;
     margin-top: 3px;
     display:inline-block;
     float:left;
-    padding:3px;
+    padding: 3px;
 }
 
 .form_hint{
@@ -253,7 +269,7 @@ footer ul li {
 .timetofi_form input, {
   height:20px;
   width:80px;
-  padding:5px 8px;
+  padding:6px 8px;
   text-align: center;
   padding-right: 3px;
   border:1px solid #aaa;

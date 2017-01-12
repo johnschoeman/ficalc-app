@@ -9,14 +9,10 @@
 
   <form class="timetofi_form" action="" method="post" id="timetofi_form" name="timetofi_form" onsubmit="return false;">
     <fieldset>
-
-      <ul>
-        <li>
           <h2>Find Your Time To FI!</h2>
-          <span class="required_notificaiton">* Denotes Required Field</span>
-        </li>
+      <ul>
         <li class="has_bottom_border">
-          <legend>Assumptions</legend>
+          <h3>Assumptions</h3>
         </li>
         <li>
           <label>Average Return</label>
@@ -39,8 +35,10 @@
                     name="safe-withdrawl-rate" step="0.1" min="0" value="4.0"
                     onchange="updateDisplay()" required/>
         </li>
+      </ul>
+      <ul>
         <li class="has_bottom_border">
-          <legend>Input</legend>
+          <h3>Input</h3>
         </li>
         <li>
           <label>Monthly Expenses</label>
@@ -65,8 +63,10 @@
         <li>
           <div id="time-to-depletion-output">Your Time To Depletion is: </div>
         </li>
+      </ul>
+      <ul>
         <li class="has_bottom_border">
-          <legend>Added Time To FI</legend>
+          <h3>Added Time To FI</h3>
         </li>
         <li>
           <label>Added Monthly Expense</label>
@@ -86,6 +86,7 @@
         <!--<li>
           <button class="submit" type="submit"
                 onclick="updateDisplay()">Calculate Time Added to FI</button>-->
+        <li>
           <div id="change-in-time-to-fi-output">Time Added to FI: </div>
         </li>
       </ul>
