@@ -149,6 +149,8 @@ footer {
   padding-top: 5px;
   border-top: 1px solid #eaeaea;
   color: #777;
+  display: block;
+  width: 100%;
 }
 
 footer a {
@@ -173,16 +175,24 @@ footer ul li {
   margin-left: 15px;
 }
 
+.footer_buffer {
+  width: 100%;
+  height: 0px;
+  position: relative;
+  display: inline-block;
+}
+
 /* Forms */
 
 .form_header {
   margin-top: 10px;
-  position: relative;
-  display: block;
+  /*position: relative;*/
+  /*display: block;*/
 }
 
-.timetofi_form h2, .timetofi_form label {
-
+.timetofi_form h2,{
+  text-align: left;
+  padding: 10px;
 }
 
 .form_hint, .required_notificaiton {
@@ -192,13 +202,13 @@ footer ul li {
 .timetofi_form ul {
     width:350px;
     height: 350px;
-    list-style-type:none;
-    list-style-position:outside;
+    list-style-type: none;
+    list-style-position: outside;
     margin:5px;
     padding:0px;
     border: 1px solid #777;
     border-radius: 5px;
-    display: inline-block;
+    display: block;
     float: left;
 }
 
