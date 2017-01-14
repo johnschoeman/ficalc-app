@@ -80,6 +80,9 @@ p {
   line-height: 1.7em;
 }
 
+ul {
+  list-style: none;
+}
 /* header */
 header {
   font-size: 1em;
@@ -209,7 +212,19 @@ footer ul li {
 
 .timetofi_form ul {
     width:350px;
-    height: 350px;
+    height: auto;
+    list-style-type: none;
+    list-style-position: outside;
+    margin:5px;
+    padding:0px;
+    border: 1px solid #777;
+    border-radius: 5px;
+    display: block;
+    float: left;
+}
+.timetofi_form ul.output {
+    width:350px;
+    height: auto;
     list-style-type: none;
     list-style-position: outside;
     margin:5px;
@@ -332,7 +347,7 @@ footer ul li {
 #time-to-fi-output, #change-in-time-to-fi-output, #time-to-depletion-output {
   display: inline-block;
   float: none;
-  padding-left: 25px;
+  padding-left: 10px;
   position: relative;
 }
 
