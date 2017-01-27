@@ -210,7 +210,9 @@ function displayTimeToFIChart(dataArray) {
     var options = {
       title: 'Time To FI',
       curveType: 'function',
-      legend: { position: 'bottom' }
+      legend: { position: 'bottom' },
+      colors: ['#4286f4', 'e02828'],
+      vAxis: {format: 'currency'}
     };
 
     var chart = new google.visualization.LineChart(document.getElementById('chart'));
@@ -229,7 +231,9 @@ function displayTimeToDepletionChart(dataArray) {
     var options = {
       title: 'Time To Depletion',
       curveType: 'function',
-      legend: { position: 'bottom' }
+      legend: { position: 'bottom' },
+      colors: ['#4286f4', '#e02828'],
+      vAxis: {format: 'currency'}
     };
 
     var chart = new google.visualization.LineChart(document.getElementById('chart-time-to-depletion'));
@@ -248,7 +252,9 @@ function displayChangeInFIChart(dataArray) {
     var options = {
       title: 'Change in FI',
       curveType: 'function',
-      legend: { position: 'bottom' }
+      legend: { position: 'bottom' },
+      colors: ['#4286f4', '#e02828', '#99bffc', '#ef8383'],
+      vAxis: {format: 'currency'}
     };
 
     var chart = new google.visualization.LineChart(document.getElementById('chart-change-in-fi'));
