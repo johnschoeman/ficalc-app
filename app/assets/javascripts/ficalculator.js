@@ -161,17 +161,17 @@ function monthsToYears(inputMonths) {
     if (months == 0) {
       return "1 year"
     } else if (months == 1){
-      return "1 year - 1 month"
+      return "1 year and 1 month"
     } else {
-      return "1 year - " + months + " months"
+      return "1 year and " + months + " months"
     }
   } else {
     if (months == 0) {
       return years + " years"
     } else if (months == 1){
-      return years + " years - 1 month"
+      return years + " years and 1 month"
     } else {
-      return years + " years - " + months + " months"
+      return years + " years and " + months + " months"
     }
   };
 }
