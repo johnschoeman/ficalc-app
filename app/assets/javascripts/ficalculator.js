@@ -1,7 +1,19 @@
 $(document).ready(function() {
-  var dataArray = getTimeToFI();
-  displayChart(dataArray);
+  updateDisplay();
 });
+
+//Display Functions to update html page.
+function updateDisplay() {
+  displayTimeToFI();
+  displayTimeToDepletion();
+  displayChangeInFI();
+  var timeToFIArray = getTimeToFI();
+  displayTimeToFIChart(timeToFIArray);
+  var timeToDepletionArray = getTimeToDepletion();
+  displayTimeToDepletionChart(timeToDepletionArray);
+  var changeInFIArray = getChangeInFI();
+  displayChangeInFIChart(changeInFIArray);
+};
 
 function getUserInput(input) {
   return parseFloat(document.forms["timetofi_form"].elements[input].value);
@@ -10,18 +22,17 @@ function getUserInput(input) {
 //Calculation Functions
 function calculateFI(monthlyExpenses, monthlyIncome, netWorth, averageReturn,
                                                             inflation, raises, safeWithdrawlRate) {
-
   averageReturn = averageReturn/100 + 1;
   inflation = inflation/100 + 1;
   raises = raises/100 + 1;
   safeWithdrawlRate = safeWithdrawlRate/100;
 
   var monthCount = 0;
-  var dataArray = [['Month', 'NW', 'FI Number']];
+  var timeToFIArray = [['Month', 'NW', 'FI Number']];
   var nextData = [monthCount, netWorth, (12 * monthlyExpenses/safeWithdrawlRate)];
-  dataArray.push(nextData);
+  timeToFIArray.push(nextData);
 
-  var percentFI = (netWorth / (300 * monthlyExpenses));
+  var percentFI = (netWorth / (12 * ( 1 / safeWithdrawlRate) * monthlyExpenses));
 
   while (percentFI < 1.0 ) {
     monthlyExpenses = monthlyExpenses * (Math.pow(inflation,(1/12)));
@@ -32,9 +43,9 @@ function calculateFI(monthlyExpenses, monthlyIncome, netWorth, averageReturn,
                                               + monthlyIncome - monthlyExpenses;
     percentFI = (netWorth / ((12.0 / safeWithdrawlRate) * monthlyExpenses));
     nextData = [monthCount, netWorth, (12 * monthlyExpenses / safeWithdrawlRate)];
-    dataArray.push(nextData);
+    timeToFIArray.push(nextData);
   };
-  return dataArray;
+  return timeToFIArray;
 };
 
 function calculateTimeToDepletion(monthlyExpenses, netWorth, averageReturn, inflation) {
@@ -42,26 +53,65 @@ function calculateTimeToDepletion(monthlyExpenses, netWorth, averageReturn, infl
 
   averageReturn = averageReturn/100 + 1;
   inflation = inflation/100 + 1;
+  var timeToDepletionArray = [['Month','NW','Expenses']];
+  var nextData =[monthCount, netWorth, monthlyExpenses];
 
   while (netWorth > 0) {
     monthlyExpenses = monthlyExpenses * (Math.pow(inflation,(1/12)));
     netWorth = (netWorth * (Math.pow(averageReturn,(1/12)))) - monthlyExpenses;
     monthCount += 1;
-    if (monthCount > 100000) {
-      monthCount = NaN;
-      break;
-    }
+    nextData = [monthCount,netWorth,monthlyExpenses];
+    timeToDepletionArray.push(nextData);
+    if (monthCount > 100000) { break; }
   };
-  return monthCount;
-}
-//Display Functions to update html page.
-function updateDisplay() {
-  displayTimeToFI();
-  displayTimeToDepletion();
-  displayChangeInFI();
-  var dataArray = getTimeToFI();
-  displayChart(dataArray);
-}
+  return timeToDepletionArray;
+};
+
+function calculateChangeInFI(monthlyExpenses, monthlyIncome,
+                             netWorth, averageReturn,
+                             inflation, raises, safeWithdrawlRate,
+                             addedMonthlyExpense, addedMonthlyIncome, addedSingleExpense) {
+
+  averageReturn = averageReturn/100 + 1;
+  inflation = inflation/100 + 1;
+  raises = raises/100 + 1;
+  safeWithdrawlRate = safeWithdrawlRate/100;
+
+  var monthlyExpenses2 = monthlyExpenses + addedMonthlyExpense;
+  var monthlyIncome2 = monthlyIncome + addedMonthlyIncome;
+  var netWorth2 = netWorth - addedSingleExpense;
+
+  var monthCount = 0;
+  var changeInFIArray = [['Month', 'NW1', 'FI Number1', 'NW2', 'FI Number2']];
+  var nextData = [monthCount, netWorth, (12 * monthlyExpenses/safeWithdrawlRate),
+                  netWorth2, (12 * monthlyExpenses2/safeWithdrawlRate)];
+  changeInFIArray.push(nextData);
+
+  var percentFI1 = (netWorth / (12 * (1 / safeWithdrawlRate) * monthlyExpenses));
+  var percentFI2 = (netWorth2 / (12 * (1 / safeWithdrawlRate) * monthlyExpenses2));
+
+  while ((percentFI1 < 1.0) || (percentFI2 < 1.0)) {
+    monthlyExpenses = monthlyExpenses * (Math.pow(inflation,(1/12)));
+    monthlyExpenses2 = monthlyExpenses2 * (Math.pow(inflation,(1/12)));
+    if (monthCount % 12 == 0) {
+      monthlyIncome *= raises;
+      monthlyIncome2 *= raises;
+    };
+    monthCount += 1;
+    if (monthCount > 10000) { break; }
+    netWorth = (netWorth * (Math.pow(averageReturn,(1/12))))
+                                              + monthlyIncome - monthlyExpenses;
+    netWorth2 = (netWorth2 * (Math.pow(averageReturn,(1/12))))
+                                              + monthlyIncome2 - monthlyExpenses2;
+    percentFI1 = (netWorth / ((12 / safeWithdrawlRate) * monthlyExpenses));
+    percentFI2 = (netWorth2 / ((12 / safeWithdrawlRate) * monthlyExpenses2));
+
+    nextData = [monthCount, netWorth, (12 * monthlyExpenses / safeWithdrawlRate),
+                            netWorth2, (12 * monthlyExpenses2 / safeWithdrawlRate)];
+    changeInFIArray.push(nextData);
+  };
+  return changeInFIArray;
+};
 
 function getTimeToFI() {
   var monthlyExpenses = getUserInput("month-expenses");
@@ -85,7 +135,7 @@ function displayTimeToFI() {
   divobj.innerHTML = "Your Time to FI is: " + monthsToYears(timeToFI[timeToFI.length-1][0]);
 }
 
-function displayTimeToDepletion() {
+function getTimeToDepletion() {
   var monthlyExpenses = getUserInput("month-expenses");
   var netWorth = getUserInput("net-worth");
 
@@ -93,10 +143,34 @@ function displayTimeToDepletion() {
   var inflation = getUserInput("inflation");
 
   var timeToDepletion = calculateTimeToDepletion(monthlyExpenses, netWorth, averageReturn, inflation);
+  return timeToDepletion;
+};
 
+function displayTimeToDepletion() {
+  var timeToDepletion = getTimeToDepletion();
   var divobj = document.getElementById('time-to-depletion-output');
   divobj.style.display='inline';
-  divobj.innerHTML = "Your Time to Depletion is: " + monthsToYears(timeToDepletion);
+  divobj.innerHTML = "Your Time to Depletion is: " + monthsToYears(timeToDepletion[timeToDepletion.length-1][0]);
+}
+
+function getChangeInFI() {
+  var monthlyExpenses = getUserInput("month-expenses");
+  var monthlyIncome = getUserInput("month-income");
+  var netWorth = getUserInput("net-worth");
+
+  var averageReturn = getUserInput("average-return");
+  var inflation = getUserInput("inflation");
+  var raises = getUserInput("raises");
+  var safeWithdrawlRate = getUserInput("safe-withdrawl-rate");
+
+  var addedMonthlyExpense = getUserInput("added-monthly-expenses");
+  var addedMonthyIncome = getUserInput("added-monthly-income");
+  var addedSingleExpense = getUserInput("added-single-expense");
+
+  var changeInFI = calculateChangeInFI(monthlyExpenses, monthlyIncome, netWorth,
+                                              averageReturn, inflation, raises, safeWithdrawlRate,
+                                              addedMonthlyExpense, addedMonthyIncome, addedSingleExpense);
+  return changeInFI;
 }
 
 function displayChangeInFI() {
@@ -119,14 +193,14 @@ function displayChangeInFI() {
   var timeToFIFinal = calculateFI(addedMonthlyExpense, addedMonthlyIncome, addedSingleExpense,
                                               averageReturn, inflation, raises, safeWithdrawlRate);
 
-  var changeInTimeToFI = timeToFIFinal - timeToFIInitial;
+  var changeInTimeToFI = timeToFIFinal[timeToFIFinal.length-1][0] - timeToFIInitial[timeToFIInitial .length-1][0];
 
   var divobj = document.getElementById('change-in-time-to-fi-output');
   divobj.style.display='inline';
   divobj.innerHTML = "Time Added to FI: " + monthsToYears(changeInTimeToFI);
 }
 
-function displayChart(dataArray) {
+function displayTimeToFIChart(dataArray) {
   google.charts.load('current', {'packages':['corechart']});
   google.charts.setOnLoadCallback(drawChart);
 
@@ -140,6 +214,44 @@ function displayChart(dataArray) {
     };
 
     var chart = new google.visualization.LineChart(document.getElementById('chart'));
+
+    chart.draw(data, options);
+  }
+}
+
+function displayTimeToDepletionChart(dataArray) {
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable(dataArray);
+
+    var options = {
+      title: 'Time To Depletion',
+      curveType: 'function',
+      legend: { position: 'bottom' }
+    };
+
+    var chart = new google.visualization.LineChart(document.getElementById('chart-time-to-depletion'));
+
+    chart.draw(data, options);
+  }
+}
+
+function displayChangeInFIChart(dataArray) {
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable(dataArray);
+
+    var options = {
+      title: 'Change in FI',
+      curveType: 'function',
+      legend: { position: 'bottom' }
+    };
+
+    var chart = new google.visualization.LineChart(document.getElementById('chart-change-in-fi'));
 
     chart.draw(data, options);
   }
@@ -179,7 +291,9 @@ function monthsToYears(inputMonths) {
 
 function test()
 {
-  var result = getTimeToFI();
+  var array1 = [[1,2][2,3],[3,4]];
+  var array2 = [[1,3],[2,4]];
+  var result = array1 + array2;
   //display the result
   var divobj = document.getElementById('demo');
   divobj.style.display='block';
