@@ -278,6 +278,10 @@ function displayChangeInFIChart(dataArray) {
       curveType: 'function',
       legend: { position: 'bottom' },
       colors: ['#4286f4', '#e02828', '#99bffc', '#ef8383'],
+      series: {
+        2: {lineDashStyle: [12,3]},
+        3: {lineDashStyle: [12,3]},
+      },
       vAxis: {format: 'currency'}
     };
 
@@ -321,11 +325,8 @@ function monthsToYears(inputMonths) {
 
 function test()
 {
-  var array1 = [[1,2][2,3],[3,4]];
-  var array2 = [[1,3],[2,4]];
-  var result = array1 + array2;
+  var result = new Date()
   //display the result
   var divobj = document.getElementById('demo');
-  divobj.style.display='block';
   divobj.innerHTML = result;
 }
