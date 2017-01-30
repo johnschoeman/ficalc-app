@@ -83,6 +83,18 @@ p {
 ul {
   list-style: none;
 }
+
+i {
+  line-height: .5em;
+  font-size: 18px;
+  color: #444;
+  padding: 5px;
+  vertical-align: middle;
+}
+
+.material-icons.md-18 { font-size: 18px; }
+
+
 /* header */
 header {
   font-size: 1em;
@@ -189,6 +201,9 @@ footer ul li {
 }
 
 /* Forms */
+#change-in-time-to-fi-calculator-div {
+  background-color: #ababab;
+}
 
 .form_header {
   margin-top: 10px;
@@ -211,7 +226,7 @@ footer ul li {
 }
 
 .timetofi_form ul {
-    width:350px;
+    width:400px;
     height: auto;
     list-style-type: none;
     list-style-position: outside;
@@ -223,7 +238,7 @@ footer ul li {
     float: left;
 }
 .timetofi_form ul.output {
-    width:350px;
+    width:375px;
     height: auto;
     list-style-type: none;
     list-style-position: outside;
@@ -260,11 +275,12 @@ footer ul li {
 }
 
 .timetofi_form label {
-    width:200px;
+    width:250px;
     margin-top: 3px;
     display:inline-block;
     float:left;
     padding: 3px;
+    vertical-align: middle;
 }
 
 .form_hint{

@@ -26,24 +26,28 @@
           <h3>Assumptions</h3>
         </li>
         <li>
-          <label>Average Return</label>
-          <input type="number" id="average-return" name="average-return" step="0.1"
+          <label>Growth Rate (%)
+            <i class="material-icons md-18" title="The rate at which you expect your investments to grow.">info_outline</i></label>
+          <input type="number" id="growth-rate" name="growth-rate" step="0.1"
                   onchange="updateDisplay()" value="7.0" required/>
-          <span class="form_hint">This is yearly return</span>
+          <!--<span class="form_hint">This is yearly return</span>-->
         </li>
         <li>
-          <label>Inflation</label>
+          <label>Inflation (%)
+            <i class="material-icons md-18" title="The rate at which you expect prices to rise.">info_outline</i></label>
           <input type="number" id="inflation" name="inflation" step="0.1" value="2.0"
                   onchange="updateDisplay()" required/>
         </li>
         <li>
-          <label>Raises</label>
+          <label>Raises (%)
+            <i class="material-icons md-18" title="The rate at which you expect your income to rise during employment.">info_outline</i></label>
           <input type="number" id="raises" name="raises" step="0.1"
                   onchange="updateDisplay()" value="5.0">
         <li>
-          <label>Safe Withdrawl Rate</label>
-          <input type="number" id="safe-withdrawl-rate"
-                    name="safe-withdrawl-rate" step="0.1" min="0" value="4.0"
+          <label>Withdrawl Rate (%)
+            <i class="material-icons md-18" title="The percent of your investments you are willing to withdraw per year during retirement.">info_outline</i></label>
+          <input type="number" id="withdrawl-rate"
+                    name="withdrawl-rate" step="0.1" min="0" value="4.0"
                     onchange="updateDisplay()" required/>
         </li>
       </ul>
@@ -52,17 +56,20 @@
           <h3>Personal FI Information</h3>
         </li>
         <li>
-          <label>Monthly Expenses</label>
+          <label>Monthly Expenses ($)
+            <i class="material-icons md-18"  title="How much you expect to spend per month. This will increase based on inflation.">info_outline</i></label>
           <input type="number"  id="month-expenses" name="month-expenses" value="2000"
                   onchange="updateDisplay()" required/>
         </li>
         <li>
-          <label>Monthly Income</label>
+          <label>Monthly Income ($)
+            <i class="material-icons md-18" title="How much you earn per month on aveage. This will increase based on raises.">info_outline</i></label>
           <input type="number"  id="month-income" name="month-income" value="4000"
                 onchange="updateDisplay()" required/>
         </li>
         <li>
-          <label>Net Worth</label>
+          <label>Net Worth ($)
+            <i class="material-icons md-18" title="Your current amount of assets that you are able to live off of during retirement.">info_outline</i></label>
           <input type="number"  id="net-worth" name="net-worth" value="50000"
                 onchange="updateDisplay()" required/>
         </li>
@@ -71,44 +78,48 @@
         <li class="has_bottom_border">
           <h3>Time To FI</h3>
         </li>
-        <li>
-          <!--<button class="submit" type="submit"
-                  onclick="updateDisplay()">CalculateFI</button>-->
+        <li title="How long until you will be financially independent.">
           <div id="time-to-fi-output">Your Time to FI is: </div>
         </li>
-        <li>
+        <li title="How long your assets would last if you stopped earning an income and maintained the same level of expenses.">
           <div id="time-to-depletion-output">Your Time To Depletion is: </div>
         </li>
       </ul>
       <div id="chart" class="chart"></div>
       <div id="chart-time-to-depletion" class="chart"></div>
+    <div style="background: #00FFFF">
       <ul>
         <li class="has_bottom_border">
-          <h3>Added Time To FI</h3>
+          <h3>Change in Time To FI</h3>
         </li>
         <li>
-          <label>Chagne in Monthly Expense</label>
-          <input type="number" id="added-monthly-expense"
-                name="added-monthly-expenses" value="-100" onchange="updateDisplay()"/>
+          <label>Change in Monthly Expense
+            <i class="material-icons md-18" title="Compare a change in monthly expenses. A positive number means increased expenses, a negative number means decreased expenses.">info_outline</i>
+          </label>
+          <input type="number" id="change-in-monthly-expenses"
+                name="change-in-monthly-expenses" value="-100" onchange="updateDisplay()"/>
         </li>
         <li>
-          <label>Change in Monthly Income</label>
-          <input type="number" id="added-monthly-income"
-                name="added-monthly-income" value="0" onchange="updateDisplay()"/>
+          <label title="Compare a change in monthly income.  A positive number means an increased income, a negative number means a decreased income.">Change in Monthly Income<i class="material-icons md-18">info_outline</i></label>
+          <input type="number" id="change-in-monthly-income"
+                name="change-in-monthly-income" value="0" onchange="updateDisplay()"/>
         </li>
         <li>
-          <label>Single Expense Or Windfall</label>
+          <label>Change in Net Worth
+            <i class="material-icons md-18" title="Compare a change in your net worth.  A positive number means an instant increase in net worth, e.g. selling a posession for cash.  A negative number means an instant decrease in net worth, e.g. purchasing an expensive item.">info_outline</i>
+          </label>
           <input type="number" id="added-single-expense"
                 name="added-single-expense" value="-14500" onchange="updateDisplay()"/>
         </li>
         <!--<li>
           <button class="submit" type="submit"
                 onclick="updateDisplay()">Calculate Time Added to FI</button>-->
-        <li>
-          <div id="change-in-time-to-fi-output">Time Added to FI: </div>
+        <li title="The amount of time added to or removed from your time to FI based the inputed changes in expenses, income, or net worth.">
+          <div id="change-in-time-to-fi-output">Change in Time to FI: </div>
         </li>
       </ul>
       <div id="chart-change-in-fi" class="chart"></div>
+    </div>
   </form>
 
 

@@ -141,10 +141,10 @@ function getTimeToFI() {
   var monthlyIncome = getUserInput("month-income");
   var netWorth = getUserInput("net-worth");
 
-  var averageReturn = getUserInput("average-return");
+  var averageReturn = getUserInput("growth-rate");
   var inflation = getUserInput("inflation");
   var raises = getUserInput("raises");
-  var safeWithdrawlRate = getUserInput("safe-withdrawl-rate");
+  var safeWithdrawlRate = getUserInput("withdrawl-rate");
 
   var timeToFI = calculateFI(monthlyExpenses, monthlyIncome, netWorth,
                                               averageReturn, inflation, raises, safeWithdrawlRate);
@@ -162,7 +162,7 @@ function getTimeToDepletion() {
   var monthlyExpenses = getUserInput("month-expenses");
   var netWorth = getUserInput("net-worth");
 
-  var averageReturn = getUserInput("average-return");
+  var averageReturn = getUserInput("growth-rate");
   var inflation = getUserInput("inflation");
 
   var timeToDepletion = calculateTimeToDepletion(monthlyExpenses, netWorth, averageReturn, inflation);
@@ -181,13 +181,13 @@ function getChangeInFI() {
   var monthlyIncome = getUserInput("month-income");
   var netWorth = getUserInput("net-worth");
 
-  var averageReturn = getUserInput("average-return");
+  var averageReturn = getUserInput("growth-rate");
   var inflation = getUserInput("inflation");
   var raises = getUserInput("raises");
-  var safeWithdrawlRate = getUserInput("safe-withdrawl-rate");
+  var safeWithdrawlRate = getUserInput("withdrawl-rate");
 
-  var addedMonthlyExpense = getUserInput("added-monthly-expenses");
-  var addedMonthyIncome = getUserInput("added-monthly-income");
+  var addedMonthlyExpense = getUserInput("change-in-monthly-expenses");
+  var addedMonthyIncome = getUserInput("change-in-monthly-income");
   var addedSingleExpense = getUserInput("added-single-expense");
 
   var changeInFI = calculateChangeInFI(monthlyExpenses, monthlyIncome, netWorth,
@@ -201,14 +201,14 @@ function displayChangeInFI() {
   var monthlyIncome = getUserInput("month-income");
   var netWorth = getUserInput("net-worth");
 
-  var averageReturn = getUserInput("average-return");
+  var averageReturn = getUserInput("growth-rate");
   var inflation = getUserInput("inflation");
   var raises = getUserInput("raises");
-  var safeWithdrawlRate = getUserInput("safe-withdrawl-rate");
+  var safeWithdrawlRate = getUserInput("withdrawl-rate");
 
-  var addedMonthlyExpense = getUserInput("added-monthly-expense") + monthlyExpenses;
+  var addedMonthlyExpense = getUserInput("change-in-monthly-expenses") + monthlyExpenses;
   var addedSingleExpense = getUserInput("added-single-expense")*(-1) + netWorth;
-  var addedMonthlyIncome = getUserInput("added-monthly-income") + monthlyIncome;
+  var addedMonthlyIncome = getUserInput("change-in-monthly-income") + monthlyIncome;
 
   var timeToFIInitial = calculateFI(monthlyExpenses, monthlyIncome, netWorth,
                                               averageReturn, inflation, raises, safeWithdrawlRate);
@@ -220,7 +220,7 @@ function displayChangeInFI() {
 
   var divobj = document.getElementById('change-in-time-to-fi-output');
   divobj.style.display='inline';
-  divobj.innerHTML = "Time Added to FI: " + monthsToYears(changeInTimeToFI);
+  divobj.innerHTML = "Change in Time to FI: " + monthsToYears(changeInTimeToFI);
 }
 
 function displayTimeToFIChart(dataArray) {
