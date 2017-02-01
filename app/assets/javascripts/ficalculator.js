@@ -196,7 +196,7 @@ function displayTimeToDepletion() {
   if (timeToDepletion < 1) {
     divobj.innerHTML = " "
   } else {
-    divobj.innerHTML = "Your Time to Depletion is: " + monthsToYears(timeToDepletion);
+    divobj.innerHTML = "Time to Depletion is: " + monthsToYears(timeToDepletion);
   };
 }
 
@@ -230,7 +230,7 @@ function displayTimeToFI() {
   if (timeToFIInitial == 0) {
     divobj.innerHTML = "You've Reached FI!";
   } else {
-    divobj.innerHTML = "Your Time to FI is: " + monthsToYears(timeToFIInitial);
+    divobj.innerHTML = "Time to FI is: " + monthsToYears(timeToFIInitial);
   };
 
   var divobj = document.getElementById('change-in-time-to-fi-output');
