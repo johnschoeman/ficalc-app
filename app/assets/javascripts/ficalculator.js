@@ -27,7 +27,6 @@ $(document).ready(function() {
 
 //Display Functions to update html page.
 function updateDisplay() {
-
   displayTimeToDepletion();
   displayTimeToFI();
   updateCharts();
@@ -41,7 +40,6 @@ function updateCharts(){
     legend: { position: 'bottom' },
     colors: ['#4286f4', 'e02828'],
     vAxis: {format: 'currency'},
-    lineWidth: 3
   };
   displayChart(timeToFIArray, timeToFIOptions, 'chart-time-to-fi');
   var timeToDepletionArray = getTimeToDepletion().timeToDepletionArray;
@@ -142,10 +140,10 @@ function calculateFI(monthlyExpenses, monthlyIncome,
   };
 
   return {
+    timeToFIArray: timeToFIArray,
     changeInFIArray: changeInFIArray,
     timeToFI1: timeToFI1,
-    timeToFI2: timeToFI2,
-    timeToFIArray: timeToFIArray
+    timeToFI2: timeToFI2
   };
 };
 
@@ -176,7 +174,7 @@ function calculateTimeToDepletion(monthlyExpenses, netWorth, averageReturn, infl
   };
 };
 
-/* Get User Input Type Functions */
+// Get User Input Type Functions
 function getUserInput(input) {
   return parseFloat(document.forms["timetofi_form"].elements[input].value);
 };
@@ -238,13 +236,13 @@ function displayTimeToFI() {
   var divobj = document.getElementById('change-in-time-to-fi-output');
   divobj.style.display='inline';
   if (timeToFIInitial == 0) {
-    divobj.innerHTML = "Your Assets Won't Deplete."
+    divobj.innerHTML = " "
   } else {
     divobj.innerHTML = "Change in Time to FI: " + monthsToYears(changeInTimeToFI);
   };
-
 };
 
+// Formating
 function monthsToYears(inputMonths) {
   var years = parseInt(inputMonths / 12);
   var months = inputMonths % 12;
@@ -276,7 +274,7 @@ function monthsToYears(inputMonths) {
   };
 }
 
-
+// Misc
 function test()
 {
   var result = getTimeToDepletion().timeToDepletionArray;
