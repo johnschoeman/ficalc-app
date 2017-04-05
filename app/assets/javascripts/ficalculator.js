@@ -40,6 +40,10 @@ function updateCharts(){
     legend: { position: 'bottom' },
     colors: ['#4286f4', 'e02828'],
     vAxis: {format: 'currency'},
+    hAxis: {
+            format: 'MMM yyyy',
+            gridlines: {count: 8}
+          },
   };
   displayChart(timeToFIArray, timeToFIOptions, 'chart-time-to-fi');
   var timeToDepletionArray = getTimeToDepletion().timeToDepletionArray;
@@ -102,12 +106,14 @@ function calculateFI(monthlyExpenses, monthlyIncome,
   var monthCount = 0;
   var timeToFI1 = 0;
   var timeToFI2 = 0;
-  var changeInFIArray = [['Month', 'NW1', 'FI Number1', 'NW2', 'FI Number2']];
-  var nextDataChangeInFI = [monthCount, netWorth, (12 * monthlyExpenses/safeWithdrawlRate),
-                  netWorth2, (12 * monthlyExpenses2/safeWithdrawlRate)];
+  var changeInFIArray = [['Month', 'Net Worth - Current ($)', 'FI Number - Current ($)', 'Net Worth - Changed ($)', 'FI Number - Changed ($)']];
+  var nextDataChangeInFI = [new Date(moment().add(monthCount, 'month').utc()),
+                            netWorth, (12 * monthlyExpenses/safeWithdrawlRate),
+                            netWorth2, (12 * monthlyExpenses2/safeWithdrawlRate)];
   changeInFIArray.push(nextDataChangeInFI);
-  var timeToFIArray = [['Month', 'NW', 'FI Number']];
-  var nextDataTimeToFI = [monthCount, netWorth, (12 * monthlyExpenses/safeWithdrawlRate)];
+  var timeToFIArray = [['Month', 'Net Worth ($)', 'FI Number ($)']];
+  var nextDataTimeToFI = [new Date(moment().add(monthCount, 'month').utc()),
+                          netWorth, (12 * monthlyExpenses/safeWithdrawlRate)];
   timeToFIArray.push(nextDataTimeToFI);
 
 
@@ -130,11 +136,16 @@ function calculateFI(monthlyExpenses, monthlyIncome,
     percentFI1 = (netWorth / ((12 / safeWithdrawlRate) * monthlyExpenses));
     percentFI2 = (netWorth2 / ((12 / safeWithdrawlRate) * monthlyExpenses2));
 
-    nextDataChangeInFI = [monthCount, netWorth, (12 * monthlyExpenses / safeWithdrawlRate),
-                            netWorth2, (12 * monthlyExpenses2 / safeWithdrawlRate)];
+    nextDataChangeInFI = [new Date(moment().add(monthCount, 'month').utc()),
+                          netWorth, (12 * monthlyExpenses / safeWithdrawlRate),
+                          netWorth2, (12 * monthlyExpenses2 / safeWithdrawlRate)];
+
     changeInFIArray.push(nextDataChangeInFI);
-    nextDataTimeToFI = [monthCount, netWorth, (12 * monthlyExpenses/safeWithdrawlRate)];
+
+    nextDataTimeToFI = [new Date(moment().add(monthCount, 'month').utc()), netWorth, (12 * monthlyExpenses/safeWithdrawlRate)];
+
     timeToFIArray.push(nextDataTimeToFI);
+
     if (percentFI1 >= 1.0 && timeToFI1 == 0) { timeToFI1 = monthCount };
     if (percentFI2 >= 1.0 && timeToFI2 == 0) { timeToFI2 = monthCount };
   };
@@ -152,8 +163,9 @@ function calculateTimeToDepletion(monthlyExpenses, netWorth, averageReturn, infl
 
   averageReturn = averageReturn/100 + 1;
   inflation = inflation/100 + 1;
-  var timeToDepletionArray = [['Month','NW','Expenses']];
-  var nextData =[monthCount, netWorth, monthlyExpenses];
+
+  var timeToDepletionArray = [['Month','Net Worth ($)','Expenses ($)']];
+  var nextData =[new Date(moment().add(monthCount,'month').utc()), netWorth, monthlyExpenses];
   timeToDepletionArray.push(nextData);
 
   var timeToDepletion = 0;
@@ -163,7 +175,7 @@ function calculateTimeToDepletion(monthlyExpenses, netWorth, averageReturn, infl
     monthlyExpenses = monthlyExpenses * (Math.pow(inflation,(1/12)));
     netWorth = (netWorth * (Math.pow(averageReturn,(1/12)))) - monthlyExpenses;
     monthCount += 1;
-    nextData = [monthCount,netWorth,monthlyExpenses];
+    nextData = [new Date(moment().add(monthCount,'month').utc()),netWorth,monthlyExpenses];
     timeToDepletionArray.push(nextData);
     if (netWorth <= 0 && timeToDepletion == 0) { timeToDepletion = monthCount - 1};
     if (monthCount > 100000) { break; }
@@ -277,8 +289,10 @@ function monthsToYears(inputMonths) {
 // Misc
 function test()
 {
+  var day1 = new Date(moment().add(1, 'month').utc());
+  console.log(day1);
   var result = getTimeToDepletion().timeToDepletionArray;
   //display the result
   var divobj = document.getElementById('demo');
-  divobj.innerHTML = result;
+  divobj.innerHTML = day1;
 }

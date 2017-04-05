@@ -250,6 +250,38 @@ footer ul li {
     float: left;
 }
 
+.timetofi_form ul.results {
+    width: 90%;
+    height: auto;
+    list-style-type: none;
+    list-style-position: outside;
+    margin:5px;
+    padding:0px;
+    border: 1px solid #777;
+    border-radius: 5px;
+    display: inline-block;;
+    float: left;
+    clear: left;
+}
+
+.timetofi_form ul.results li{
+  padding:12px;
+  border-right:1px solid #eee;
+  position: relative;
+  display: inline;
+  width: 18%;
+  float:left;
+}
+
+.timetofi_form ul.results li:first-child{
+  padding:12px;
+  border-bottom:1px solid #eee;
+  position: relative;
+  display: inline;
+  width: 10%;
+  float:left;
+}
+
 .timetofi_form li{
     padding:12px;
     border-bottom:1px solid #eee;
@@ -408,7 +440,7 @@ button.submit:active {
   display: inline-block;
   padding: 10px;
   float: left;
-  width: 90%;
+  width: 100%;
   height: 400px;
 }
 
