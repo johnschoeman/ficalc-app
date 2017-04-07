@@ -201,10 +201,6 @@ footer ul li {
 }
 
 /* Forms */
-#change-in-time-to-fi-calculator-div {
-  background-color: #ababab;
-}
-
 .form_header {
   margin-top: 10px;
   /*position: relative;*/
@@ -237,8 +233,9 @@ footer ul li {
     display: block;
     float: left;
 }
-.timetofi_form ul.output {
-    width:375px;
+
+.timetofi_form ul.results {
+    width: 45%;
     height: auto;
     list-style-type: none;
     list-style-position: outside;
@@ -248,10 +245,11 @@ footer ul li {
     border-radius: 5px;
     display: inline-block;
     float: left;
+
 }
 
 .timetofi_form ul.results {
-    width: 90%;
+    width: 45%;
     height: auto;
     list-style-type: none;
     list-style-position: outside;
@@ -259,26 +257,26 @@ footer ul li {
     padding:0px;
     border: 1px solid #777;
     border-radius: 5px;
-    display: inline-block;;
+    display: inline-block;
     float: left;
-    clear: left;
+    clear:left;
 }
 
 .timetofi_form ul.results li{
   padding:12px;
-  border-right:1px solid #eee;
+  height: inherit;
   position: relative;
+  border: 0px;
   display: inline;
-  width: 18%;
+  width: 55%;
   float:left;
 }
 
 .timetofi_form ul.results li:first-child{
   padding:12px;
-  border-bottom:1px solid #eee;
   position: relative;
   display: inline;
-  width: 10%;
+  width: 35%;
   float:left;
 }
 
