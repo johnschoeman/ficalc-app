@@ -67,7 +67,7 @@
         </li>
         <li>
           <label>Net Worth ($)
-            <i class="material-icons md-18" title="Your current amount of assets that you are able to live off of during retirement.">info_outline</i></label>
+            <i class="material-icons md-18" title="Your current amount of assets that you are able to live off of during retirement.  A negative number represents overall debt.">info_outline</i></label>
           <input type="number"  id="net-worth" name="net-worth" value="50000"
                 onchange="updateDisplay()" required/>
         </li>
@@ -102,27 +102,30 @@
 
       </ul>
 
-      <ul class="results">
-        <li class="has_bottom_border">
-          <h3>Time To FI</h3>
+      <ul class="timetofi">
+        <li>
+          <h3>Time To FI:</h3>
         </li>
         <li title="How long until you will be financially independent.">
-          <div id="time-to-fi-output">Time to FI is: </div>
+          <h3><div id="time-to-fi-output"> </div></h3>
         </li>
       </ul>
 
-      <ul class="results">
-        <li class="has_bottom_border">
-          <h3>Change in FI</h3>
+      <ul class="changeinfi">
+        <li>
+          <h3>Change in FI:</h3>
         </li>
         <li title="The amount of time added to or removed from your time to FI based the inputed changes in expenses, income, or net worth.">
-          <div id="change-in-time-to-fi-output">Change in Time to FI: </div>
+          <h3><div id="change-in-time-to-fi-output"> </div><h3>
         </li>
       </ul>
 
-
       <div id="chart-change-in-fi" class="chart"></div>
+
     <ul>
+      <li>
+        <h3>Other Useful Info:</h3>
+      </li>
       <li title="What your savings rate is.">
         <div id="savings-rate-output">Savings Rate: </div>
       </li>
@@ -133,8 +136,9 @@
         <div id="time-to-depletion-output">Time To Depletion is: </div>
       </li>
     </ul>
-    <div id="chart-time-to-fi" class="chart"></div>
-    <div id="chart-time-to-depletion" class="chart"></div>
+
+    <!-- <div id="chart-time-to-fi" class="chart"></div>
+    <div id="chart-time-to-depletion" class="chart"></div> -->
   </form>
 
 

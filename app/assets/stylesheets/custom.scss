@@ -147,10 +147,10 @@ header ul li:last-child {
   letter-spacing: -1px;
   padding-top: 9px;
   font-weight: bold;
-}
 
-#logo:hover {
-  text-decoration: none;
+  &:hover{
+    text-decoration: none;
+  }
 }
 
 .header_buffer {
@@ -169,28 +169,28 @@ footer {
   color: #777;
   display: block;
   width: 100%;
-}
 
-footer a {
-  color: #555;
-}
+  a{
+    color: #555;
 
-footer a:hover {
-  color: #222;
-}
+    &:hover{
+      color: #222;
+    }
+  }
 
-footer small {
-  float: left;
-}
+  small{
+    float: left;
+  }
 
-footer ul {
-  float: right;
-  list-style: none;
-}
+  ul{
+    float: right;
+    list-style: none;
 
-footer ul li {
-  float: left;
-  margin-left: 15px;
+    li{
+      float: left;
+      margin-left: 15px;
+    }
+  }
 }
 
 .footer_buffer {
@@ -212,6 +212,10 @@ footer ul li {
   border-radius: 5px;
 }
 
+.timetofi_form .has_bottom_border {
+  border-bottom: 1px solid #999;
+}
+
 .timetofi_form h2,{
   text-align: left;
   padding: 10px;
@@ -222,73 +226,61 @@ footer ul li {
 }
 
 .timetofi_form ul {
-    width: 30%;
-    height: auto;
-    list-style-type: none;
-    list-style-position: outside;
-    margin:5px;
-    padding:0px;
-    border: 1px solid #777;
-    border-radius: 5px;
-    display: block;
-    float: left;
-}
+  width: 30%;
+  height: auto;
+  list-style-type: none;
+  list-style-position: outside;
+  margin:5px;
+  padding:0px;
+  border: 1px solid #777;
+  border-radius: 5px;
+  display: block;
+  float: left;
 
-.timetofi_form ul.results {
+  &.timetofi{
     width: 45%;
-    height: auto;
-    list-style-type: none;
-    list-style-position: outside;
-    margin:5px;
-    padding:0px;
-    border: 1px solid #777;
-    border-radius: 5px;
-    display: inline-block;
-    float: left;
+    clear: left;
 
-}
+    li {
+      float:left;
 
-.timetofi_form ul.results {
+      &:first-child{
+        width: 35%;
+      }
+
+      &:last-child{
+        font-weight: bold;
+      }
+    }
+  }
+
+  &.changeinfi{
     width: 45%;
-    height: auto;
-    list-style-type: none;
-    list-style-position: outside;
-    margin:5px;
-    padding:0px;
-    border: 1px solid #777;
-    border-radius: 5px;
-    display: inline-block;
-    float: left;
-    clear:left;
-}
 
-.timetofi_form ul.results li{
-  padding:12px;
-  height: inherit;
-  position: relative;
-  border: 0px;
-  display: inline;
-  width: 55%;
-  float:left;
-}
+    li {
+      float: left;
 
-.timetofi_form ul.results li:first-child{
-  padding:12px;
-  position: relative;
-  display: inline;
-  width: 35%;
-  float:left;
+      &:first-child{
+        width: 35%;
+      }
+      &:last-child{
+        font-weight: bold;
+      }
+    }
+  }
+
 }
 
 .timetofi_form li{
     padding:12px;
     border-bottom:1px solid #eee;
     position: relative;
-}
-.timetofi_form li:first-child {
-  border-bottom:1px solid #777;
-  background-color: $color-primary-4;
-  color: $white;
+
+    &:first-child{
+      border-bottom:1px solid #777;
+      background-color: $color-primary-4;
+      color: $white;
+    }
 }
 
 .timetofi_form h2 {
@@ -364,7 +356,7 @@ footer ul li {
     background: #fff;
     border:1px solid #555;
     box-shadow: 0 0 3px #aaa;
-    padding-right: 10px;
+    padding-right: 5px;
 }
 
 .timetofi_form input:focus:invalid {
@@ -384,10 +376,6 @@ footer ul li {
 .timetofi_form input:required {
   background: #fff url(images/red_asterisk.png) no-repeat 98% center;
 } /* Figure out how to add this image to be called here.*/
-
-.timetofi_form .has_bottom_border {
-  border-bottom: 1px solid #999;
-}
 
 /* Form Output */
 

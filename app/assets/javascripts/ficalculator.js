@@ -28,38 +28,40 @@ $(document).ready(function() {
 //Display Functions to update html page.
 function updateDisplay() {
   displayTimeToDepletion();
+  displaySavingsRate();
+  displayMonthlyPortfolioIncome();
   displayTimeToFI();
   updateCharts();
 };
 
 function updateCharts(){
-  var timeToFIArray = getTimeToFI().timeToFIArray;
-  var timeToFIOptions = {
-    title: 'Time To FI',
-    curveType: 'function',
-    legend: { position: 'bottom' },
-    colors: ['#4286f4', 'e02828'],
-    vAxis: {format: 'currency'},
-    hAxis: {
-            format: 'MMM yyyy',
-            gridlines: {count: 8}
-          },
-  };
-  displayChart(timeToFIArray, timeToFIOptions, 'chart-time-to-fi');
-  var timeToDepletionArray = getTimeToDepletion().timeToDepletionArray;
-  var timeToDepletionOptions = {
-    title: 'Time To Depletion',
-    curveType: 'function',
-    legend: { position: 'bottom' },
-    colors: ['#4286f4', '#e02828'],
-    vAxis: {format: 'currency'}
-  };
-  if (getTimeToDepletion().timeToDepletion < 1) {
-    $('#chart-time-to-depletion').hide();
-  } else {
-    $('#chart-time-to-depletion').show();
-    displayChart(timeToDepletionArray, timeToDepletionOptions, 'chart-time-to-depletion');
-  };
+  // var timeToFIArray = getTimeToFI().timeToFIArray;
+  // var timeToFIOptions = {
+  //   title: 'Time To FI',
+  //   curveType: 'function',
+  //   legend: { position: 'bottom' },
+  //   colors: ['#4286f4', 'e02828'],
+  //   vAxis: {format: 'currency'},
+  //   hAxis: {
+  //           format: 'MMM yyyy',
+  //           gridlines: {count: 8}
+  //         },
+  // };
+  // displayChart(timeToFIArray, timeToFIOptions, 'chart-time-to-fi');
+  // var timeToDepletionArray = getTimeToDepletion().timeToDepletionArray;
+  // var timeToDepletionOptions = {
+  //   title: 'Time To Depletion',
+  //   curveType: 'function',
+  //   legend: { position: 'bottom' },
+  //   colors: ['#4286f4', '#e02828'],
+  //   vAxis: {format: 'currency'}
+  // };
+  // if (getTimeToDepletion().timeToDepletion < 1) {
+  //   $('#chart-time-to-depletion').hide();
+  // } else {
+  //   $('#chart-time-to-depletion').show();
+  //   displayChart(timeToDepletionArray, timeToDepletionOptions, 'chart-time-to-depletion');
+  // };
   var changeInFIArray = getTimeToFI().changeInFIArray;
   var changeInFIOptions = {
     title: 'Change in FI',
@@ -111,10 +113,10 @@ function calculateFI(monthlyExpenses, monthlyIncome,
                             netWorth, (12 * monthlyExpenses/safeWithdrawlRate),
                             netWorth2, (12 * monthlyExpenses2/safeWithdrawlRate)];
   changeInFIArray.push(nextDataChangeInFI);
-  var timeToFIArray = [['Month', 'Net Worth ($)', 'FI Number ($)']];
-  var nextDataTimeToFI = [new Date(moment().add(monthCount, 'month').utc()),
-                          netWorth, (12 * monthlyExpenses/safeWithdrawlRate)];
-  timeToFIArray.push(nextDataTimeToFI);
+  // var timeToFIArray = [['Month', 'Net Worth ($)', 'FI Number ($)']];
+  // var nextDataTimeToFI = [new Date(moment().add(monthCount, 'month').utc()),
+  //                         netWorth, (12 * monthlyExpenses/safeWithdrawlRate)];
+  // timeToFIArray.push(nextDataTimeToFI);
 
 
   var percentFI1 = (netWorth / (12 * (1 / safeWithdrawlRate) * monthlyExpenses));
@@ -141,17 +143,17 @@ function calculateFI(monthlyExpenses, monthlyIncome,
                           netWorth2, (12 * monthlyExpenses2 / safeWithdrawlRate)];
 
     changeInFIArray.push(nextDataChangeInFI);
-
-    nextDataTimeToFI = [new Date(moment().add(monthCount, 'month').utc()), netWorth, (12 * monthlyExpenses/safeWithdrawlRate)];
-
-    timeToFIArray.push(nextDataTimeToFI);
+    //
+    // nextDataTimeToFI = [new Date(moment().add(monthCount, 'month').utc()), netWorth, (12 * monthlyExpenses/safeWithdrawlRate)];
+    //
+    // timeToFIArray.push(nextDataTimeToFI);
 
     if (percentFI1 >= 1.0 && timeToFI1 == 0) { timeToFI1 = monthCount };
     if (percentFI2 >= 1.0 && timeToFI2 == 0) { timeToFI2 = monthCount };
   };
 
   return {
-    timeToFIArray: timeToFIArray,
+    // timeToFIArray: timeToFIArray,
     changeInFIArray: changeInFIArray,
     timeToFI1: timeToFI1,
     timeToFI2: timeToFI2
@@ -212,6 +214,29 @@ function displayTimeToDepletion() {
   };
 }
 
+function displaySavingsRate() {
+  var monthlyIncome = getUserInput("month-income");
+  var monthlyExpenses = getUserInput("month-expenses");
+  var savingsRate = Math.round((1.0 - (parseFloat(monthlyExpenses) / monthlyIncome)) * 100 );
+
+  var divobj = document.getElementById('savings-rate-output');
+  divobj.innerHTML = "Savings Rate: " + savingsRate + "%";
+};
+
+function displayMonthlyPortfolioIncome() {
+  var netWorth = getUserInput("net-worth");
+  var withdrawlRate = getUserInput("withdrawl-rate");
+  var monthlyPortfolioIncome = parseFloat(Math.round(netWorth * withdrawlRate * 100 / (12 * 100.00))/100).toFixed(2);
+
+  var divobj = document.getElementById("monthly-portfolio-income-output");
+  if (monthlyPortfolioIncome < 1) {
+    divobj.innerHTML = " "
+  } else {
+    divobj.innerHTML = "Monthly Portfolio Income: $" + monthlyPortfolioIncome;
+  };
+
+};
+
 function getTimeToFI() {
   var monthlyExpenses = getUserInput("month-expenses");
   var monthlyIncome = getUserInput("month-income");
@@ -242,7 +267,7 @@ function displayTimeToFI() {
   if (timeToFIInitial == 0) {
     divobj.innerHTML = "You've Reached FI!";
   } else {
-    divobj.innerHTML = "Time to FI is: " + monthsToYears(timeToFIInitial);
+    divobj.innerHTML = monthsToYears(timeToFIInitial);
   };
 
   var divobj = document.getElementById('change-in-time-to-fi-output');
@@ -250,7 +275,7 @@ function displayTimeToFI() {
   if (timeToFIInitial == 0) {
     divobj.innerHTML = " "
   } else {
-    divobj.innerHTML = "Change in Time to FI: " + monthsToYears(changeInTimeToFI);
+    divobj.innerHTML = monthsToYears(changeInTimeToFI);
   };
 };
 
