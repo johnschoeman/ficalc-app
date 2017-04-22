@@ -64,7 +64,7 @@ function updateCharts(){
   // };
   var changeInFIArray = getTimeToFI().changeInFIArray;
   var changeInFIOptions = {
-    title: 'Change in FI',
+    title: 'Time To FI',
     curveType: 'function',
     legend: { position: 'bottom' },
     colors: ['#4286f4', '#e02828', '#99bffc', '#ef8383'],
@@ -72,7 +72,14 @@ function updateCharts(){
       2: {lineDashStyle: [12,3]},
       3: {lineDashStyle: [12,3]},
     },
-    vAxis: {format: 'currency'}
+    vAxis: {format: 'currency'},
+    titleTextStyle: {
+        color: '#496117',    // any HTML string color ('red', '#cc00cc')
+        fontName: "Verdana", // i.e. 'Times New Roman'
+        fontSize: 18, // 12, 18 whatever you want (don't specify px)
+        bold: false,    // true or false
+        italic: false   // true of false
+    }
   };
   displayChart(changeInFIArray, changeInFIOptions, 'chart-change-in-fi');
 }
