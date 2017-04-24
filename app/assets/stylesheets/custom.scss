@@ -101,6 +101,17 @@ i {
 .material-icons.md-18 { font-size: 18px; }
 
 
+#slide-2 .bcg {background-image:url('/assets/bcg_slide-2.jpg')}
+
+.bcg {
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	height: 100%;
+	width: 100%;
+}
+
 /* header */
 header {
   font-size: 1em;
