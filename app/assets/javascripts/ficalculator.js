@@ -217,7 +217,7 @@ function displayTimeToDepletion() {
   if (timeToDepletion < 1) {
     divobj.innerHTML = " "
   } else {
-    divobj.innerHTML = "Time to Depletion is: " + monthsToYears(timeToDepletion);
+    divobj.innerHTML = "Time to Depletion: " + monthsToYears(timeToDepletion);
   };
 }
 
