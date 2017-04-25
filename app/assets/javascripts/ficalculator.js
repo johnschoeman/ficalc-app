@@ -26,7 +26,6 @@ $(document).ready(function() {
   });
 });
 
-
 //Display Functions to update html page.
 function updateDisplay() {
   displayTimeToDepletion();
