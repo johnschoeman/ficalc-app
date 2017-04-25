@@ -1,6 +1,6 @@
 $(document).ready(function() {
   updateDisplay();
-  
+
   $(document).keydown(function(key) {
       switch(parseInt(key.which,10)) {
     // Left arrow key pressed
@@ -25,6 +25,7 @@ $(document).ready(function() {
     };
   });
 });
+
 
 //Display Functions to update html page.
 function updateDisplay() {
