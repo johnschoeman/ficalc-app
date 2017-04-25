@@ -59,20 +59,36 @@ textarea {
 }
 
 .text {
-  width: 90%;
+  width: 80%;
   height: auto;
   list-style-type: none;
   list-style-position: outside;
-  margin:5px;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
   padding:10px;
   border: 1px solid #777;
   border-radius: 5px;
 
   h3{
     border-bottom:1px solid #777;
+    font-size: 1.5em;
     background-color: $color-primary-4;
     color: $white;
-    padding: 10px;
+    padding: 15px;
+    margin: 0px;
+    border-radius: 5px;
+  }
+
+  h4 {
+    font-size: 1.2em;
+  }
+
+  h3, h4, p, ul, li{
+    padding-left: 30px;
+  }
+  p {
+
   }
 }
 /* typography */
@@ -103,8 +119,8 @@ h3 {
 
 p {
   font-size: 1.1em;
-  line-height: 1.7em;
-  width: 80%
+  line-height: 1.5em;
+  width: 90%
 }
 
 ul {
