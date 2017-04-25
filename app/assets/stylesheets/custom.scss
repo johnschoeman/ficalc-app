@@ -84,8 +84,11 @@ textarea {
     font-size: 1.2em;
   }
 
-  h3, h4, p, ul, li{
+  h3, h4, p{
     padding-left: 30px;
+  }
+  ul {
+    padding-left: 60px;
   }
   p {
 
@@ -208,6 +211,7 @@ header ul li:last-child {
   text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
+  padding-left: 20px;
   font-weight: bold;
 
   &:hover{
