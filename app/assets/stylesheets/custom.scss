@@ -271,6 +271,20 @@ footer {
 }
 
 /* Forms */
+
+.block {
+    text-align: left;
+}
+.center {
+    margin: 5px auto 10px auto;
+}
+.left {
+    margin: 5px 2% 10px 3%;
+}
+.right {
+    margin:5px 1% 10px 2%;
+}
+
 .form_header {
   margin-top: 10px;
   /*position: relative;*/
@@ -280,6 +294,21 @@ footer {
 .form_header h1 {
   color: $color-primary-0;
   border-radius: 5px;
+}
+
+.timetofi_form .form_input {
+  // width: 90%;
+  // height: auto;
+  // margin-left: 20px;
+  // padding:0px;
+  // border: 1px solid #777;
+  // border-radius: 5px;
+  // display: block;
+  // margin: auto;
+}
+
+.timetofi_form .form_output {
+  border: 1px;
 }
 
 .timetofi_form .has_bottom_border {
@@ -300,7 +329,7 @@ footer {
   height: auto;
   list-style-type: none;
   list-style-position: outside;
-  margin:5px;
+  // margin: 5px;
   padding:0px;
   border: 1px solid #777;
   border-radius: 5px;
@@ -320,6 +349,8 @@ footer {
 
       &:last-child{
         font-weight: bold;
+        font-size: .9em;
+        border: 0;
       }
     }
   }
@@ -331,10 +362,12 @@ footer {
       float: left;
 
       &:first-child{
-        width: 35%;
+        width: 30%;
       }
       &:last-child{
         font-weight: bold;
+        font-size: .9em;
+        border: 0;
       }
     }
   }
@@ -352,6 +385,7 @@ footer {
       background-color: $color-primary-4;
       color: $white;
     }
+
 }
 
 .timetofi_form h2 {

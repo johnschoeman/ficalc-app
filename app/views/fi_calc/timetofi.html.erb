@@ -14,11 +14,13 @@
   <div class="header_buffer"></div>
   <div class="page_header">
     <h1>Time To FI Calculator</h1>
-    <p>A simple calculator to help you find your time to financial independence.</p>
+    <p class="block left">A simple calculator to help you find your time to financial independence.</p>
   </div>
 
   <form class="timetofi_form" action="" method="post" id="timetofi_form" name="timetofi_form" onsubmit="return false;">
-      <ul>
+
+    <div class="block form_input">
+      <ul class="block left">
         <li class="has_bottom_border">
           <h3>Assumptions</h3>
         </li>
@@ -48,7 +50,7 @@
                     onchange="updateDisplay()" required/>
         </li>
       </ul>
-      <ul>
+      <ul class="block center">
         <li class="has_bottom_border">
           <h3>Personal FI Information</h3>
         </li>
@@ -72,7 +74,7 @@
         </li>
       </ul>
 
-      <ul>
+      <ul class="block right">
         <li class="has_bottom_border">
           <h3>Change In Time To FI</h3>
         </li>
@@ -100,8 +102,10 @@
                 onclick="updateDisplay()">Calculate Time Added to FI</button>-->
 
       </ul>
+    </div>
 
-      <ul class="timetofi">
+    <div class="form_output">
+      <ul class="timetofi block left">
         <li>
           <h3>Time To FI:</h3>
         </li>
@@ -110,7 +114,7 @@
         </li>
       </ul>
 
-      <ul class="changeinfi">
+      <ul class="changeinfi block right">
         <li>
           <h3>Change In FI:</h3>
         </li>
@@ -121,7 +125,7 @@
 
       <div id="chart-change-in-fi" class="chart"></div>
 
-    <ul>
+    <ul class="block left">
       <li>
         <h3>Other Useful Info:</h3>
       </li>
@@ -135,7 +139,7 @@
         <div id="time-to-depletion-output">Time To Depletion: </div>
       </li>
     </ul>
-
+    </div>
     <!-- <div id="chart-time-to-fi" class="chart"></div>
     <div id="chart-time-to-depletion" class="chart"></div> -->
   </form>
