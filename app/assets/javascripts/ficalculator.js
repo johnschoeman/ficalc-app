@@ -1,29 +1,5 @@
 $(document).on('turbolinks:load', function() {
   updateDisplay();
-
-  $(document).keydown(function(key) {
-      switch(parseInt(key.which,10)) {
-    // Left arrow key pressed
-    case 37:
-      $('#mario').animate({left: "-=10px"}, 'fast');
-      break;
-    // Up Arrow Pressed
-    case 38:
-      // Put our code here
-      $('#mario').animate({top: "-=10px"}, 'fast');
-      break;
-    // Right Arrow Pressed
-    case 39:
-      // Put our code here
-      $('#mario').animate({left: "+=10px"}, 'fast');
-      break;
-    // Down Arrow Pressed
-    case 40:
-      // Put our code here
-      $('#mario').animate({top: "+=10px"}, 'fast');
-      break;
-    };
-  });
 });
 
 //Display Functions to update html page.
@@ -75,11 +51,11 @@ function updateCharts(){
     },
     vAxis: {format: 'currency'},
     titleTextStyle: {
-        color: '#496117',    // any HTML string color ('red', '#cc00cc')
-        fontName: "Verdana", // i.e. 'Times New Roman'
-        fontSize: 18, // 12, 18 whatever you want (don't specify px)
-        bold: false,    // true or false
-        italic: false   // true of false
+        color: '#496117',     // any HTML string color ('red', '#cc00cc')
+        fontName: "Verdana",  // i.e. 'Times New Roman'
+        fontSize: 18,         // 12, 18 whatever you want (don't specify px)
+        bold: false,          // true or false
+        italic: false         // true of false
     }
   };
   displayChart(changeInFIArray, changeInFIOptions, 'chart-change-in-fi');
@@ -196,7 +172,7 @@ function calculateTimeToDepletion(monthlyExpenses, netWorth, averageReturn, infl
   };
 };
 
-// Get User Input Type Functions
+// Get User Input Functions
 function getUserInput(input) {
   return parseFloat(document.forms["timetofi_form"].elements[input].value);
 };
@@ -294,7 +270,7 @@ function monthsToYears(inputMonths) {
 
   if(years == 0){
     if (months == 0) {
-      return "0"
+      return "0 months"
     } else if (months == 1) {
       return "1 month"
     } else {
