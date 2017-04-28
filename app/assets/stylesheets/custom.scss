@@ -50,17 +50,6 @@ textarea {
   outline: none;
 }
 
-.page_header {
-  color: $color-primary-4;
-  h1 {
-    margin-bottom: 5px;
-  }
-  p {
-    padding-bottom: 30px;
-    font-size: 1.0em;
-  }
-}
-
 /* typography */
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
@@ -100,7 +89,7 @@ i {
   vertical-align: middle;
 }
 
-material-icons.md-18 { font-size: 18px; }
+.material-icons.md-18 { font-size: 18px; }
 
 /* Charts */
 .chart {
@@ -111,29 +100,22 @@ material-icons.md-18 { font-size: 18px; }
   height: 400px;
 }
 
-/* images */
-img {
-    vertical-align: middle;
-}
-
-#slide-2 .bcg {
-  background-image:url('/assets/bcg_slide-2.jpg');
-  background: rgba(76, 175, 80, 0.1);
-}
-
-.bcg {
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  height: 100%;
-  width: 100%;
-}
-
 /* header */
+
+.page_header {
+  color: $color-primary-4;
+  h1 {
+    margin-bottom: 5px;
+  }
+  p {
+    padding-bottom: 30px;
+    font-size: 1.0em;
+  }
+}
+
 header {
   font-size: 1em;
-  border-radius: 5px;
+  border-radius: 1px;
   position: fixed;
   z-index: 1;
   width: 100%;
@@ -148,31 +130,34 @@ header {
   padding-bottom: 5px;
 
   a {
-  color: $color-primary-4;
-  text-decoration: none;
-  padding: 5px;
+    color: $color-primary-4;
+    text-decoration: none;
+    padding: 5px;
 
-    &:hover {
-    color: $white;
-    //text-decoration: underline;
-    background-color: $color-primary-3;
-    border-radius: 4px;
-  }
-}
-  small {
-  float: left;
-}
-  ul {
-  float: right;
-  list-style: none;
-    li {
-  float: left;
-  margin-left: 15px;
-    &:last-child {
-    margin-right: 40px;
+      &:hover {
+      color: $white;
+      //text-decoration: underline;
+      background-color: $color-primary-3;
+      border-radius: 4px;
     }
   }
-}
+  small {
+    float: left;
+  }
+
+  ul {
+    float: right;
+    list-style: none;
+
+    li {
+      float: left;
+      margin-left: 15px;
+
+      &:last-child {
+        margin-right: 40px;
+      }
+    }
+  }
 }
 
 #logo {
@@ -185,7 +170,6 @@ header {
   padding-top: 9px;
   padding-left: 20px;
   font-weight: bold;
-
 
   &:hover{
     text-decoration: none;
@@ -207,6 +191,7 @@ footer {
   padding-top: 5px;
   border-top: 1px solid #eaeaea;
   color: #777;
+  background-color: #eaeaea;
   display: block;
   width: 100%;
 
@@ -243,8 +228,7 @@ footer {
   display: inline-block;
 }
 
-/* Forms */
-
+/* Object Alignment */
 .block {
     text-align: left;
 }
@@ -258,43 +242,24 @@ footer {
     margin:5px 1% 10px 2%;
 }
 
+/* Forms */
 .form_header {
   margin-top: 10px;
-  /*position: relative;*/
-  /*display: block;*/
+
+  h1 {
+    color: $color-primary-0;
+    border-radius: 5px;
+  }
 }
 
-.form_header h1 {
-  color: $color-primary-0;
-  border-radius: 5px;
-}
+.timetofi_form {
 
-.timetofi_form .form_input {
-  // width: 90%;
-  // height: auto;
-  // margin-left: 20px;
-  // padding:0px;
-  // border: 1px solid #777;
-  // border-radius: 5px;
-  // display: block;
-  // margin: auto;
-}
-
-.timetofi_form .form_output {
-  border: 1px;
-}
-
-.timetofi_form .has_bottom_border {
-  border-bottom: 1px solid #999;
-}
-
-.timetofi_form h2,{
-  text-align: left;
-  padding: 10px;
-}
-
-.form_hint, .required_notificaiton {
-  font-size: 11px;
+  h2 {
+    padding: 10px;
+    margin:0;
+    width: 100%;
+    display: block;
+  }
 }
 
 .timetofi_form ul {
@@ -337,6 +302,7 @@ footer {
       &:first-child{
         width: 35%;
       }
+
       &:last-child{
         font-weight: bold;
         font-size: .9em;
@@ -344,7 +310,6 @@ footer {
       }
     }
   }
-
 }
 
 .timetofi_form li{
@@ -358,20 +323,6 @@ footer {
       background-color: $color-primary-4;
       color: $white;
     }
-
-}
-
-.timetofi_form h2 {
-    margin:0;
-    width: 100%;
-    display: block;
-}
-
-.required_notificaiton {
-    color: #d45252;
-    margin:5px 0 0 0;
-    display: inline;
-    float: right;
 }
 
 .timetofi_form label {
@@ -385,6 +336,7 @@ footer {
 }
 
 .form_hint{
+  font-size: 11px;
   background: #d45252;
   border-radius: 3px 3px 3px 3px;
   color: white;
@@ -393,6 +345,14 @@ footer {
   z-index: 999; /* hints stay above all other elements */
   position: absolute; /* allows proper formatting if hint is two lines */
   display: none;
+}
+
+.required_notificaiton {
+  font-size: 11px;
+  color: #d45252;
+  margin:5px 0 0 0;
+  display: inline;
+  float: right;
 }
 
 .form_hint::before {
