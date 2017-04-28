@@ -372,11 +372,10 @@ footer {
 .timetofi_form input:required:valid + .form_hint::before {
   color: #28921f; /* change form hint color when valid */
 }
-.timetofi_form button {
-  margin-left:20px;
-}
 
 .timetofi_form input, {
+  clear: right;
+  margin-right: 1px;
   height:20px;
   width:80px;
   padding:6px 8px;

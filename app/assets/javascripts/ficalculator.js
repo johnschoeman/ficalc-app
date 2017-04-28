@@ -80,7 +80,7 @@ function calculateFI(monthlyExpenses, monthlyIncome,
                              inflation, raises, safeWithdrawlRate,
                              changeInMonthlyExpenses, changeInMonthlyIncome, changeInNetWorth) {
 
-  averageReturn = averageReturn/100 + 1;
+  averageReturn = Math.pow((averageReturn/100 + 1),(1/12));
   inflation = inflation/100 + 1;
   raises = raises/100 + 1;
   safeWithdrawlRate = safeWithdrawlRate/100;
@@ -114,11 +114,13 @@ function calculateFI(monthlyExpenses, monthlyIncome,
       monthlyIncome2 *= raises;
     };
     monthCount += 1;
-    if (monthCount > 1000) { break; }
-    netWorth = (netWorth * (Math.pow(averageReturn,(1/12))))
-                                              + monthlyIncome - monthlyExpenses;
-    netWorth2 = (netWorth2 * (Math.pow(averageReturn,(1/12))))
-                                              + monthlyIncome2 - monthlyExpenses2;
+    if (monthCount > 1000) {
+      timeToFI1 = -1;
+      timeToFI2 = -1;
+      break;
+    };
+    netWorth = netWorth * averageReturn + monthlyIncome - monthlyExpenses;
+    netWorth2 = netWorth2 * averageReturn + monthlyIncome2 - monthlyExpenses2;
     percentFI1 = (netWorth / ((12 / safeWithdrawlRate) * monthlyExpenses));
     percentFI2 = (netWorth2 / ((12 / safeWithdrawlRate) * monthlyExpenses2));
 
@@ -243,6 +245,7 @@ function getTimeToFI() {
 
 function displayTimeToFI() {
   var timeToFIInitial = getTimeToFI().timeToFI1;
+  console.log(timeToFIInitial);
   var timeToFIFinal = getTimeToFI().timeToFI2;
   var changeInTimeToFI = timeToFIFinal - timeToFIInitial;
 
@@ -250,6 +253,8 @@ function displayTimeToFI() {
   divobj.style.display='inline';
   if (timeToFIInitial == 0) {
     divobj.innerHTML = "You've Reached FI!";
+  } else if (timeToFIInitial == -1 ) {
+    divobj.innerHTML = "FI Cannot Be Reached.";
   } else {
     divobj.innerHTML = monthsToYears(timeToFIInitial);
   };
