@@ -1,4 +1,5 @@
 $(document).on('turbolinks:load', function() {
+  populateForm();
   updateDisplay();
 });
 
@@ -9,6 +10,24 @@ function updateDisplay() {
   displayMonthlyPortfolioIncome();
   displayTimeToFI();
   updateCharts();
+};
+
+function populateForm() {
+  var monthlyIncome = Math.ceil((Math.random()*7500)/100)*100+500;
+  var monthlyExpenses = Math.ceil((Math.random()*5800)/50)*50 + 200;
+  var netWorth = Math.ceil((Math.random()*250000)/1000)*1000;
+
+  var changeInExpenses = Math.ceil((Math.random()*1000)/50)*50 - 500;
+  var changeInIncome = Math.ceil((Math.random()*2000)/50)*50 - 1000 ;
+  var changeInNetWorth = Math.ceil((Math.random()*200000)/1000)*1000 - 100000;
+
+  document.getElementById('month-expenses').value = monthlyExpenses;
+  document.getElementById('month-income').value = monthlyIncome;
+  document.getElementById('net-worth').value = netWorth;
+
+  document.getElementById('change-in-monthly-expenses').value = changeInExpenses;
+  document.getElementById('change-in-monthly-income').value = changeInIncome;
+  document.getElementById('change-in-net-worth').value = changeInNetWorth;
 };
 
 function updateCharts(){
