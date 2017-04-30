@@ -25,10 +25,19 @@ function populateForm() {
   document.getElementById('month-income').value = monthlyIncome;
   document.getElementById('net-worth').value = netWorth;
 
-  document.getElementById('change-in-monthly-expenses').value = changeInExpenses;
-  document.getElementById('change-in-monthly-income').value = changeInIncome;
-  document.getElementById('change-in-net-worth').value = changeInNetWorth;
+  if (flipCoin()) { document.getElementById('change-in-monthly-expenses').value = changeInExpenses };
+  if (flipCoin()) { document.getElementById('change-in-monthly-income').value = changeInIncome };
+  if (flipCoin()) { document.getElementById('change-in-net-worth').value = changeInNetWorth };
 };
+
+function flipCoin() {
+  var coin = Math.random();
+  if (coin < 0.5 ) {
+    return true;
+  } else {
+    return false;
+  }
+}
 
 function updateCharts(){
   // var timeToFIArray = getTimeToFI().timeToFIArray;
@@ -264,7 +273,6 @@ function getTimeToFI() {
 
 function displayTimeToFI() {
   var timeToFIInitial = getTimeToFI().timeToFI1;
-  console.log(timeToFIInitial);
   var timeToFIFinal = getTimeToFI().timeToFI2;
   var changeInTimeToFI = timeToFIFinal - timeToFIInitial;
 
@@ -323,7 +331,6 @@ function monthsToYears(inputMonths) {
 function test()
 {
   var day1 = new Date(moment().add(1, 'month').utc());
-  console.log(day1);
   var result = getTimeToDepletion().timeToDepletionArray;
   //display the result
   var divobj = document.getElementById('demo');
