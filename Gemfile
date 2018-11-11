@@ -5,6 +5,7 @@ ruby                '2.5.1'
 gem 'rails',        '5.2.1'
 
 gem 'bootsnap'
+gem 'clearance'
 gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'pg'
@@ -14,6 +15,7 @@ gem 'turbolinks'
 gem 'uglifier'
 
 group :development, :test do
+  gem 'faker'
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'rspec-rails'

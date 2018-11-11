@@ -5,7 +5,13 @@
       <ul class="navbar">
         <li><%= link_to "TimeToFICalc",   root_path %></li>
         <li><%= link_to "About",          about_path %></li>
+        <% if signed_in? %>
+          <li><%= link_to 'Sign out', sign_out_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to 'Sign in', sign_in_path %></li>
+        <% end %>
       </ul>
     </nav>
   </div>
 </header>
+<div class="header_buffer"></div>
