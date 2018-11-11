@@ -1,40 +1,39 @@
 source 'https://rubygems.org'
 
-ruby                '2.3.3'
+ruby                '2.5.1'
 
-gem 'rails',        '5.0.0.1'
-gem 'puma',         '3.4.0'
-gem 'sass-rails',   '5.0.6'
-gem 'uglifier',     '3.0.0'
-gem 'coffee-rails', '4.2.1'
-gem 'jquery-rails', '4.1.1'
-gem 'turbolinks',   '5.0.1'
-gem 'jbuilder',     '2.4.1'
+gem 'rails',        '5.1.6'
+
+gem 'coffee-rails'
+gem 'jquery-rails'
 gem 'pg'
+gem 'puma'
+gem 'sass-rails'
+gem 'turbolinks'
+gem 'uglifier'
 
 group :development, :test do
-  gem "pry-byebug"
-  gem "pry-rails"
+  gem 'pry-byebug'
+  gem 'pry-rails'
   gem 'rspec-rails'
-  gem "factory_bot_rails"
 end
 
 group :test do
-  gem "database_cleaner"
-  gem 'rspec'
+  gem 'database_cleaner'
   gem 'guard',                    '2.13.0'
   gem 'guard-minitest',           '2.4.4'
-  gem "launchy"
-  gem "phantomjs", require: "phantomjs/poltergeist"
-  gem "poltergeist"
-  gem "shoulda-matchers"
+  gem 'launchy'
+  gem 'phantomjs', require: 'phantomjs/poltergeist'
+  gem 'poltergeist'
+  gem 'rspec'
+  gem 'shoulda-matchers'
 end
 
 group :development do
-  gem 'web-console',           '3.1.1'
   gem 'listen',                '3.0.8'
   gem 'spring',                '1.7.2'
   gem 'spring-watcher-listen', '2.0.0'
+  gem 'web-console',           '3.1.1'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
