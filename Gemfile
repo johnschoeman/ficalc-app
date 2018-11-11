@@ -10,9 +10,9 @@ gem 'coffee-rails', '4.2.1'
 gem 'jquery-rails', '4.1.1'
 gem 'turbolinks',   '5.0.1'
 gem 'jbuilder',     '2.4.1'
+gem 'pg'
 
 group :development, :test do
-  gem 'sqlite3'
   gem "pry-byebug"
   gem "pry-rails"
   gem 'rspec-rails'
@@ -35,10 +35,6 @@ group :development do
   gem 'listen',                '3.0.8'
   gem 'spring',                '1.7.2'
   gem 'spring-watcher-listen', '2.0.0'
-end
-
-group :production do
-  gem 'pg', '0.18.4'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
