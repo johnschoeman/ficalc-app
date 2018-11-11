@@ -1,15 +1,13 @@
-
 /* mixins, variables, etc. */
 
 $gray-medium-light: #eaeaea;
-$white:             #FAFAFA;
+$white: #fafafa;
 
-$color-primary-0:   #829B4E;	/* Main Primary color */
-$color-primary-1:   #E7EDDD;
-$color-primary-2:   #A4BB75;
-$color-primary-3:   #647E30;
-$color-primary-4:   #496117;
-
+$color-primary-0: #829b4e; /* Main Primary color */
+$color-primary-1: #e7eddd;
+$color-primary-2: #a4bb75;
+$color-primary-3: #647e30;
+$color-primary-4: #496117;
 
 :-moz-placeholder {
   color: blue;
@@ -27,7 +25,7 @@ $color-primary-4:   #496117;
 
 body {
   /*padding-top: 60px;*/
-  font: 14px/21px "Verdana", "Geneva", sans-serif
+  font: 14px/21px 'Verdana', 'Geneva', sans-serif;
 }
 
 section {
@@ -51,7 +49,12 @@ textarea {
 }
 
 /* typography */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   line-height: 1;
 }
 
@@ -74,7 +77,7 @@ h2 {
 p {
   font-size: 1.1em;
   line-height: 1.5em;
-  width: 90%
+  width: 90%;
 }
 
 ul {
@@ -82,14 +85,16 @@ ul {
 }
 
 i {
-  line-height: .5em;
+  line-height: 0.5em;
   font-size: 18px;
   color: #444;
   padding: 5px;
   vertical-align: middle;
 }
 
-.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-18 {
+  font-size: 18px;
+}
 
 /* Charts */
 .chart {
@@ -109,7 +114,7 @@ i {
   }
   p {
     padding-bottom: 30px;
-    font-size: 1.0em;
+    font-size: 1em;
   }
 }
 
@@ -121,7 +126,7 @@ header {
   width: 100%;
   height: 50px;
   border-top: 1px solid #eaeaea;
-  border-bottom: 1px solid #ABABAB;
+  border-bottom: 1px solid #ababab;
   color: #000000;
   float: left;
   background-color: $color-primary-1;
@@ -134,7 +139,7 @@ header {
     text-decoration: none;
     padding: 5px;
 
-      &:hover {
+    &:hover {
       color: $white;
       //text-decoration: underline;
       background-color: $color-primary-3;
@@ -171,7 +176,7 @@ header {
   padding-left: 20px;
   font-weight: bold;
 
-  &:hover{
+  &:hover {
     text-decoration: none;
     color: $color-primary-4;
     background-color: $color-primary-1;
@@ -195,25 +200,25 @@ footer {
   display: block;
   width: 100%;
 
-  a{
+  a {
     color: #555;
     text-decoration: none;
 
-    &:hover{
+    &:hover {
       color: #222;
       text-decoration: underline;
     }
   }
 
-  small{
+  small {
     float: left;
   }
 
-  ul{
+  ul {
     float: right;
     list-style: none;
 
-    li{
+    li {
       float: left;
       margin-left: 15px;
       margin-right: 15px;
@@ -230,16 +235,16 @@ footer {
 
 /* Object Alignment */
 .block {
-    text-align: left;
+  text-align: left;
 }
 .center {
-    margin: 5px auto 10px auto;
+  margin: 5px auto 10px auto;
 }
 .left {
-    margin: 5px 2% 10px 3%;
+  margin: 5px 2% 10px 3%;
 }
 .right {
-    margin:5px 1% 10px 2%;
+  margin: 5px 1% 10px 2%;
 }
 
 /* Forms */
@@ -253,10 +258,9 @@ footer {
 }
 
 .timetofi_form {
-
   h2 {
     padding: 10px;
-    margin:0;
+    margin: 0;
     width: 100%;
     display: block;
   }
@@ -268,74 +272,74 @@ footer {
   list-style-type: none;
   list-style-position: outside;
   // margin: 5px;
-  padding:0px;
+  padding: 0px;
   border: 1px solid #777;
   border-radius: 5px;
   display: block;
   float: left;
 
-  &.timetofi{
+  &.timetofi {
     width: 45%;
     clear: left;
 
     li {
-      float:left;
+      float: left;
 
-      &:first-child{
+      &:first-child {
         width: 35%;
       }
 
-      &:last-child{
+      &:last-child {
         font-weight: bold;
-        font-size: .9em;
+        font-size: 0.9em;
         border: 0;
       }
     }
   }
 
-  &.changeinfi{
+  &.changeinfi {
     width: 45%;
 
     li {
       float: left;
 
-      &:first-child{
+      &:first-child {
         width: 35%;
       }
 
-      &:last-child{
+      &:last-child {
         font-weight: bold;
-        font-size: .9em;
+        font-size: 0.9em;
         border: 0;
       }
     }
   }
 }
 
-.timetofi_form li{
-    padding:12px;
-    border-bottom:1px solid #eee;
-    position: relative;
-    font-size: 1.0em;
+.timetofi_form li {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  position: relative;
+  font-size: 1em;
 
-    &:first-child{
-      border-bottom:1px solid #777;
-      background-color: $color-primary-4;
-      color: $white;
-    }
+  &:first-child {
+    border-bottom: 1px solid #777;
+    background-color: $color-primary-4;
+    color: $white;
+  }
 }
 
 .timetofi_form label {
-    width:250px;
-    margin-top: 3px;
-    display:inline-block;
-    float:left;
-    padding: 3px;
-    vertical-align: middle;
-    font-size: 0.85em;
+  width: 250px;
+  margin-top: 3px;
+  display: inline-block;
+  float: left;
+  padding: 3px;
+  vertical-align: middle;
+  font-size: 0.85em;
 }
 
-.form_hint{
+.form_hint {
   font-size: 11px;
   background: #d45252;
   border-radius: 3px 3px 3px 3px;
@@ -350,13 +354,13 @@ footer {
 .required_notificaiton {
   font-size: 11px;
   color: #d45252;
-  margin:5px 0 0 0;
+  margin: 5px 0 0 0;
   display: inline;
   float: right;
 }
 
 .form_hint::before {
-  content: "\25C0"; /* left point triangle in escaped unicode */
+  content: '\25C0'; /* left point triangle in escaped unicode */
   color: #d45252;
   position: absolute;
   top: 1px;
@@ -373,48 +377,47 @@ footer {
   color: #28921f; /* change form hint color when valid */
 }
 
-.timetofi_form input, {
+.timetofi_form input {
   clear: right;
   margin-right: 1px;
-  height:20px;
-  width:80px;
-  padding:6px 8px;
+  height: 20px;
+  width: 80px;
+  padding: 6px 8px;
   text-align: center;
   padding-right: 3px;
-  border:1px solid #aaa;
+  border: 1px solid #aaa;
   box-shadow: 0px 0px 3px #ccc, 0 10px 15px #eee inset;
-  border-radius:2px;
-  -moz-transition: padding .25s;
-  -webkit-transition: padding .25s;
-  -o-transition: padding .25s;
-  transition: padding .25s;
+  border-radius: 2px;
+  -moz-transition: padding 0.25s;
+  -webkit-transition: padding 0.25s;
+  -o-transition: padding 0.25s;
+  transition: padding 0.25s;
 }
 
 .timetofi_form input:focus {
-    background: #fff;
-    border:1px solid #555;
-    box-shadow: 0 0 3px #aaa;
-    padding-right: 5px;
+  background: #fff;
+  border: 1px solid #555;
+  box-shadow: 0 0 3px #aaa;
+  padding-right: 5px;
 }
 
 .timetofi_form input:focus:invalid {
   /*When a flied is considered invalid by a browers.*/
-  background: #fff url(images/invalid.png) no-repeat 98% center;
+  // background: #fff url(images/invalid.png) no-repeat 98% center;
   box-shadow: 0 0 5px #d45252;
   border-color: #b03535;
 }
 
 .timetofi_form input:focus:valid {
   /*When a field is considered valid by the browser */
-  background: #fff url(images/valid.png) no-repeat 98% center;
+  // background: #fff url(images/valid.png) no-repeat 98% center;
   box-shadow: 0 0 5px #5cd053;
   border-color: #28921f;
 }
 
 .timetofi_form input:required {
-  background: #fff url(images/red_asterisk.png) no-repeat 98% center;
+  // background: #fff url(images/red_asterisk.png) no-repeat 98% center;
 } /* Figure out how to add this image to be called here.*/
-
 
 /* About Page */
 .about_page {
@@ -426,27 +429,27 @@ footer {
   margin: 20px auto 20px auto;
   padding: 10px 0 10px 0;
 
-  h3{
-    border-bottom:1px solid #777;
+  h3 {
+    border-bottom: 1px solid #777;
     font-size: 1.5em;
     background-color: $color-primary-4;
     color: $white;
     padding: 10px 0px 10px 10px;
     margin-left: 20px;
     border-radius: 3px;
-
   }
 
   h4 {
     font-size: 1.2em;
   }
-  h4, p{
+  h4,
+  p {
     padding-left: 30px;
   }
-  ul{
+  ul {
     padding-left: 60px;
   }
-  li{
+  li {
     padding-right: 60px;
   }
 }
