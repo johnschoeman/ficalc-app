@@ -2,8 +2,9 @@ source 'https://rubygems.org'
 
 ruby                '2.5.1'
 
-gem 'rails',        '5.1.6'
+gem 'rails',        '5.2.1'
 
+gem 'bootsnap'
 gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'pg'
