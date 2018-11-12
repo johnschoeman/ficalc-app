@@ -1,0 +1,55 @@
+version: 2
+jobs:
+  build:
+    parallelism: 3
+    working_directory: ~/ficalc-app
+    docker:
+    - image: circleci/ruby:2.5.1-node-browsers-legacy
+      environment:
+          RAILS_ENV: test
+          PGHOST: 127.0.0.1
+          PGUSER: root
+    - image: circleci/postgres:9.6.9-alpine-ram
+      environment:
+        POSTGRES_USER: root
+        POSTGRES_DB: FiCalcApp_test
+
+    steps:
+    - checkout
+
+    # Restore bundle cache
+    - restore_cache:
+        keys:
+          - rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
+          - rails-demo-bundle-v2-
+
+    - run:
+        name: Bundle Install
+        command: bundle check || bundle install
+
+    # Store bundle cache
+    - save_cache:
+        key: rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
+        paths:
+          - vendor/bundle
+
+    # Database setup
+    - run:
+        name: Wait for DB
+        command: dockerize -wait tcp://localhost:5432 -timeout 1m
+
+    - run:
+        name: Database setup
+        command: bin/rails db:schema:load --trace
+
+    # Run rspec in parallel
+    - run: |
+        bundle exec rspec --profile 10 \
+                          --format RspecJunitFormatter \
+                          --out test_results/rspec.xml \
+                          --format progress \
+                          $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
+
+    # Save test results for timing analysis
+    - store_test_results:
+        path: test_results
