@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_11_161710) do
+ActiveRecord::Schema.define(version: 2018_11_24_233745) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "financial_data", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.integer "month", null: false
+    t.integer "year", null: false
+    t.integer "income", null: false
+    t.integer "expenses", null: false
+    t.integer "net_worth", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "month", "year"], name: "index_financial_data_on_user_id_and_month_and_year", unique: true
+    t.index ["user_id"], name: "index_financial_data_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.datetime "created_at", null: false

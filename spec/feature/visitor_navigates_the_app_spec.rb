@@ -4,7 +4,7 @@ RSpec.feature "User navigates the app" do
   scenario "user visits about, contact, then root" do
     visit root_path
     expect(page).to have_content("Time To FI Calculator")
-    within(".navbar") do
+    within(".footer") do
       click_on("About")
     end
     expect(page).to have_content("What Is FI?")

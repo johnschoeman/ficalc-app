@@ -80,6 +80,8 @@ GEM
       activemodel
     erubi (1.7.1)
     execjs (2.7.0)
+    factory_bot (4.11.1)
+      activesupport (>= 3.0.0)
     faker (1.9.1)
       i18n (>= 0.7)
     ffi (1.9.25)
@@ -214,6 +216,9 @@ GEM
     shellany (0.0.1)
     shoulda-matchers (3.1.2)
       activesupport (>= 4.0.0)
+    simple_form (4.1.0)
+      actionpack (>= 5.0)
+      activemodel (>= 5.0)
     spring (1.7.2)
     spring-watcher-listen (2.0.0)
       listen (>= 2.7, < 4.0)
@@ -253,6 +258,7 @@ DEPENDENCIES
   clearance
   coffee-rails
   database_cleaner
+  factory_bot
   faker
   guard (= 2.13.0)
   guard-minitest (= 2.4.4)
@@ -270,6 +276,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails
   shoulda-matchers
+  simple_form
   spring (= 1.7.2)
   spring-watcher-listen (= 2.0.0)
   turbolinks

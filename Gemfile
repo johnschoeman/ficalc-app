@@ -11,6 +11,7 @@ gem 'jquery-rails'
 gem 'pg'
 gem 'puma'
 gem 'sass-rails'
+gem 'simple_form'
 gem 'turbolinks'
 gem 'uglifier'
 
@@ -23,6 +24,7 @@ end
 
 group :test do
   gem 'database_cleaner'
+  gem 'factory_bot'
   gem 'guard',                    '2.13.0'
   gem 'guard-minitest',           '2.4.4'
   gem 'launchy'

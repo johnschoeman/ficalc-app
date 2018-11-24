@@ -1,0 +1,9 @@
+Financial Data Index
+
+<ul>
+<% financial_data.each do |datum| %>
+  <li><%= datum.to_s %>
+<% end %>
+</ul>
+
+<%= link_to "New Financial Data Entry", new_financial_datum_path %>

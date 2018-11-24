@@ -1,0 +1,44 @@
+require 'rails_helper'
+
+RSpec.describe FinancialDatum, type: :model do
+  describe "validations" do
+    it { should belong_to :user }
+    it { should validate_presence_of :month }
+    it { should validate_presence_of :year }
+    it { should validate_presence_of :income }
+    it { should validate_presence_of :expenses }
+    it { should validate_presence_of :net_worth }
+    it do
+      should validate_uniqueness_of(:user_id).
+        scoped_to(:year, :month).
+        case_insensitive.
+        with_message("You can only have one entry per month.")
+    end
+    it "only allows years within financial history" do
+      user = create(:user)
+      current_year = Time.zone.now.year
+      valid_data = [user, "january", current_year, 1000, 500, 10_000]
+      year_in_future = [user, "january", current_year + 1, 1000, 500, 10_000]
+      year_in_past = [user, "january", 1969, 1000, 500, 10_000]
+
+      valid_datum = FinancialDatum.build_for(*valid_data)
+      invalid_datum_one = FinancialDatum.build_for(*year_in_future)
+      invalid_datum_two = FinancialDatum.build_for(*year_in_past)
+
+      expect(valid_datum).to be_valid
+      expect(invalid_datum_one).not_to be_valid
+      expect(invalid_datum_two).not_to be_valid
+    end
+  end
+
+  describe ".build_for" do
+    it "builds a model instance for a provided user" do
+      user = create(:user)
+
+      datum = FinancialDatum.build_for(user)
+
+      expect(datum).to be_valid
+      expect(datum.user.email).to eq user.email
+    end
+  end
+end

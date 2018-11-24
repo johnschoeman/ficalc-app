@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   delete '/sign_out' => 'clearance/sessions#destroy', as: 'sign_out'
   get '/sign_up' => 'clearance/users#new', as: 'sign_up'
 
+  resources :financial_data, only: [:index, :new, :create, :edit, :destory]
+
   get '/glossary', to: 'fi_calc#glossary'
   get '/about',    to: 'fi_calc#about'
   get '/contact',  to: 'fi_calc#contact'

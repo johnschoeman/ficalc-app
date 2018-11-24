@@ -1,0 +1,8 @@
+<%= simple_form_for financial_datum do |f| %>
+  <%= f.input :month, collection: FinancialDatum::MONTHS %>
+  <%= f.input :year %>
+  <%= f.input :income %>
+  <%= f.input :expenses %>
+  <%= f.input :net_worth, label: "Net Worth" %>
+  <%= f.submit %>
+<% end %>
