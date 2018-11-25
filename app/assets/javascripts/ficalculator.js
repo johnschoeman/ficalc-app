@@ -1,7 +1,12 @@
-// $(document).on('turbolinks:load', function() {
-//   populateForm();
-//   updateDisplay();
-// });
+document.addEventListener('DOMContentLoaded', function() {
+  populateForm();
+  updateDisplay();
+
+  const timeToFIInputs = document.querySelectorAll('.time-to-fi-input');
+  Array.from(timeToFIInputs).forEach(el => {
+    el.addEventListener('change', updateDisplay);
+  });
+});
 
 //Display Functions to update html page.
 function updateDisplay() {
