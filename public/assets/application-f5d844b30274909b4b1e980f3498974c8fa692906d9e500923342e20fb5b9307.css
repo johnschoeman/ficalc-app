@@ -1,0 +1,518 @@
+/* mixins, variables, etc. */
+/* Main Primary color */
+/* line 13, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+:-moz-placeholder {
+  color: blue;
+}
+
+/* line 17, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+::-webkit-input-placeholder {
+  color: blue;
+}
+
+/* line 21, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+::-webkit-validation-bubble-message {
+  padding: 1em;
+}
+
+/* universal */
+/* line 27, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+body {
+  /*padding-top: 60px;*/
+  font: 14px/21px 'Verdana', 'Geneva', sans-serif;
+}
+
+/* line 32, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+section {
+  overflow: auto;
+}
+
+/* line 36, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+textarea {
+  resize: vertical;
+}
+
+/* line 40, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+.center {
+  text-align: center;
+}
+
+/* line 44, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+.center h1 {
+  margin-bottom: 10px;
+}
+
+/* line 48, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+*:focus {
+  outline: none;
+}
+
+/* typography */
+/* line 53, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1;
+}
+
+/* line 62, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* line 69, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+h2 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: #777;
+}
+
+/* line 78, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+p {
+  font-size: 1.1em;
+  line-height: 1.5em;
+  width: 90%;
+}
+
+/* line 84, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+ul {
+  font-size: 1.1em;
+}
+
+/* line 88, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+i {
+  line-height: 0.5em;
+  font-size: 18px;
+  color: #444;
+  padding: 5px;
+  vertical-align: middle;
+}
+
+/* line 96, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+.material-icons.md-18 {
+  font-size: 18px;
+}
+
+/* Charts */
+/* line 101, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+.chart {
+  display: inline-block;
+  padding: 5px;
+  float: left;
+  width: 100%;
+  height: 400px;
+}
+
+/* header */
+/* line 111, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+.page_header {
+  color: #496117;
+}
+/* line 113, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+.page_header h1 {
+  margin-bottom: 5px;
+}
+/* line 116, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+.page_header p {
+  padding-bottom: 30px;
+  font-size: 1em;
+}
+
+/* line 122, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+header {
+  font-size: 1em;
+  border-radius: 1px;
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  height: 50px;
+  border-top: 1px solid #eaeaea;
+  border-bottom: 1px solid #ababab;
+  color: #000000;
+  float: left;
+  background-color: #e7eddd;
+  margin-top: -20px;
+  padding-top: 20px;
+  padding-bottom: 5px;
+}
+/* line 138, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+header a {
+  color: #496117;
+  text-decoration: none;
+  padding: 5px;
+}
+/* line 143, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+header a:hover {
+  color: #fafafa;
+  background-color: #647e30;
+  border-radius: 4px;
+}
+/* line 150, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+header small {
+  float: left;
+}
+/* line 154, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+header ul {
+  float: right;
+  list-style: none;
+}
+/* line 158, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+header ul li {
+  float: left;
+  margin-left: 15px;
+}
+/* line 162, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+header ul li:last-child {
+  margin-right: 40px;
+}
+
+/* line 169, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+#logo {
+  float: left;
+  text-decoration: none;
+  margin-right: 10px;
+  font-size: 2.1em;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  padding-left: 20px;
+  font-weight: bold;
+}
+/* line 180, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+#logo:hover {
+  text-decoration: none;
+  color: #496117;
+  background-color: #e7eddd;
+}
+
+/* line 187, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+.header_buffer {
+  width: 100%;
+  height: 100px;
+  position: relative;
+  display: inline-block;
+}
+
+/* footer */
+/* line 195, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid #eaeaea;
+  color: #777;
+  background-color: #eaeaea;
+  display: block;
+  width: 100%;
+}
+/* line 204, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+footer a {
+  color: #555;
+  text-decoration: none;
+}
+/* line 208, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+footer a:hover {
+  color: #222;
+  text-decoration: underline;
+}
+/* line 214, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+footer small {
+  float: left;
+}
+/* line 218, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+footer ul {
+  float: right;
+  list-style: none;
+}
+/* line 222, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+footer ul li {
+  float: left;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+/* line 230, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+.footer_buffer {
+  width: 100%;
+  height: 0px;
+  position: relative;
+  display: inline-block;
+}
+
+/* Object Alignment */
+/* line 238, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+.block {
+  text-align: left;
+}
+
+/* line 241, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+.center {
+  margin: 5px auto 10px auto;
+}
+
+/* line 244, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+.left {
+  margin: 5px 2% 10px 3%;
+}
+
+/* line 247, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+.right {
+  margin: 5px 1% 10px 2%;
+}
+
+/* Forms */
+/* line 252, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+.form_header {
+  margin-top: 10px;
+}
+/* line 255, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+.form_header h1 {
+  color: #829b4e;
+  border-radius: 5px;
+}
+
+/* line 262, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+.timetofi_form h2 {
+  padding: 10px;
+  margin: 0;
+  width: 100%;
+  display: block;
+}
+
+/* line 270, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+.timetofi_form ul {
+  width: 30%;
+  height: auto;
+  list-style-type: none;
+  list-style-position: outside;
+  padding: 0px;
+  border: 1px solid #777;
+  border-radius: 5px;
+  display: block;
+  float: left;
+}
+/* line 282, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+.timetofi_form ul.timetofi {
+  width: 45%;
+  clear: left;
+}
+/* line 286, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+.timetofi_form ul.timetofi li {
+  float: left;
+}
+/* line 289, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+.timetofi_form ul.timetofi li:first-child {
+  width: 35%;
+}
+/* line 293, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+.timetofi_form ul.timetofi li:last-child {
+  font-weight: bold;
+  font-size: 0.9em;
+  border: 0;
+}
+/* line 301, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+.timetofi_form ul.changeinfi {
+  width: 45%;
+}
+/* line 304, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+.timetofi_form ul.changeinfi li {
+  float: left;
+}
+/* line 307, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+.timetofi_form ul.changeinfi li:first-child {
+  width: 35%;
+}
+/* line 311, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+.timetofi_form ul.changeinfi li:last-child {
+  font-weight: bold;
+  font-size: 0.9em;
+  border: 0;
+}
+
+/* line 320, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+.timetofi_form li {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  position: relative;
+  font-size: 1em;
+}
+/* line 326, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+.timetofi_form li:first-child {
+  border-bottom: 1px solid #777;
+  background-color: #496117;
+  color: #fafafa;
+}
+
+/* line 333, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+.timetofi_form label {
+  width: 250px;
+  margin-top: 3px;
+  display: inline-block;
+  float: left;
+  padding: 3px;
+  vertical-align: middle;
+  font-size: 0.85em;
+}
+
+/* line 343, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+.form_hint {
+  font-size: 11px;
+  background: #d45252;
+  border-radius: 3px 3px 3px 3px;
+  color: white;
+  margin-left: 8px;
+  padding: 1px 6px;
+  z-index: 999;
+  /* hints stay above all other elements */
+  position: absolute;
+  /* allows proper formatting if hint is two lines */
+  display: none;
+}
+
+/* line 355, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+.required_notificaiton {
+  font-size: 11px;
+  color: #d45252;
+  margin: 5px 0 0 0;
+  display: inline;
+  float: right;
+}
+
+/* line 363, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+.form_hint::before {
+  content: '\25C0';
+  /* left point triangle in escaped unicode */
+  color: #d45252;
+  position: absolute;
+  top: 1px;
+  left: -6px;
+}
+
+/* line 371, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+.timetofi_form input:focus + .form_hint {
+  display: inline;
+}
+
+/* line 374, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+.timetofi_form input:required:valid + .form_hint {
+  background: #28921f;
+  /* change form hint color when valid */
+}
+
+/* line 377, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+.timetofi_form input:required:valid + .form_hint::before {
+  color: #28921f;
+  /* change form hint color when valid */
+}
+
+/* line 381, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+.timetofi_form input {
+  clear: right;
+  margin-right: 1px;
+  height: 20px;
+  width: 80px;
+  padding: 6px 8px;
+  text-align: center;
+  padding-right: 3px;
+  border: 1px solid #aaa;
+  box-shadow: 0px 0px 3px #ccc, 0 10px 15px #eee inset;
+  border-radius: 2px;
+  -moz-transition: padding 0.25s;
+  -webkit-transition: padding 0.25s;
+  -o-transition: padding 0.25s;
+  transition: padding 0.25s;
+}
+
+/* line 398, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+.timetofi_form input:focus {
+  background: #fff;
+  border: 1px solid #555;
+  box-shadow: 0 0 3px #aaa;
+  padding-right: 5px;
+}
+
+/* line 405, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+.timetofi_form input:focus:invalid {
+  /*When a flied is considered invalid by a browers.*/
+  box-shadow: 0 0 5px #d45252;
+  border-color: #b03535;
+}
+
+/* line 412, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+.timetofi_form input:focus:valid {
+  /*When a field is considered valid by the browser */
+  box-shadow: 0 0 5px #5cd053;
+  border-color: #28921f;
+}
+
+/* Figure out how to add this image to be called here.*/
+/* About Page */
+/* line 424, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+.about_page {
+  color: #496117;
+}
+
+/* line 428, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+.text {
+  width: 80%;
+  margin: 20px auto 20px auto;
+  padding: 10px 0 10px 0;
+}
+/* line 433, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+.text h3 {
+  border-bottom: 1px solid #777;
+  font-size: 1.5em;
+  background-color: #496117;
+  color: #fafafa;
+  padding: 10px 0px 10px 10px;
+  margin-left: 20px;
+  border-radius: 3px;
+}
+/* line 443, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+.text h4 {
+  font-size: 1.2em;
+}
+/* line 446, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+.text h4,
+.text p {
+  padding-left: 30px;
+}
+/* line 450, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+.text ul {
+  padding-left: 60px;
+}
+/* line 453, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/custom.scss */
+.text li {
+  padding-right: 60px;
+}
+/* titles for labels */
+/* line 3, /Users/johnschoeman/workspace/ficalc-app/app/assets/stylesheets/timetofi.scss */
+#growth-rate-label {
+  title: "growth rate title";
+}
+
+/**/
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+
+ */
+

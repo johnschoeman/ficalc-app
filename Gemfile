@@ -12,7 +12,6 @@ gem 'pg'
 gem 'puma'
 gem 'sass-rails'
 gem 'simple_form'
-gem 'turbolinks'
 gem 'uglifier'
 
 group :development, :test do

@@ -1,14 +1,14 @@
 <% provide(:title, "TimeToFi") %>
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-90319815-1', 'auto');
-  ga('send', 'pageview');
-</script>
+    ga('create', 'UA-90319815-1', 'auto');
+    ga('send', 'pageview');
+  </script>
 
   <div class="page_header">
     <h1>Time To FI Calculator</h1>
@@ -25,26 +25,24 @@
         <li>
           <label>Growth Rate (%)
             <i class="material-icons md-18" title="The rate at which you expect your investments to grow.">info_outline</i></label>
-          <input type="number" id="growth-rate" name="growth-rate" step="0.1"
-                  onchange="updateDisplay()" value="7.0" required/>
+          <input class="time-to-fi-input" type="number" id="growth-rate" name="growth-rate" step="0.1" value="7.0" required/>
         </li>
         <li>
           <label>Inflation (%)
             <i class="material-icons md-18" title="The rate at which you expect prices to rise.">info_outline</i></label>
-          <input type="number" id="inflation" name="inflation" step="0.1" value="2.0"
-                  onchange="updateDisplay()" required/>
+          <input class="time-to-fi-input" type="number" id="inflation" name="inflation" step="0.1" value="2.0"
+                 required/>
         </li>
         <li>
           <label>Raises (%)
             <i class="material-icons md-18" title="The rate at which you expect your income to rise during employment.">info_outline</i></label>
-          <input type="number" id="raises" name="raises" step="0.1"
-                  onchange="updateDisplay()" value="5.0">
+          <input class="time-to-fi-input" type="number" id="raises" name="raises" step="0.1" value="5.0">
         <li>
           <label>Withdrawl Rate (%)
             <i class="material-icons md-18" title="The percent of your investments you are willing to withdraw per year during retirement.">info_outline</i></label>
-          <input type="number" id="withdrawl-rate"
+          <input class="time-to-fi-input" type="number" id="withdrawl-rate"
                     name="withdrawl-rate" step="0.1" min="0" value="4.0"
-                    onchange="updateDisplay()" required/>
+                    required/>
         </li>
       </ul>
       <ul class="block center">
@@ -54,20 +52,17 @@
         <li>
           <label>Monthly Expenses ($)
             <i class="material-icons md-18"  title="How much you expect to spend per month. This will automatically adjust for inflation.">info_outline</i></label>
-          <input type="number"  id="month-expenses" name="month-expenses" value="3000"
-                  onchange="updateDisplay()" required/>
+          <input class="time-to-fi-input" type="number"  id="month-expenses" name="month-expenses" value="3000" required/>
         </li>
         <li>
           <label>Monthly Income ($)
             <i class="material-icons md-18" title="How much you earn per month on aveage. This will automatically increase based on raises.">info_outline</i></label>
-          <input type="number"  id="month-income" name="month-income" value="5000"
-                onchange="updateDisplay()" required/>
+          <input class="time-to-fi-input" type="number"  id="month-income" name="month-income" value="5000" required/>
         </li>
         <li>
           <label>Net Worth ($)
             <i class="material-icons md-18" title="Your current amount of assets that you are able to live off of during retirement.  A negative number represents overall debt.">info_outline</i></label>
-          <input type="number"  id="net-worth" name="net-worth" value="50000"
-                onchange="updateDisplay()" required/>
+          <input class="time-to-fi-input" type="number"  id="net-worth" name="net-worth" value="50000" required/>
         </li>
       </ul>
 
@@ -79,20 +74,20 @@
           <label>Change in Monthly Expenses ($)
             <i class="material-icons md-18" title="Compare a change in monthly expenses. A positive number means increased expenses, a negative number means decreased expenses.">info_outline</i>
           </label>
-          <input type="number" id="change-in-monthly-expenses"
-                name="change-in-monthly-expenses" value="0" onchange="updateDisplay()"/>
+          <input class="time-to-fi-input" type="number" id="change-in-monthly-expenses"
+                name="change-in-monthly-expenses" value="0" />
         </li>
         <li>
           <label title="Compare a change in monthly income.  A positive number means an increased income, a negative number means a decreased income.">Change in Monthly Income ($)<i class="material-icons md-18">info_outline</i></label>
-          <input type="number" id="change-in-monthly-income"
-                name="change-in-monthly-income" value="0" onchange="updateDisplay()"/>
+          <input class="time-to-fi-input" type="number" id="change-in-monthly-income"
+                name="change-in-monthly-income" value="0" />
         </li>
         <li>
           <label>Change in Net Worth ($)
             <i class="material-icons md-18" title="Compare a change in your net worth.  A positive number means an instant increase in net worth, e.g. selling a posession for cash.  A negative number means an instant decrease in net worth, e.g. purchasing an expensive item.">info_outline</i>
           </label>
-          <input type="number" id="change-in-net-worth"
-                name="change-in-net-worth" value="0" onchange="updateDisplay()"/>
+          <input class="time-to-fi-input" type="number" id="change-in-net-worth"
+                name="change-in-net-worth" value="0" />
         </li>
       </ul>
     </div>
