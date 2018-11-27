@@ -31,6 +31,22 @@ RSpec.describe FinancialDatum, type: :model do
     end
   end
 
+  describe ".get_data_for" do
+    it "returns all the financial_data for a user ordered chronologically" do
+      user = create(:user)
+      datum_one =
+        create(:financial_datum, user: user, year: 2018, month: "march")
+      datum_two =
+        create(:financial_datum, user: user, year: 2018, month: "july")
+      datum_three =
+        create(:financial_datum, user: user, year: 2017, month: "june")
+
+      results = FinancialDatum.get_data_for(user)
+
+      expect(results).to eq [datum_three, datum_one, datum_two]
+    end
+  end
+
   describe ".build_for" do
     it "builds a model instance for a provided user" do
       user = create(:user)

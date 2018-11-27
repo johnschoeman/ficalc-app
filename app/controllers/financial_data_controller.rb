@@ -2,7 +2,7 @@ class FinancialDataController < ApplicationController
   before_action :require_login
 
   def index
-    financial_data = current_user.financial_data
+    financial_data = FinancialDatum.get_data_for(current_user)
 
     render locals: { financial_data: financial_data }
   end

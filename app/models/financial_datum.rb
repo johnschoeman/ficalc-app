@@ -16,6 +16,10 @@ class FinancialDatum < ApplicationRecord
     self.month = month.try(:downcase)
   end
 
+  def self.get_data_for(user)
+    user.financial_data.order(:year, :month)
+  end
+
   def self.build_for(user, month = "january", year = Time.zone.now.year, income = 500, expenses = 200, net_worth = 10_000)
     new(
       user_id: user.id,
