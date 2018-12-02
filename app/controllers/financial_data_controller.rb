@@ -43,6 +43,18 @@ class FinancialDataController < ApplicationController
     end
   end
 
+  def destroy
+    datum = FinancialDatum.find(params[:id])
+
+    if datum && datum.user == current_user
+      datum.destroy
+      flash[:success] = "Datum deleted"
+    else
+      flash[:error] = "Failed to delete datum"
+    end
+    redirect_to financial_data_path
+  end
+
   private
 
   def financial_datum_params

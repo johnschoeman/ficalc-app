@@ -15,7 +15,7 @@
   <body>
     <div id="flash">
       <% flash.each do |key, value| %>
-        <div class="flash" <%= key %><%= value %></div>
+        <div class="flash" <%= key %> <%= value %></div>
       <% end %>
     </div>
     <%= render "layouts/header" %>
