@@ -9,6 +9,8 @@ $color-primary-2: #a4bb75;
 $color-primary-3: #647e30;
 $color-primary-4: #496117;
 
+$main-text-color: #0E0E0E;
+
 :-moz-placeholder {
   color: blue;
 }
@@ -451,5 +453,21 @@ footer {
   }
   li {
     padding-right: 60px;
+  }
+}
+
+/* layout */
+
+#flash {
+  margin-top: - 30px;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .flash {
+    font-size: 1.3em;
+    color: $main-text-color;
   }
 }
