@@ -1,0 +1,6 @@
+Edit financial datum: <%= financial_datum.id %>
+
+<% if financial_datum.errors %>
+  <%= render "errors", errors: financial_datum.errors.full_messages %>
+<% end %>
+<%= render "form", financial_datum: financial_datum %>

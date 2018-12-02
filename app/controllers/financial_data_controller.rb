@@ -19,7 +19,27 @@ class FinancialDataController < ApplicationController
     if datum.save
       redirect_to financial_data_path
     else
-      render :new, locals: { errors: datum.errors.full_messages }
+      render :new, locals: { financial_datum: datum }
+    end
+  end
+
+  def edit
+    datum = FinancialDatum.find(params[:id])
+
+    if datum
+      render locals: { financial_datum: datum }
+    else
+      redirect_to financial_data_path
+    end
+  end
+
+  def update
+    datum = FinancialDatum.find(params[:id])
+
+    if datum.update(financial_datum_params)
+      redirect_to financial_data_path
+    else
+      render :edit, locals: { financial_datum: datum }
     end
   end
 

@@ -2,7 +2,7 @@ Financial Data Index
 
 <ul>
 <% financial_data.each do |datum| %>
-  <li><%= datum.to_s %>
+  <li><%= datum.to_s %> <%= link_to "Edit", edit_financial_datum_url(datum) %></li>
 <% end %>
 </ul>
 

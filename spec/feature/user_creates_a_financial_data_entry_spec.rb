@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'clearance/rspec'
 
 RSpec.feature "User creates financial data entry" do
   scenario "user enters data via the index page" do
