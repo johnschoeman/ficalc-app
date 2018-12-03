@@ -1,7 +1,7 @@
 class FinancialDatum < ApplicationRecord
   MONTHS =
     %i[
-      january february march april june july august september november december
+      january february march april may june july august september october november december
     ].freeze
 
   validates_presence_of :month, :year, :income, :expenses, :net_worth
@@ -29,6 +29,22 @@ class FinancialDatum < ApplicationRecord
       expenses: expenses,
       net_worth: net_worth
     )
+  end
+
+  def self.build_for_time_range(
+    user,
+    start_month = 0,
+    start_year = 2016,
+    end_month = 11,
+    end_year = 2018
+  )
+    data = []
+    (start_year..end_year).each do |year|
+      (start_month..end_month).each do |month|
+        data << build_for(user, MONTHS[month], year)
+      end
+    end
+    data
   end
 
   def percent_fi
