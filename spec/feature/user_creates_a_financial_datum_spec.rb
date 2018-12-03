@@ -8,7 +8,6 @@ RSpec.feature "User creates financial data entry" do
 
     visit root_path(as: user)
     click_link "Financial Data"
-    expect_page_to_have_financial_data_for(user)
 
     click_on "New Financial Data Entry"
     select "january", from: "financial_datum_month"
@@ -18,16 +17,9 @@ RSpec.feature "User creates financial data entry" do
     fill_in "Net Worth", with: 100_000
     click_on "Create Financial datum"
 
+    new_datum = FinancialDatum.last
     expect(page).to have_content "Financial Data Index"
-    expect(page).to have_content "january 2017 $5000 $3000 $100000"
-    expect(FinancialDatum.last.income).to eq 5000
-  end
-end
-
-def expect_page_to_have_financial_data_for(user)
-  user.financial_data.each do |datum|
-    %i(month year income expenses net_worth).each do |attribute|
-      expect(page).to have_content(datum.send(attribute).to_s)
-    end
+    expect(page).to have_selector(:id, "financial-datum-row-#{new_datum.id}")
+    expect(new_datum.income).to eq 5000
   end
 end

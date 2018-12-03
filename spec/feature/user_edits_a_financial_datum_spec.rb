@@ -16,9 +16,12 @@ RSpec.feature "User edits a financial datum" do
     fill_in "Net Worth", with: 100_000
     click_on "Update Financial datum"
 
+    edited_datum = FinancialDatum.last
     expect(page).to have_content "Financial Data Index"
-    expect(page).to have_content "january 2017 $5000 $3000 $100000"
-    expect(page).not_to have_content old_datum.to_s
-    expect(FinancialDatum.last.income).to eq 5000
+    expect(page).to have_selector(:id, "financial-datum-row-#{edited_datum.id}")
+    %w(2017 5000 3000 100000).each do |text|
+      expect(page).to have_content(text)
+    end
+    expect(edited_datum.income).to eq 5000
   end
 end

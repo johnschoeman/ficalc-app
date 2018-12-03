@@ -1,13 +1,24 @@
 Financial Data Index
 
-<ul>
+<table>
+  <thead>
+    <th>Month</th>
+    <th>Year</th>
+    <th>Income</th>
+    <th>Expenses</th>
+    <th>Net Worth</th>
+  </thead>
 <% financial_data.each do |datum| %>
-  <li>
-    <%= datum.to_s %>
-    <%= link_to "Edit", edit_financial_datum_url(datum) %>
-    <%= link_to "Delete", financial_datum_url(datum), method: :delete %>
-  </li>
+  <tr id="financial-datum-row-<%= datum.id %>">
+    <td><%= datum.month %></td>
+    <td><%= datum.year %></td>
+    <td><%= datum.income %></td>
+    <td><%= datum.expenses %></td>
+    <td><%= datum.net_worth %></td>
+    <td><%= link_to "Edit", edit_financial_datum_url(datum) %></td>
+    <td><%= link_to "Delete", financial_datum_url(datum), method: :delete %></td>
+  </tr>
 <% end %>
-</ul>
+</table>
 
 <%= link_to "New Financial Data Entry", new_financial_datum_path %>
