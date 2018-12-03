@@ -78,5 +78,16 @@ RSpec.describe FinancialDatum, type: :model do
         expect(result).to eq expected_result
       end
     end
+
+    context "expenses is zero" do
+      it "returns 1.0" do
+        datum = build_stubbed(:financial_datum, expenses: 0)
+        expected_result = 1.0
+
+        result = datum.percent_fi
+
+        expect(result).to eq expected_result
+      end
+    end
   end
 end

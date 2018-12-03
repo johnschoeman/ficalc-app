@@ -49,8 +49,12 @@ class FinancialDatum < ApplicationRecord
 
   def percent_fi
     withdraw_rate_multiplier = 300 # 0.04withdraw_rate/ 12months
-    percent_fi = net_worth / (withdraw_rate_multiplier * expenses).to_f
-    [percent_fi, 1.0].min
+    if expenses.positive? && withdraw_rate_multiplier.positive?
+      percent_fi = net_worth / (withdraw_rate_multiplier * expenses).to_f
+      [percent_fi, 1.0].min
+    else
+      1.0
+    end
   end
 
   def year_is_within_financial_history_range
