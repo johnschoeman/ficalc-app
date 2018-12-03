@@ -7,6 +7,7 @@ Financial Data Index
     <th>Income</th>
     <th>Expenses</th>
     <th>Net Worth</th>
+    <th>%FI</th>
   </thead>
 <% financial_data.each do |datum| %>
   <tr id="financial-datum-row-<%= datum.id %>">
@@ -15,6 +16,7 @@ Financial Data Index
     <td><%= datum.income %></td>
     <td><%= datum.expenses %></td>
     <td><%= datum.net_worth %></td>
+    <td><%= "%.2f" % datum.percent_fi %></td>
     <td><%= link_to "Edit", edit_financial_datum_url(datum) %></td>
     <td><%= link_to "Delete", financial_datum_url(datum), method: :delete %></td>
   </tr>

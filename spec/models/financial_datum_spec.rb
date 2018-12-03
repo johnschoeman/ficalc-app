@@ -57,4 +57,26 @@ RSpec.describe FinancialDatum, type: :model do
       expect(datum.user.email).to eq user.email
     end
   end
+
+  describe "#percent_fi" do
+    it "returns the percent fi for the datum" do
+      datum = build_stubbed(:financial_datum, expenses: 500, net_worth: 75_000)
+      expected_result = 0.5
+
+      result = datum.percent_fi
+
+      expect(result).to eq expected_result
+    end
+
+    context "the datum is over 100% fi" do
+      it "returns 1.0" do
+        datum = build_stubbed(:financial_datum, expenses: 1, net_worth: 100_000)
+        expected_result = 1.0
+
+        result = datum.percent_fi
+
+        expect(result).to eq expected_result
+      end
+    end
+  end
 end

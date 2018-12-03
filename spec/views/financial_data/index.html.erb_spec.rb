@@ -14,6 +14,16 @@ RSpec.describe "financial_data/index.html.erb" do
 
       expect_rendered_to_have_table_row_for(financial_data)
     end
+
+    it "renders the %FI number" do
+      datum = build_stubbed(:financial_datum)
+
+      render template: "financial_data/index.html.erb",
+             locals: { financial_data: [datum] }
+
+      expect(rendered).to have_content("%FI")
+      expect(rendered).to have_content("%.2f" % datum.percent_fi)
+    end
   end
 end
 

@@ -31,8 +31,10 @@ class FinancialDatum < ApplicationRecord
     )
   end
 
-  def to_s
-    "#{month} #{year} $#{income} $#{expenses} $#{net_worth}"
+  def percent_fi
+    withdraw_rate_multiplier = 300 # 0.04withdraw_rate/ 12months
+    percent_fi = net_worth / (withdraw_rate_multiplier * expenses).to_f
+    [percent_fi, 1.0].min
   end
 
   def year_is_within_financial_history_range
