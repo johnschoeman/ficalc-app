@@ -57,6 +57,19 @@ class FinancialDatum < ApplicationRecord
     end
   end
 
+  def savings_rate
+    if income.positive?
+      (income - expenses) / income.to_f
+    else
+      0.0
+    end
+  end
+
+  def safe_withdraw_amount
+    withdraw_rate_multiplier = 300
+    net_worth / withdraw_rate_multiplier
+  end
+
   def year_is_within_financial_history_range
     if year && year > current_year
       errors.add(:year, "cannot be in the future")

@@ -8,15 +8,19 @@ Financial Data Index
     <th>Expenses</th>
     <th>Net Worth</th>
     <th>%FI</th>
+    <th>SR</th>
+    <th>4%SW</th>
   </thead>
 <% financial_data.each do |datum| %>
   <tr id="financial-datum-row-<%= datum.id %>">
     <td><%= datum.month %></td>
     <td><%= datum.year %></td>
-    <td><%= datum.income %></td>
-    <td><%= datum.expenses %></td>
-    <td><%= datum.net_worth %></td>
+    <td>$<%= datum.income %></td>
+    <td>$<%= datum.expenses %></td>
+    <td>$<%= datum.net_worth %></td>
     <td><%= "%.2f" % datum.percent_fi %></td>
+    <td><%= "%.2f" % datum.savings_rate %></td>
+    <td>$<%= datum.safe_withdraw_amount %></td>
     <td><%= link_to "Edit", edit_financial_datum_url(datum) %></td>
     <td><%= link_to "Delete", financial_datum_url(datum), method: :delete %></td>
   </tr>

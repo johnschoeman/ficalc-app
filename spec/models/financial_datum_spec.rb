@@ -90,4 +90,37 @@ RSpec.describe FinancialDatum, type: :model do
       end
     end
   end
+
+  describe "#savings_rate" do
+    it "returns the savings rate" do
+      datum = build_stubbed(:financial_datum, expenses: 5, income: 10)
+      expected_result = 0.5
+
+      result = datum.savings_rate
+
+      expect(result).to eq expected_result
+    end
+
+    context "income is 0" do
+      it "returns 0.0" do
+        datum = build_stubbed(:financial_datum, expenses: 5, income: 0)
+        expected_result = 0.0
+
+        result = datum.savings_rate
+
+        expect(result).to eq expected_result
+      end
+    end
+  end
+
+  describe "#safe_withdraw_amount" do
+    it "returns the amount of safewithdraw at 4%" do
+      datum = build_stubbed(:financial_datum, net_worth: 300)
+      expected_result = 1
+
+      result = datum.safe_withdraw_amount
+
+      expect(result).to eq expected_result
+    end
+  end
 end
