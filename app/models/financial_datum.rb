@@ -77,6 +77,14 @@ class FinancialDatum < ApplicationRecord
     end
   end
 
+  def average_expenses
+    previous_data_for_year.average(:expenses).to_f
+  end
+
+  def average_income
+    previous_data_for_year.average(:income).to_f
+  end
+
   def year_is_within_financial_history_range
     if year && year > current_year
       errors.add(:year, "cannot be in the future")
@@ -100,6 +108,13 @@ class FinancialDatum < ApplicationRecord
 
   def current_year
     Time.zone.now.year
+  end
+
+  def previous_data_for_year
+    FinancialDatum.
+      where(user: user).
+      where("date > ? and date <= ?", date - 1.year, date).
+      order(:date)
   end
 
   def previous_datum

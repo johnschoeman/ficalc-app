@@ -4,9 +4,9 @@ RSpec.describe "financial_data/index.html.erb" do
   context "there is a list of financial data" do
     it "renders the data in a table" do
       user = build_stubbed(:user)
-      datum_one = build_stubbed(:financial_datum, user: user)
-      datum_two = build_stubbed(:financial_datum, user: user)
-      datum_three =  build_stubbed(:financial_datum, user: user)
+      datum_one = create(:financial_datum, user: user)
+      datum_two = create(:financial_datum, user: user)
+      datum_three =  create(:financial_datum, user: user)
       financial_data = [datum_one, datum_two, datum_three]
 
       render template: "financial_data/index.html.erb",
@@ -16,7 +16,7 @@ RSpec.describe "financial_data/index.html.erb" do
     end
 
     it "renders the %FI, safe-withdraw-rate, and savings-rate" do
-      datum = build_stubbed(:financial_datum)
+      datum = create(:financial_datum)
 
       render template: "financial_data/index.html.erb",
              locals: { financial_data: [datum] }
@@ -40,6 +40,19 @@ RSpec.describe "financial_data/index.html.erb" do
       expect(rendered).to have_content(datum_two.net_worth_delta)
     end
 
+    it "renders the 12month average for expenses and income" do
+      user = create(:user)
+      data = create_list(:financial_datum, 12, user: user, year: 2018)
+      december_datum = data.select(&:december?).first
+
+      render template: "financial_data/index.html.erb",
+             locals: { financial_data: data }
+
+      expect(rendered).to have_content("12MonthAveExpenses")
+      expect(rendered).to have_content("12MonthAveIncome")
+      expect(rendered).to have_content("%0.f" % december_datum.average_expenses)
+      expect(rendered).to have_content("%0.f" % december_datum.average_income)
+    end
   end
 end
 

@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe FinancialDatum, type: :model do
   describe "validations" do
@@ -146,6 +146,34 @@ RSpec.describe FinancialDatum, type: :model do
 
         expect(result).to be_nil
       end
+    end
+  end
+
+  describe "#average_expenses" do
+    it "returns the 12month average of expenses up to that month" do
+      user = create(:user)
+      data = create_list(:financial_datum, 12, user: user, year: 2018)
+      december_datum = data.select(&:december?).first
+      expected_result =
+        (data.reduce(0) { |acc, d| acc + d.expenses }) / data.length.to_f
+
+      result = december_datum.average_expenses
+
+      expect(result).to eq expected_result
+    end
+  end
+
+  describe "#average_income" do
+    it "returns the 12month average of income up to that month" do
+      user = create(:user)
+      data = create_list(:financial_datum, 12, user: user, year: 2018)
+      december_datum = data.select(&:december?).first
+      expected_result =
+        (data.reduce(0) { |acc, d| acc + d.income }) / data.length.to_f
+
+      result = december_datum.average_income
+
+      expect(result).to eq expected_result
     end
   end
 end

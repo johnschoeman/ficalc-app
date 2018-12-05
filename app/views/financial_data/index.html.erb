@@ -11,6 +11,8 @@ Financial Data Index
     <th>SR</th>
     <th>4%SW</th>
     <th>deltaNW</th>
+    <th>12MonthAveExpenses</th>
+    <th>12MonthAveIncome</th>
   </thead>
   <% financial_data.each do |datum| %>
     <tr id="financial-datum-row-<%= datum.id %>">
@@ -23,6 +25,8 @@ Financial Data Index
       <td><%= "%.2f" % datum.savings_rate %></td>
       <td>$<%= datum.safe_withdraw_amount %></td>
       <td>$<%= datum.net_worth_delta %></td>
+      <td>$<%= "%.0f" % datum.average_expenses %></td>
+      <td>$<%= "%.0f" % datum.average_income %></td>
       <td><%= link_to "Edit", edit_financial_datum_url(datum) %></td>
       <td><%= link_to "Delete", financial_datum_url(datum), method: :delete %></td>
     </tr>

@@ -1,9 +1,7 @@
 FactoryBot.define do
   factory :financial_datum do
     user
-    month {
-      %w[january february march april june july august september november december].sample
-    }
+    sequence(:month) { |n| n % 12 }
     year do
       current_year = Time.zone.now.year
       (2010..current_year).to_a.sample
