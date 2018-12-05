@@ -4,7 +4,7 @@ class FinancialDatum < ApplicationRecord
       january february march april may june july august september october november december
     ].freeze
 
-  validates_presence_of :month, :year, :income, :expenses, :net_worth
+  validates_presence_of :month, :year, :date, :income, :expenses, :net_worth
   validates :user_id, uniqueness: { scope: [:year, :month], message: "You can only have one entry per month." }
   validate :year_is_within_financial_history_range
 
@@ -13,7 +13,8 @@ class FinancialDatum < ApplicationRecord
   enum month: MONTHS
 
   before_validation do
-    self.month = month.try(:downcase)
+    downcase_month
+    create_date_from_month_and_year
   end
 
   def self.get_data_for(user)
@@ -86,6 +87,16 @@ class FinancialDatum < ApplicationRecord
   end
 
   private
+
+  def downcase_month
+    self.month = month.try(:downcase)
+  end
+
+  def create_date_from_month_and_year
+    if year && month
+      self.date = Date.new(year, FinancialDatum.months[month] + 1)
+    end
+  end
 
   def current_year
     Time.zone.now.year
