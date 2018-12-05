@@ -27,7 +27,7 @@ class FinancialDatum < ApplicationRecord
       year: year,
       income: income,
       expenses: expenses,
-      net_worth: net_worth
+      net_worth: net_worth,
     )
   end
 
@@ -70,6 +70,12 @@ class FinancialDatum < ApplicationRecord
     net_worth / withdraw_rate_multiplier
   end
 
+  def net_worth_delta
+    if previous_datum
+      net_worth - previous_datum.net_worth
+    end
+  end
+
   def year_is_within_financial_history_range
     if year && year > current_year
       errors.add(:year, "cannot be in the future")
@@ -83,5 +89,19 @@ class FinancialDatum < ApplicationRecord
 
   def current_year
     Time.zone.now.year
+  end
+
+  def previous_datum
+    prev_month, prev_year = previous_date
+    FinancialDatum.find_by(user: user, month: prev_month, year: prev_year)
+  end
+
+  def previous_date
+    month_idx = FinancialDatum.months[month]
+    if january?
+      [11, year - 1]
+    else
+      [month_idx - 1, year]
+    end
   end
 end

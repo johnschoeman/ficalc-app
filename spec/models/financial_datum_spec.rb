@@ -123,4 +123,29 @@ RSpec.describe FinancialDatum, type: :model do
       expect(result).to eq expected_result
     end
   end
+
+  describe "#net_worth_delta" do
+    it "returns the delta in networth from last month" do
+      user = create(:user)
+      datum_one =
+        create(:financial_datum, user: user, month: "january", year: 2018)
+      datum_two =
+        create(:financial_datum, user: user, month: "february", year: 2018)
+      expected_result = datum_two.net_worth - datum_one.net_worth
+
+      result = datum_two.net_worth_delta
+
+      expect(result).to eq expected_result
+    end
+
+    context "there is no previous months datum" do
+      it "returns nil" do
+        datum = build_stubbed(:financial_datum)
+
+        result = datum.net_worth_delta
+
+        expect(result).to be_nil
+      end
+    end
+  end
 end

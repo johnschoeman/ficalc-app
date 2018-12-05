@@ -28,6 +28,18 @@ RSpec.describe "financial_data/index.html.erb" do
       expect(rendered).to have_content("4%SW")
       expect(rendered).to have_content(datum.safe_withdraw_amount)
     end
+
+    it "renders the delta in net_worth from last month" do
+      datum_one = create(:financial_datum, month: "january", year: 2018)
+      datum_two = create(:financial_datum, month: "february", year: 2018)
+
+      render template: "financial_data/index.html.erb",
+             locals: { financial_data: [datum_one, datum_two] }
+
+      expect(rendered).to have_content("deltaNW")
+      expect(rendered).to have_content(datum_two.net_worth_delta)
+    end
+
   end
 end
 
