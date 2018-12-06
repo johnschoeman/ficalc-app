@@ -14,7 +14,11 @@ class FinancialDatum < ApplicationRecord
 
   before_validation do
     downcase_month
-    create_date_from_month_and_year
+    if month && year
+      create_date_from_month_and_year
+    elsif date
+      create_month_and_year_from_date
+    end
   end
 
   def self.get_data_for(user)
@@ -101,9 +105,12 @@ class FinancialDatum < ApplicationRecord
   end
 
   def create_date_from_month_and_year
-    if year && month
-      self.date = Date.new(year, FinancialDatum.months[month] + 1)
-    end
+    self.date = Date.new(year, FinancialDatum.months[month] + 1)
+  end
+
+  def create_month_and_year_from_date
+    self.month = date.month - 1
+    self.year = date.year
   end
 
   def current_year
