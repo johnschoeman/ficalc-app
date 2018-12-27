@@ -10,16 +10,18 @@ class FinancialDataController < ApplicationController
   def new
     financial_datum = FinancialDatum.new
 
-    render locals: { financial_datum: financial_datum }
+    render locals: { financial_datum: financial_datum, errors: [] }
   end
 
   def create
     datum = FinancialDatum.new(financial_datum_params)
 
     if datum.save
+      flash[:success] = "Created a new datum"
       redirect_to financial_data_path
     else
-      render :new, locals: { financial_datum: datum }
+      flash[:error] = "Failed to create datum"
+      render :new, locals: { financial_datum: datum, errors: datum.errors.full_messages }
     end
   end
 

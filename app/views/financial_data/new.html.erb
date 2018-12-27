@@ -1,3 +1,7 @@
 Create a new financial datum
 
+<% if errors %>
+  <%= render "errors", errors: errors %>
+<% end %>
+
 <%= render "form", financial_datum: financial_datum %>
