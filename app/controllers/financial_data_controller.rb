@@ -3,8 +3,12 @@ class FinancialDataController < ApplicationController
 
   def index
     financial_data = FinancialDatum.get_data_for(current_user)
+    data_summary = FinancialDataSummary.new(current_user)
 
-    render locals: { financial_data: financial_data }
+    render locals: {
+      financial_data: financial_data,
+      data_summary: data_summary,
+    }
   end
 
   def new

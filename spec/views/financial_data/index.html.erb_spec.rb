@@ -8,50 +8,35 @@ RSpec.describe "financial_data/index.html.erb" do
       datum_two = create(:financial_datum, user: user)
       datum_three =  create(:financial_datum, user: user)
       financial_data = [datum_one, datum_two, datum_three]
+      data_summary = FinancialDataSummary.new(user)
+      allow(view).to receive(:current_user).and_return(user)
 
       render template: "financial_data/index.html.erb",
-             locals: { financial_data: financial_data }
+             locals: { financial_data: financial_data,
+                       data_summary: data_summary }
 
       expect_rendered_to_have_table_row_for(financial_data)
     end
 
-    it "renders the %FI, safe-withdraw-rate, and savings-rate" do
-      datum = create(:financial_datum)
-
-      render template: "financial_data/index.html.erb",
-             locals: { financial_data: [datum] }
-
-      expect(rendered).to have_content("%FI")
-      expect(rendered).to have_content("%.2f" % datum.percent_fi)
-      expect(rendered).to have_content("SR")
-      expect(rendered).to have_content("%.2f" % datum.savings_rate)
-      expect(rendered).to have_content("4%SW")
-      expect(rendered).to have_content(datum.safe_withdraw_amount)
-    end
-
-    it "renders the delta in net_worth from last month" do
-      datum_one = create(:financial_datum, month: "january", year: 2018)
-      datum_two = create(:financial_datum, month: "february", year: 2018)
-
-      render template: "financial_data/index.html.erb",
-             locals: { financial_data: [datum_one, datum_two] }
-
-      expect(rendered).to have_content("deltaNW")
-      expect(rendered).to have_content(datum_two.net_worth_delta)
-    end
-
-    it "renders the 12month average for expenses and income" do
+    it "renders a table of financial data" do
       user = create(:user)
       data = create_list(:financial_datum, 12, user: user, year: 2018)
-      december_datum = data.select(&:december?).first
+      data_summary = FinancialDataSummary.new(user)
+      allow(view).to receive(:current_user).and_return(user)
 
       render template: "financial_data/index.html.erb",
-             locals: { financial_data: data }
+             locals: { financial_data: data,
+                       data_summary: data_summary }
 
+      expect(rendered).to have_content("Month")
+      expect(rendered).to have_content("Year")
+      expect(rendered).to have_content("Income")
+      expect(rendered).to have_content("Expenses")
+      expect(rendered).to have_content("NetWorth")
+      expect(rendered).to have_content("%FI")
+      expect(rendered).to have_content("deltaNW")
       expect(rendered).to have_content("12MonthAveExpenses")
       expect(rendered).to have_content("12MonthAveIncome")
-      expect(rendered).to have_content("%0.f" % december_datum.average_expenses)
-      expect(rendered).to have_content("%0.f" % december_datum.average_income)
     end
   end
 end

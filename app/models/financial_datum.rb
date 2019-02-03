@@ -3,6 +3,7 @@ class FinancialDatum < ApplicationRecord
     %i[
       january february march april may june july august september october november december
     ].freeze
+  WITHDRAW_RATE_MULTIPLIER = 300 # 0.04withdraw_rate/ 12months
 
   validates_presence_of :month, :year, :date, :income, :expenses, :net_worth
   validates :user_id, uniqueness: { scope: [:year, :month], message: "You can only have one entry per month." }
@@ -53,9 +54,8 @@ class FinancialDatum < ApplicationRecord
   end
 
   def percent_fi
-    withdraw_rate_multiplier = 300 # 0.04withdraw_rate/ 12months
-    if expenses.positive? && withdraw_rate_multiplier.positive?
-      percent_fi = net_worth / (withdraw_rate_multiplier * expenses).to_f
+    if expenses.positive?
+      percent_fi = net_worth / (WITHDRAW_RATE_MULTIPLIER * expenses).to_f
       [percent_fi, 1.0].min
     else
       1.0
@@ -71,8 +71,7 @@ class FinancialDatum < ApplicationRecord
   end
 
   def safe_withdraw_amount
-    withdraw_rate_multiplier = 300
-    net_worth / withdraw_rate_multiplier
+    net_worth / WITHDRAW_RATE_MULTIPLIER
   end
 
   def net_worth_delta
