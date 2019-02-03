@@ -1,0 +1,20 @@
+<div id="financial-data-summary">
+  <% if current_user.has_financial_data? %>
+    <h2>Financial Data Summary</h2>
+
+    <table>
+      <thead>
+        <th>NetWorth</th>
+        <th>AveIncome</th>
+        <th>AveExpenses</th>
+        <th>%FI</th>
+      </thead>
+      <tr>
+        <td>$<%= data_summary.net_worth %></td>
+        <td>$<%= data_summary.average_expenses %></td>
+        <td>$<%= data_summary.average_income %></td>
+        <td><%= "%.2f" % data_summary.percent_fi %></td>
+      </tr>
+    </table>
+  <% end %>
+</div>
