@@ -31,7 +31,7 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 
-require 'clearance/rspec'
+require "clearance/rspec"
 
 RSpec.configure do |config|
 
