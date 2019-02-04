@@ -1,0 +1,20 @@
+<h2>Financial Data Index</h2>
+
+<table>
+  <thead>
+    <th>Month</th>
+    <th>Year</th>
+    <th>Income</th>
+    <th>Expenses</th>
+    <th>Net Worth</th>
+    <th>%FI</th>
+    <th>SR</th>
+    <th>4%SW</th>
+    <th>deltaNW</th>
+    <th>12MonthAveExpenses</th>
+    <th>12MonthAveIncome</th>
+  </thead>
+  <% financial_data.each do |datum| %>
+    <%= render "financial_datum_row", datum: datum %>
+  <% end %>
+</table>

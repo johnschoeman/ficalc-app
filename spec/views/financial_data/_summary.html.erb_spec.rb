@@ -22,17 +22,4 @@ RSpec.describe "financial_data/_summary.html.erb" do
       expect(rendered).to have_content("%.2f" % data_summary.percent_fi)
     end
   end
-
-  context "the user has no financial data" do
-    it "doesn't render the summary" do
-      user = build_stubbed(:user)
-      data_summary = FinancialDataSummary.new(user)
-      allow(view).to receive(:current_user).and_return(user)
-
-      render template: "financial_data/_summary.html.erb",
-             locals: { data_summary: data_summary }
-
-      expect(rendered).not_to have_text("Financial Data Summary")
-    end
-  end
 end

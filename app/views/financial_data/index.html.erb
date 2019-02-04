@@ -1,24 +1,8 @@
-<%= render "summary", data_summary: data_summary %>
+<% if current_user.has_financial_data? %>
+  <%= render "summary", data_summary: data_summary %>
+  <%= render "table", financial_data: financial_data %>
+<% else %>
+  <%= render "welcome_message" %>
+<% end %>
 
-<h2>Financial Data Index</h2>
-
-<table>
-  <thead>
-    <th>Month</th>
-    <th>Year</th>
-    <th>Income</th>
-    <th>Expenses</th>
-    <th>Net Worth</th>
-    <th>%FI</th>
-    <th>SR</th>
-    <th>4%SW</th>
-    <th>deltaNW</th>
-    <th>12MonthAveExpenses</th>
-    <th>12MonthAveIncome</th>
-  </thead>
-  <% financial_data.each do |datum| %>
-    <%= render "financial_datum_row", datum: datum %>
-  <% end %>
-</table>
-
-<%= link_to "New Financial Data Entry", new_financial_datum_path %>
+<%= link_to "Add a New Financial Data Entry", new_financial_datum_path %>
