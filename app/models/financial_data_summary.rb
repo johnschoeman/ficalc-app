@@ -32,7 +32,11 @@ class FinancialDataSummary
   end
 
   def time_to_fi
-    last_datum_query.first.time_to_fi
+    FiCalculator.new(
+      net_worth: net_worth,
+      income: average_income,
+      expenses: average_expenses,
+    ).time_to_fi
   end
 
   private

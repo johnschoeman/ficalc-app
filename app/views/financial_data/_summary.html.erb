@@ -6,12 +6,16 @@
       <th>AveIncome</th>
       <th>AveExpenses</th>
       <th>%FI</th>
+      <th>TimeToFI</th>
+      <th>Date Of FI</th>
     </thead>
     <tr>
       <td>$<%= data_summary.net_worth %></td>
-      <td>$<%= data_summary.average_expenses %></td>
       <td>$<%= data_summary.average_income %></td>
+      <td>$<%= data_summary.average_expenses %></td>
       <td><%= "%.2f" % data_summary.percent_fi %></td>
+      <td><%= data_summary.time_to_fi / 12 %> years <%= (data_summary.time_to_fi % 12) %> months</td>
+      <td><%= data_summary.time_to_fi.months.from_now.strftime("%b %Y") %></td>
     </tr>
   </table>
 </div>

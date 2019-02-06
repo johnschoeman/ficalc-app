@@ -16,10 +16,19 @@ RSpec.describe "financial_data/_summary.html.erb" do
       expect(rendered).to have_text("AveIncome")
       expect(rendered).to have_text("AveExpenses")
       expect(rendered).to have_text("%FI")
+      expect(rendered).to have_text("TimeToFI")
+      expect(rendered).to have_text("Date Of FI")
       expect(rendered).to have_content(data_summary.net_worth)
       expect(rendered).to have_content(data_summary.average_income)
       expect(rendered).to have_content(data_summary.average_expenses)
       expect(rendered).to have_content("%.2f" % data_summary.percent_fi)
+      expect(rendered).to(
+        have_content(
+          "#{data_summary.time_to_fi / 12} years " \
+          "#{data_summary.time_to_fi % 12} months",
+        ),
+      )
+      expect(rendered).to have_content("years", "months")
     end
   end
 end
