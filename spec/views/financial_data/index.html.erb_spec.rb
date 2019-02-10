@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe "financial_data/index.html.erb" do
   context "there is a list of financial data" do
     it "renders the summary and data table" do
-      user = build_stubbed(:user)
+      user = create(:user)
       data = [create(:financial_datum, user: user)]
       summary = FinancialDataSummary.new(user)
 

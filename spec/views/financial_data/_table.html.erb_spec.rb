@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "financial_data/_table.html.erb" do
   it "renders the data in a table" do
-    user = build_stubbed(:user)
+    user = create(:user)
     datum_one = create(:financial_datum, user: user)
     datum_two = create(:financial_datum, user: user)
     datum_three =  create(:financial_datum, user: user)

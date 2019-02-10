@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe "financial_data/_summary.html.erb" do
   context "the user has financial data" do
     it "renders the users financial summary" do
-      user = build_stubbed(:user)
+      user = create(:user)
       create(:financial_datum, user: user)
       data_summary = FinancialDataSummary.new(user)
       allow(view).to receive(:current_user).and_return(user)

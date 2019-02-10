@@ -9,7 +9,7 @@ RSpec.describe User do
   describe "#has_financial_data?" do
     context "the user has financial data" do
       it "returns true" do
-        user = build_stubbed(:user)
+        user = create(:user)
         create(:financial_datum, user: user)
 
         result = user.has_financial_data?
