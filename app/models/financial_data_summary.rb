@@ -14,11 +14,11 @@ class FinancialDataSummary
   end
 
   def average_income
-    previous_data_for_year_query.average(:income).to_i
+    last_datum_query.take.average_income.to_i
   end
 
   def average_expenses
-    previous_data_for_year_query.average(:expenses).to_i
+    last_datum_query.take.average_expenses.to_i
   end
 
   def percent_fi
@@ -40,14 +40,6 @@ class FinancialDataSummary
   end
 
   private
-
-  def previous_data_for_year_query
-    FinancialDatum.
-      where(user: @user).
-      where("date <= ?", Time.current).
-      order(:date).
-      limit(12)
-  end
 
   def last_datum_query
     FinancialDatum.
