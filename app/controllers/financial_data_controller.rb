@@ -6,9 +6,8 @@ class FinancialDataController < ApplicationController
     data_summary = FinancialDataSummary.new(current_user)
 
     render locals: {
-      financial_data: financial_data,
-      data_summary: data_summary,
-    }
+             financial_data: financial_data, data_summary: data_summary,
+           }
   end
 
   def new
@@ -25,7 +24,10 @@ class FinancialDataController < ApplicationController
       redirect_to financial_data_path
     else
       flash[:error] = "Failed to create datum"
-      render :new, locals: { financial_datum: datum, errors: datum.errors.full_messages }
+      render :new,
+             locals: {
+               financial_datum: datum, errors: datum.errors.full_messages,
+             }
     end
   end
 
@@ -64,9 +66,13 @@ class FinancialDataController < ApplicationController
   private
 
   def financial_datum_params
-    params.
-      require(:financial_datum).
-      permit(:month, :year, :income, :expenses, :net_worth).
-      merge(user: current_user)
+    params.require(:financial_datum).permit(
+      :month,
+      :year,
+      :income,
+      :expenses,
+      :net_worth
+    )
+      .merge(user: current_user)
   end
 end

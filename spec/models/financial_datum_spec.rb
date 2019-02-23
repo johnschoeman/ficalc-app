@@ -12,10 +12,9 @@ RSpec.describe FinancialDatum, type: :model do
     it do
       user = create(:user)
       create(:financial_datum, user: user)
-      should validate_uniqueness_of(:user_id).
-        scoped_to(:year, :month).
-        case_insensitive.
-        with_message("You can only have one entry per month.")
+      should validate_uniqueness_of(:user_id).scoped_to(:year, :month)
+               .case_insensitive
+               .with_message("You can only have one entry per month.")
     end
 
     it "only allows years within financial history" do

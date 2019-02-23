@@ -13,16 +13,14 @@
 # it.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
-require 'capybara/poltergeist'
-require 'factory_bot'
+require "capybara/poltergeist"
+require "factory_bot"
 
 Capybara.javascript_driver = :poltergeist
 
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
-  config.before(:all) do
-    FactoryBot.reload
-  end
+  config.before(:all) { FactoryBot.reload }
 
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
@@ -35,7 +33,8 @@ RSpec.configure do |config|
     #     # => "be bigger than 2 and smaller than 4"
     # ...rather than:
     #     # => "be bigger than 2"
-    expectations.include_chain_clauses_in_custom_matcher_descriptions = true
+    expectations.include_chain_clauses_in_custom_matcher_descriptions =
+      true
   end
 
   # rspec-mocks config goes here. You can use an alternate test double
@@ -44,7 +43,8 @@ RSpec.configure do |config|
     # Prevents you from mocking or stubbing a method that does not exist on
     # a real object. This is generally recommended, and will default to
     # `true` in RSpec 4.
-    mocks.verify_partial_doubles = true
+    mocks.verify_partial_doubles =
+      true
   end
 
   # This option will default to `:apply_to_host_groups` in RSpec 4 (and will
@@ -56,28 +56,18 @@ RSpec.configure do |config|
 
   config.before(:suite) do
     if config.use_transactional_fixtures?
-      raise(<<-MSG)
-        Delete line `config.use_transactional_fixtures = true` from rails_helper.rb
-        (or set it to false) to prevent uncommitted transactions being used in
-        JavaScript-dependent specs.
-
-        During testing, the app-under-test that the browser driver connects to
-        uses a different database connection to the database connection used by
-        the spec. The app's database connection would not be able to access
-        uncommitted transaction data setup over the spec's database connection.
-      MSG
+      raise("don't use transactional_fixtures")
     end
     DatabaseCleaner.clean_with(:truncation)
   end
 
-  config.before(:each) do
-    DatabaseCleaner.strategy = :transaction
-  end
+  config.before(:each) { DatabaseCleaner.strategy = :transaction }
 
   config.before(:each, type: :feature) do
     # :rack_test driver's Rack app under test shares database connection
     # with the specs, so continue to use transaction strategy for speed.
-    driver_shares_db_connection_with_specs = Capybara.current_driver == :rack_test
+    driver_shares_db_connection_with_specs =
+      Capybara.current_driver == :rack_test
 
     unless driver_shares_db_connection_with_specs
       # Driver is probably for an external browser with an app
@@ -87,16 +77,12 @@ RSpec.configure do |config|
     end
   end
 
-  config.before(:each) do
-    DatabaseCleaner.start
-  end
+  config.before(:each) { DatabaseCleaner.start }
 
-  config.append_after(:each) do
-    DatabaseCleaner.clean
-  end
+  config.append_after(:each) { DatabaseCleaner.clean }
 
-# The settings below are suggested to provide a good initial experience
-# with RSpec, but feel free to customize to your heart's content.
+  # The settings below are suggested to provide a good initial experience
+  # with RSpec, but feel free to customize to your heart's content.
 =begin
   # This allows you to limit a spec run to individual examples or groups
   # you care about by tagging them with `:focus` metadata. When nothing

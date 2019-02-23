@@ -33,18 +33,14 @@ class FinancialDataSummary
 
   def time_to_fi
     FiCalculator.new(
-      net_worth: net_worth,
-      income: average_income,
-      expenses: average_expenses,
-    ).time_to_fi
+      net_worth: net_worth, income: average_income, expenses: average_expenses,
+    )
+      .time_to_fi
   end
 
   private
 
   def last_datum_query
-    FinancialDatum.
-      where(user: @user).
-      order("date DESC").
-      limit(1)
+    FinancialDatum.where(user: @user).order("date DESC").limit(1)
   end
 end

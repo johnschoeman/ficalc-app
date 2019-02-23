@@ -5,14 +5,15 @@ RSpec.describe "financial_data/_table.html.erb" do
     user = create(:user)
     datum_one = create(:financial_datum, user: user)
     datum_two = create(:financial_datum, user: user)
-    datum_three =  create(:financial_datum, user: user)
+    datum_three = create(:financial_datum, user: user)
     financial_data = [datum_one, datum_two, datum_three]
     data_summary = FinancialDataSummary.new(user)
     allow(view).to receive(:current_user).and_return(user)
 
     render template: "financial_data/index.html.erb",
-           locals: { financial_data: financial_data,
-                     data_summary: data_summary }
+           locals: {
+             financial_data: financial_data, data_summary: data_summary,
+           }
 
     expect_rendered_to_have_table_row_for(financial_data)
   end
@@ -24,8 +25,7 @@ RSpec.describe "financial_data/_table.html.erb" do
     allow(view).to receive(:current_user).and_return(user)
 
     render template: "financial_data/index.html.erb",
-           locals: { financial_data: data,
-                     data_summary: data_summary }
+           locals: { financial_data: data, data_summary: data_summary }
 
     expect(rendered).to have_content("Month")
     expect(rendered).to have_content("Year")

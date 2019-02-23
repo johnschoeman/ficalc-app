@@ -1,12 +1,27 @@
 class FinancialDatum < ApplicationRecord
-  MONTHS =
-    %i[
-      january february march april may june july august september october november december
-    ].freeze
+  MONTHS = %i[
+    january
+    february
+    march
+    april
+    may
+    june
+    july
+    august
+    september
+    october
+    november
+    december
+  ]
+    .freeze
   WITHDRAW_RATE_MULTIPLIER = 300 # 0.04withdraw_rate/ 12months
 
   validates_presence_of :month, :year, :date, :income, :expenses, :net_worth
-  validates :user_id, uniqueness: { scope: [:year, :month], message: "You can only have one entry per month." }
+  validates :user_id,
+            uniqueness: {
+              scope: %i[year month],
+              message: "You can only have one entry per month.",
+            }
   validate :year_is_within_financial_history_range
 
   belongs_to :user
@@ -26,7 +41,14 @@ class FinancialDatum < ApplicationRecord
     user.financial_data.order(:year, :month)
   end
 
-  def self.build_for(user, month = "january", year = Time.zone.now.year, income = 500, expenses = 200, net_worth = 10_000)
+  def self.build_for(
+    user,
+    month = "january",
+    year = Time.zone.now.year,
+    income = 500,
+    expenses = 200,
+    net_worth = 10_000
+  )
     new(
       user_id: user.id,
       month: month,
@@ -38,11 +60,7 @@ class FinancialDatum < ApplicationRecord
   end
 
   def self.build_for_time_range(
-    user,
-    start_month = 0,
-    start_year = 2016,
-    end_month = 11,
-    end_year = 2018
+    user, start_month = 0, start_year = 2016, end_month = 11, end_year = 2018
   )
     data = []
     (start_year..end_year).each do |year|
@@ -63,11 +81,7 @@ class FinancialDatum < ApplicationRecord
   end
 
   def savings_rate
-    if income.positive?
-      (income - expenses) / income.to_f
-    else
-      0.0
-    end
+    income.positive? ? (income - expenses) / income.to_f : 0.0
   end
 
   def safe_withdraw_amount
@@ -117,10 +131,12 @@ class FinancialDatum < ApplicationRecord
   end
 
   def previous_data_for_year
-    FinancialDatum.
-      where(user: user).
-      where("date > ? and date <= ?", date - 1.year, date).
-      order(:date)
+    FinancialDatum.where(user: user).where(
+      "date > ? and date <= ?",
+      date - 1.year,
+      date,
+    )
+      .order(:date)
   end
 
   def previous_datum
@@ -130,10 +146,6 @@ class FinancialDatum < ApplicationRecord
 
   def previous_date
     month_idx = FinancialDatum.months[month]
-    if january?
-      [11, year - 1]
-    else
-      [month_idx - 1, year]
-    end
+    january? ? [11, year - 1] : [month_idx - 1, year]
   end
 end

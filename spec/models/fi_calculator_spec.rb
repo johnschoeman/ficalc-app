@@ -16,23 +16,29 @@ RSpec.describe "FiCalculator" do
         income_three = 2100
         net_worth_three = 100000
 
-        result_one = FiCalculator.new(
-          net_worth: net_worth_one,
-          expenses: expenses_one,
-          income: income_one,
-        ).time_to_fi
+        result_one =
+          FiCalculator.new(
+            net_worth: net_worth_one,
+            expenses: expenses_one,
+            income: income_one,
+          )
+            .time_to_fi
 
-        result_two = FiCalculator.new(
-          net_worth: net_worth_two,
-          expenses: expenses_two,
-          income: income_two,
-        ).time_to_fi
+        result_two =
+          FiCalculator.new(
+            net_worth: net_worth_two,
+            expenses: expenses_two,
+            income: income_two,
+          )
+            .time_to_fi
 
-        result_three = FiCalculator.new(
-          net_worth: net_worth_three,
-          expenses: expenses_three,
-          income: income_three,
-        ).time_to_fi
+        result_three =
+          FiCalculator.new(
+            net_worth: net_worth_three,
+            expenses: expenses_three,
+            income: income_three,
+          )
+            .time_to_fi
 
         expect(result_one).to eq 4
         expect(result_two).to eq 31
@@ -46,11 +52,11 @@ RSpec.describe "FiCalculator" do
         income = 0
         net_worth = 100000
 
-        result = FiCalculator.new(
-          net_worth: net_worth,
-          expenses: expenses,
-          income: income,
-        ).time_to_fi
+        result =
+          FiCalculator.new(
+            net_worth: net_worth, expenses: expenses, income: income,
+          )
+            .time_to_fi
 
         expect(result).to eq 0
       end
@@ -62,11 +68,11 @@ RSpec.describe "FiCalculator" do
         income = 100
         net_worth = 0
 
-        result = FiCalculator.new(
-          net_worth: net_worth,
-          expenses: expenses,
-          income: income,
-        ).time_to_fi
+        result =
+          FiCalculator.new(
+            net_worth: net_worth, expenses: expenses, income: income,
+          )
+            .time_to_fi
 
         expect(result).to eq 1200
       end

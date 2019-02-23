@@ -32,7 +32,7 @@ end
 def expect_rendered_to_have_table_row_for(financial_data)
   financial_data.each do |datum|
     expect(rendered).to have_selector(:id, "financial-datum-row-#{datum.id}")
-    %i(month year income expenses net_worth).each do |attribute|
+    %i[month year income expenses net_worth].each do |attribute|
       expect(rendered).to have_content(datum.send(attribute.to_sym).to_s)
     end
   end

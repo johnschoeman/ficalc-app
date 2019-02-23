@@ -25,7 +25,7 @@ RSpec.describe "financial_data/_summary.html.erb" do
       expect(rendered).to(
         have_content(
           "#{data_summary.time_to_fi / 12} years " \
-          "#{data_summary.time_to_fi % 12} months",
+            "#{data_summary.time_to_fi % 12} months",
         ),
       )
       expect(rendered).to have_content("years", "months")

@@ -30,7 +30,9 @@ class FiCalculator
       @calc_net_worth = apply_rate(new_net_worth, (GROWTH_RATE / 12))
 
       @calc_percent_fi = fi_percent
-      break if @months_to_fi >= 1200
+      if @months_to_fi >= 1200
+        break
+      end
     end
 
     @months_to_fi

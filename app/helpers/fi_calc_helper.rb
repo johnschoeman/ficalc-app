@@ -1,2 +1,1 @@
-module FiCalcHelper
-end
+module FiCalcHelper; end

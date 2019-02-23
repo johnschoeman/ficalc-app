@@ -5,17 +5,11 @@ RSpec.feature "User creates financial data entry" do
     user = create(:user)
     create(
       :financial_datum,
-      user: user,
-      year: 2018,
-      month: "july",
-      net_worth: 10_000,
+      user: user, year: 2018, month: "july", net_worth: 10_000,
     )
     create(
       :financial_datum,
-      user: user,
-      year: 2018,
-      month: "august",
-      net_worth: 20_000,
+      user: user, year: 2018, month: "august", net_worth: 20_000,
     )
 
     visit root_path(as: user)
@@ -39,8 +33,6 @@ RSpec.feature "User creates financial data entry" do
     expect(page).to have_selector(:id, "financial-datum-row-#{new_datum.id}")
     expect(new_datum.income).to eq 5000
 
-    within("#financial-data-summary") do
-      expect(page).to have_content "100000"
-    end
+    within("#financial-data-summary") { expect(page).to have_content "100000" }
   end
 end
