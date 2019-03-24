@@ -1,3 +1,5 @@
+require "csv"
+
 class FinancialDatum < ApplicationRecord
   MONTHS = %i[
     january
@@ -71,6 +73,16 @@ class FinancialDatum < ApplicationRecord
     data
   end
 
+  def self.import(file_path, user)
+    CSV.foreach(file_path, headers: true) do |row|
+      datum_as_hash = row.to_h
+      datum_as_hash["user_id"] = user.id
+      datum_as_hash["month"] = MONTHS[datum_as_hash["month"].to_i]
+      datum = new(datum_as_hash)
+      datum.save
+    end
+  end
+
   def percent_fi
     if expenses.positive?
       percent_fi = net_worth / (WITHDRAW_RATE_MULTIPLIER * expenses).to_f
@@ -134,7 +146,7 @@ class FinancialDatum < ApplicationRecord
     FinancialDatum.where(user: user).where(
       "date > ? and date <= ?",
       date - 1.year,
-      date,
+      date
     )
       .order(:date)
   end

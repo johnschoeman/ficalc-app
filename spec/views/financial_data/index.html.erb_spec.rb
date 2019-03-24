@@ -27,6 +27,15 @@ RSpec.describe "financial_data/index.html.erb" do
       expect(rendered).to have_text("Welcome to the FI Index Page!")
     end
   end
+
+  it "renders a link to upload a csv" do
+    user = build_stubbed(:user)
+    allow(view).to receive(:current_user).and_return(user)
+
+    render template: "financial_data/index.html.erb"
+
+    expect(rendered).to have_text("upload csv")
+  end
 end
 
 def expect_rendered_to_have_table_row_for(financial_data)

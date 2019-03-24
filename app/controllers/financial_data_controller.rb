@@ -63,6 +63,11 @@ class FinancialDataController < ApplicationController
     redirect_to financial_data_path
   end
 
+  def import
+    FinancialDatum.import(params[:file].path, current_user)
+    redirect_to financial_data_path, notice: "Succesfully imported"
+  end
+
   private
 
   def financial_datum_params
@@ -71,7 +76,7 @@ class FinancialDataController < ApplicationController
       :year,
       :income,
       :expenses,
-      :net_worth
+      :net_worth,
     )
       .merge(user: current_user)
   end
