@@ -28,6 +28,15 @@ RSpec.describe "financial_data/index.html.erb" do
     end
   end
 
+  it "renders a link to upload a csv" do
+    user = build_stubbed(:user)
+    allow(view).to receive(:current_user).and_return(user)
+
+    render template: "financial_data/index.html.erb"
+
+    expect(rendered).to have_text("upload csv")
+  end
+
   def expect_rendered_to_have_table_row_for(financial_data)
     financial_data.each do |datum|
       expect(rendered).to have_selector(:id, "financial-datum-row-#{datum.id}")

@@ -71,7 +71,7 @@ class FinancialDataController < ApplicationController
       :year,
       :income,
       :expenses,
-      :net_worth
+      :net_worth,
     )
       .merge(user: current_user)
   end
