@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby                "2.6.0"
+ruby                "2.6.2"
 
 gem "rails",        "5.2.2"
 
@@ -12,6 +12,7 @@ gem "pg"
 gem "puma"
 gem "sass-rails"
 gem "simple_form"
+gem 'therubyracer', platforms: :ruby
 gem "uglifier"
 
 group :development, :test do
@@ -30,6 +31,7 @@ group :test do
   gem "phantomjs", require: "phantomjs/poltergeist"
   gem "poltergeist"
   gem "rspec"
+  gem "rspec_junit_formatter"
   gem "shoulda-matchers"
 end
 

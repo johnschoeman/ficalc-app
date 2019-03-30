@@ -4,7 +4,7 @@ jobs:
     parallelism: 3
     working_directory: ~/ficalc-app
     docker:
-    - image: circleci/ruby:2.5.1-node-browsers-legacy
+    - image: circleci/ruby:2.6.2
       environment:
           RAILS_ENV: test
           PGHOST: 127.0.0.1
@@ -40,7 +40,7 @@ jobs:
 
     - run:
         name: Database setup
-        command: bin/rails db:schema:load --trace
+        command: bundle exec rake db:schema:load
 
     # Run rspec in parallel
     - run: |
