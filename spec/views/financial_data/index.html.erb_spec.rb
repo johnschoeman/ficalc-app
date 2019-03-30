@@ -27,13 +27,13 @@ RSpec.describe "financial_data/index.html.erb" do
       expect(rendered).to have_text("Welcome to the FI Index Page!")
     end
   end
-end
 
-def expect_rendered_to_have_table_row_for(financial_data)
-  financial_data.each do |datum|
-    expect(rendered).to have_selector(:id, "financial-datum-row-#{datum.id}")
-    %i[month year income expenses net_worth].each do |attribute|
-      expect(rendered).to have_content(datum.send(attribute.to_sym).to_s)
+  def expect_rendered_to_have_table_row_for(financial_data)
+    financial_data.each do |datum|
+      expect(rendered).to have_selector(:id, "financial-datum-row-#{datum.id}")
+      %i[month year income expenses net_worth].each do |attribute|
+        expect(rendered).to have_content(datum.send(attribute.to_sym).to_s)
+      end
     end
   end
 end
