@@ -18,11 +18,11 @@ RSpec.describe FinancialDataSummary do
       other_net_worth = net_worth - 1
       create(
         :financial_datum,
-        user: user, year: 2018, month: "january", net_worth: net_worth,
+        user: user, year: 2018, month: "january", net_worth: net_worth
       )
       create(
         :financial_datum,
-        user: user, year: 2017, month: "february", net_worth: other_net_worth,
+        user: user, year: 2017, month: "february", net_worth: other_net_worth
       )
       financial_summary = FinancialDataSummary.new(user)
 
@@ -69,7 +69,7 @@ RSpec.describe FinancialDataSummary do
         year: 2017,
         month: "january",
         expenses: 250,
-        net_worth: 50_000,
+        net_worth: 50_000
       )
       create(
         :financial_datum,
@@ -77,7 +77,7 @@ RSpec.describe FinancialDataSummary do
         year: 2017,
         month: "february",
         expenses: 750,
-        net_worth: 75_000,
+        net_worth: 75_000
       )
       expected_result = 0.5
       financial_summary = FinancialDataSummary.new(user)
