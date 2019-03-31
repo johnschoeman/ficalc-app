@@ -1,18 +1,16 @@
 class FinancialDataImporter
-  attr_reader :file_path, :user
+  attr_reader :file_path, :user, :formatter
 
   def initialize(file_path, user)
     @file_path = file_path
     @user = user
+    @formatter = FinancialDataFormatter.new
   end
 
   def import
     CSV.foreach(file_path, headers: true) do |row|
-      datum_as_hash = row.to_h
-      datum_as_hash["user_id"] = user.id
-      datum_as_hash["month"] =
-        FinancialDatum::MONTHS[datum_as_hash["month"].to_i]
-      datum = FinancialDatum.new(datum_as_hash)
+      formatted_datum = formatter.build(row, user.id)
+      datum = FinancialDatum.new(formatted_datum)
       datum.save
     end
   end
