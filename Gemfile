@@ -10,6 +10,7 @@ gem "coffee-rails"
 gem "jquery-rails"
 gem "pg"
 gem "puma"
+gem "rubyXL"
 gem "sass-rails"
 gem "simple_form"
 gem 'therubyracer', platforms: :ruby
