@@ -3,65 +3,47 @@ require "rails_helper"
 RSpec.describe "FinancialDataImporter" do
   describe ".import" do
     context "given a csv file" do
-      it "creates financial data for the rows" do
-        require "csv"
-        user = create(:user, id: 1)
-        file =
-          CSV.generate do |csv|
-            csv << %w[month year income expenses net_worth]
-            csv << %w[3 2019 1000 500 10000]
-            csv << %w[4 2019 1000 500 10000]
-            csv << %w[5 2019 1000 500 10000]
-          end
-        filename = "test.csv"
-        allow(File).to receive(:open).with(
-          filename,
-          "r",
-          { headers: true, universal_newline: false },
+      it "imports the csv using the CsvImporter" do
+        filename = "filename.csv"
+        user_id = 1
+        csv_importer_double = double("csv_importer")
+        allow(csv_importer_double).to receive(:import)
+        allow(CsvImporter).to receive(:new).with(filename, user_id).and_return(
+          csv_importer_double,
         )
-          .and_return(file)
-        importer = FinancialDataImporter.new(filename, user.id)
+        importer = FinancialDataImporter.new(filename, user_id)
 
         importer.import
 
-        expect(FinancialDatum.count).to eq 3
+        expect(CsvImporter).to have_received(:new)
       end
     end
 
     context "given a xlsx file" do
-      it "creates financial data for the rows" do
-        user = create(:user, id: 1)
-        workbook = RubyXL::Workbook.new
-        workbook.add_worksheet("Sheet 1")
-        worksheet = workbook.worksheets.first
-        worksheet.add_cell(0, 0, "month")
-        worksheet.add_cell(0, 1, "year")
-        worksheet.add_cell(0, 2, "income")
-        worksheet.add_cell(0, 3, "expenses")
-        worksheet.add_cell(0, 4, "net_worth")
-
-        [1, 2019, 1000, 500, 10000].each_with_index do |el, idx|
-          worksheet.add_cell(1, idx, el)
-        end
-
-        [2, 2019, 1000, 500, 10000].each_with_index do |el, idx|
-          worksheet.add_cell(2, idx, el)
-        end
-
-        [3, 2019, 1000, 500, 10000].each_with_index do |el, idx|
-          worksheet.add_cell(3, idx, el)
-        end
-
-        filename = "test.xlsx"
-        allow(RubyXL::Parser).to receive(:parse).with(filename).and_return(
-          workbook,
+      it "imports the xlsx using the XlsxImporter" do
+        filename = "filename.xlsx"
+        user_id = 1
+        xlxs_importer_double = double("xlxs_importer")
+        allow(xlxs_importer_double).to receive(:import)
+        allow(XlsxImporter).to receive(:new).with(filename, user_id).and_return(
+          xlxs_importer_double,
         )
-
-        importer = FinancialDataImporter.new(filename, user.id)
+        importer = FinancialDataImporter.new(filename, user_id)
 
         importer.import
 
-        expect(FinancialDatum.count).to eq 3
+        expect(XlsxImporter).to have_received(:new)
+      end
+    end
+
+    context "given an unknown file type" do
+      it "raises an error" do
+        filename = "filename.foo"
+        user_id = 1
+        allow(XlsxImporter).to receive(:new)
+        importer = FinancialDataImporter.new(filename, user_id)
+
+        expect { importer.import }.to raise_error("Unknown file type")
       end
     end
   end
