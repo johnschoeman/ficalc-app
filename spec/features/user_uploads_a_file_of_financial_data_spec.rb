@@ -6,7 +6,7 @@ RSpec.feature "User uploads a file of financial data" do
       user = create(:user)
 
       visit financial_data_path(as: user)
-      attach_file("file", Rails.root.join("test/sample.csv"))
+      attach_file("file", Rails.root.join("spec/fixtures/fi_data.csv"))
       click_on "Save changes"
 
       expect(FinancialDatum.count).to eq 3
@@ -18,7 +18,7 @@ RSpec.feature "User uploads a file of financial data" do
       user = create(:user)
 
       visit financial_data_path(as: user)
-      attach_file("file", Rails.root.join("test/sample_fi_data.xlsx"))
+      attach_file("file", Rails.root.join("spec/fixtures/fi_data.xlsx"))
       click_on "Save changes"
 
       expect(FinancialDatum.count).to eq 3
