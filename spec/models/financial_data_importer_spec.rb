@@ -20,7 +20,7 @@ RSpec.describe "FinancialDataImporter" do
           { headers: true, universal_newline: false },
         )
           .and_return(file)
-        importer = FinancialDataImporter.new(filename, user)
+        importer = FinancialDataImporter.new(filename, user.id)
 
         importer.import
 
@@ -57,7 +57,7 @@ RSpec.describe "FinancialDataImporter" do
           workbook,
         )
 
-        importer = FinancialDataImporter.new(filename, user)
+        importer = FinancialDataImporter.new(filename, user.id)
 
         importer.import
 

@@ -1,9 +1,11 @@
-class FinancialDataImporter
-  attr_reader :file_path, :user, :formatter
+require "csv"
 
-  def initialize(file_path, user)
+class FinancialDataImporter
+  attr_reader :file_path, :user_id, :formatter
+
+  def initialize(file_path, user_id)
     @file_path = file_path
-    @user = user
+    @user_id = user_id
     @formatter = FinancialDataFormatter.new
   end
 
@@ -25,7 +27,7 @@ class FinancialDataImporter
       if idx == 0
         next
       end
-      formatted_datum = formatter.build_xlsx(row, user.id)
+      formatted_datum = formatter.build_xlsx(row, user_id)
       datum = FinancialDatum.new(formatted_datum)
       datum.save
     end
@@ -33,7 +35,7 @@ class FinancialDataImporter
 
   def import_csv
     CSV.foreach(file_path, headers: true) do |row|
-      formatted_datum = formatter.build_csv(row, user.id)
+      formatted_datum = formatter.build_csv(row, user_id)
       datum = FinancialDatum.new(formatted_datum)
       datum.save
     end

@@ -23,4 +23,6 @@
 # Ignore Spring files.
 /spring/*.pid
 
+.env
 node_modules/
+data/
