@@ -75,10 +75,15 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.5)
+    connection_pool (2.2.2)
     crass (1.0.4)
     database_cleaner (1.7.0)
     debug_inspector (0.0.3)
     diff-lcs (1.3)
+    dotenv (2.7.2)
+    dotenv-rails (2.7.2)
+      dotenv (= 2.7.2)
+      railties (>= 3.2, < 6.1)
     email_validator (1.6.0)
       activemodel
     erubi (1.8.0)
@@ -131,6 +136,9 @@ GEM
     minitest (5.11.3)
     msgpack (1.2.9)
     nenv (0.3.0)
+    net-sftp (2.1.2)
+      net-ssh (>= 2.6.5)
+    net-ssh (5.2.0)
     nio4r (2.3.1)
     nokogiri (1.10.1)
       mini_portile2 (~> 2.4.0)
@@ -154,6 +162,8 @@ GEM
     public_suffix (3.0.3)
     puma (3.12.1)
     rack (2.0.6)
+    rack-protection (2.0.5)
+      rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.2.2)
@@ -184,6 +194,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
+    redis (4.1.0)
     ref (2.0.0)
     regexp_parser (1.3.0)
     rspec (3.8.0)
@@ -223,6 +234,11 @@ GEM
     shellany (0.0.1)
     shoulda-matchers (4.0.1)
       activesupport (>= 4.2.0)
+    sidekiq (5.2.5)
+      connection_pool (~> 2.2, >= 2.2.2)
+      rack (>= 1.5.0)
+      rack-protection (>= 1.5.0)
+      redis (>= 3.3.5, < 5)
     simple_form (4.1.0)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
@@ -265,6 +281,7 @@ DEPENDENCIES
   clearance
   coffee-rails
   database_cleaner
+  dotenv-rails
   factory_bot
   faker
   guard (= 2.13.0)
@@ -272,6 +289,7 @@ DEPENDENCIES
   jquery-rails
   launchy
   listen (= 3.0.8)
+  net-sftp
   pg
   phantomjs
   poltergeist
@@ -284,6 +302,7 @@ DEPENDENCIES
   rspec_junit_formatter
   sass-rails
   shoulda-matchers
+  sidekiq
   simple_form
   spring (= 1.7.2)
   spring-watcher-listen (= 2.0.0)
