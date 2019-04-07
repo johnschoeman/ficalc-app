@@ -43,6 +43,7 @@ class FinancialDataImporter
   def create_financial_datum(data, user_id)
     data.
       then { |hash| format_month(hash) }.
+      then { |hash| format_currency(hash) }.
       then { |hash| apply_user_id(hash, user_id) }.
       then { |hash| FinancialDatum.create(hash) }
   end
@@ -54,7 +55,7 @@ class FinancialDataImporter
     end
     if hash["date"]
       date = parse_date(hash["date"].to_s)
-      new_hash["month"] = get_month(date.month)
+      new_hash["month"] = get_month(date.month - 1)
       new_hash["year"] = date.year
       new_hash.delete("date")
     end
@@ -72,6 +73,22 @@ class FinancialDataImporter
       Date.strptime(date)
     else
       raise "Unknown date format: #{date}"
+    end
+  end
+
+  def format_currency(hash)
+    new_hash = hash.dup
+    new_hash["expenses"] = to_float(new_hash["expenses"])
+    new_hash["income"] = to_float(new_hash["income"])
+    new_hash["net_worth"] = to_float(new_hash["net_worth"])
+    new_hash
+  end
+
+  def to_float(value)
+    if value.class == String
+      value.gsub("$", "").gsub(",", "").to_f
+    else
+      value.to_f
     end
   end
 
