@@ -2,13 +2,14 @@ require "rails_helper"
 
 RSpec.describe FileImporter do
   describe ".new" do
-    it "initializes with a file path and user_id and a formatter" do
-      filepath = "filepath"
+    it "initializes with a file path and user_id and a builder" do
+      file_path = "filepath"
       user_id = 1
 
-      importer = FileImporter.new(filepath, user_id)
+      importer = FileImporter.new(file_path, user_id)
 
-      expect(importer.formatter).to be_an_instance_of(FinancialDataFormatter)
+      expect(importer.file_path).to eq(file_path)
+      expect(importer.user_id).to eq(user_id)
     end
   end
 end
