@@ -220,6 +220,10 @@ GEM
     rspec-support (3.8.0)
     rspec_junit_formatter (0.4.1)
       rspec-core (>= 2, < 4, != 2.12.0)
+    rubyXL (3.4.2)
+      nokogiri (>= 1.4.4)
+      rubyzip (>= 1.1.6)
+    rubyzip (1.2.2)
     sass (3.7.3)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -300,6 +304,7 @@ DEPENDENCIES
   rspec
   rspec-rails
   rspec_junit_formatter
+  rubyXL
   sass-rails
   shoulda-matchers
   sidekiq
