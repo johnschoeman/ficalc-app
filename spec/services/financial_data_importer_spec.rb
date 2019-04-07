@@ -4,15 +4,23 @@ require "csv"
 RSpec.describe FinancialDataImporter do
   describe ".import" do
     it "takes a file and creates financial data from the data" do
-      user = create(:user, id: 1)
-      filename = Rails.root.join("spec/fixtures/sample_data.csv")
+      user_one = create(:user)
+      user_two = create(:user)
+      csv_filename = Rails.root.join("spec/fixtures/sample_data.csv")
+      xlsx_filename = Rails.root.join("spec/fixtures/sample_data.xlsx")
       importer = FinancialDataImporter.new
 
-      importer.import(filename, user)
+      importer.import(xlsx_filename, user_two.id)
 
-      expect(FinancialDatum.count).to eq 3
-      march_datum = FinancialDatum.where(month: "march").take
-      expect_datum_to_match(march_datum, "march", 2019, 3, 20, 300)
+      importer.import(csv_filename, user_one.id)
+
+      expect(FinancialDatum.count).to eq 6
+      user_one_march_datum =
+        FinancialDatum.where(month: "march", user_id: user_one.id).take
+      user_two_march_datum =
+        FinancialDatum.where(month: "march", user_id: user_two.id).take
+      expect_datum_to_match(user_one_march_datum, "march", 2019, 3, 30, 300)
+      expect_datum_to_match(user_two_march_datum, "march", 2019, 3, 30, 300)
     end
   end
 
