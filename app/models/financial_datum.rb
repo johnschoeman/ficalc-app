@@ -73,10 +73,10 @@ class FinancialDatum < ApplicationRecord
     data
   end
 
-  def self.import(file_path, user)
+  def self.import(file_path, user_id)
     CSV.foreach(file_path, headers: true) do |row|
       datum_as_hash = row.to_h
-      datum_as_hash["user_id"] = user.id
+      datum_as_hash["user_id"] = user_id
       datum_as_hash["month"] = MONTHS[datum_as_hash["month"].to_i]
       datum = new(datum_as_hash)
       datum.save

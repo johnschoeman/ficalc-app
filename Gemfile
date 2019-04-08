@@ -8,14 +8,17 @@ gem "bootsnap"
 gem "clearance"
 gem "coffee-rails"
 gem "jquery-rails"
+gem "net-sftp"
 gem "pg"
 gem "puma"
 gem "sass-rails"
+gem "sidekiq"
 gem "simple_form"
 gem 'therubyracer', platforms: :ruby
 gem "uglifier"
 
 group :development, :test do
+  gem "dotenv-rails"
   gem "faker"
   gem "pry-byebug"
   gem "pry-rails"
