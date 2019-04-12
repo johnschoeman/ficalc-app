@@ -44,6 +44,21 @@ RSpec.describe FinancialDataImporter do
         expect_datum_to_match(datum_two, "march", 2019, 3, 30, 300)
       end
     end
+
+    context "the file has some invalid data" do
+      it "takes the file and creates a financial_datum for each row" do
+        users = create_list(:user, 2)
+        csv_filename = Rails.root.join("spec/fixtures/sample_with_some_invalid_data.csv")
+        importer = FinancialDataImporter.new
+
+        importer.import(csv_filename, users[0].id)
+
+        expect(FinancialDatum.count).to eq 2
+        datum_one =
+          FinancialDatum.where(month: "march", user_id: users[0].id).take
+        expect_datum_to_match(datum_one, "march", 2019, 3, 30, 300)
+      end
+    end
   end
 
   def expect_datum_to_match(datum, month, year, expenses, income, net_worth)

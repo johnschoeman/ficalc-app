@@ -42,13 +42,27 @@ class FinancialDataImporter
 
   def create_financial_datum(data, user_id)
     data.
+      then { |hash| validate(hash) }.
       then { |hash| format_month(hash) }.
       then { |hash| format_currency(hash) }.
       then { |hash| apply_user_id(hash, user_id) }.
       then { |hash| FinancialDatum.create(hash) }
   end
 
+  def validate(data)
+    regex = /^\$?\d+\.?\d*$/
+    result = if data.all? { |key, value| regex.match?(value) }
+      data
+    else
+      {}
+    end
+    result
+  end
+
   def format_month(hash)
+    if hash.empty?
+      return {}
+    end
     new_hash = hash.dup
     if hash["month"] && hash["year"]
       new_hash["month"] = get_month(hash["month"].to_i)
@@ -77,6 +91,9 @@ class FinancialDataImporter
   end
 
   def format_currency(hash)
+    if hash.empty?
+      return {}
+    end
     new_hash = hash.dup
     new_hash["expenses"] = to_float(new_hash["expenses"])
     new_hash["income"] = to_float(new_hash["income"])
@@ -93,6 +110,9 @@ class FinancialDataImporter
   end
 
   def apply_user_id(hash, user_id)
+    if hash.empty?
+      return {}
+    end
     new_hash = hash.dup
     new_hash["user_id"] = user_id
     new_hash
