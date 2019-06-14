@@ -146,7 +146,7 @@ class FinancialDatum < ApplicationRecord
     FinancialDatum.where(user: user).where(
       "date > ? and date <= ?",
       date - 1.year,
-      date
+      date,
     )
       .order(:date)
   end

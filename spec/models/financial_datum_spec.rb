@@ -80,7 +80,7 @@ RSpec.describe FinancialDatum, type: :model do
       )
         .and_return(file)
 
-      FinancialDatum.import(filename, user)
+      FinancialDatum.import(filename, user.id)
 
       expect(FinancialDatum.count).to eq 3
     end
