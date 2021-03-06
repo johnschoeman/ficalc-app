@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby                "2.6.2"
+ruby                "2.7.1"
 
 gem "rails",        "5.2.2"
 
@@ -16,6 +16,8 @@ gem "sidekiq"
 gem "simple_form"
 gem 'therubyracer', platforms: :ruby
 gem "uglifier"
+gem "libv8", github: "rubyjs/libv8", submodules: true
+gem "nokogiri", "1.10.8"
 
 group :development, :test do
   gem "dotenv-rails"

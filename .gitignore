@@ -26,3 +26,5 @@
 .env
 node_modules/
 data/
+
+vendor/
